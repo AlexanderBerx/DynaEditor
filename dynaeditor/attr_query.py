@@ -67,10 +67,22 @@ def iter_obj_attrs(obj):
             
         categories = cmds.attributeQuery(attr, node=obj, categories=True)
         
-        yield [_type, attr, nice_name, _min, _max, default_value, options, file_path, color, categories]
+        yield _type, attr, nice_name, _min, _max, default_value, options, file_path, color, categories
         
 
 def attr_mapping_to_file(obj, output):
     output = os.path.normpath(output)
     with open(output, 'w') as file_out:
         json.dump(list(iter_obj_attrs(obj)), file_out, indent=4)
+
+
+def main():
+    selection = cmds.ls(selection=True, shapes=True)
+    print selection
+    if not selection:
+        return
+    for attr in iter_obj_attrs(selection[0]):
+        print attr
+
+if __name__ == '__main__':
+    main()
