@@ -71,8 +71,6 @@ def iter_obj_attrs(obj):
         
 
 def attr_mapping_to_file(obj, output):
-    mapping = [attr for attr in iter_obj_attrs(obj)]
     output = os.path.normpath(output)
     with open(output, 'w') as file_out:
-        json.dump(mapping, file_out)
-
+        json.dump(list(iter_obj_attrs(obj)), file_out, indent=4)
