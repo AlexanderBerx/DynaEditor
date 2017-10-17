@@ -1,4 +1,4 @@
-from dynaeditor.widgets.base import BaseWidget
+from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class Float3Widget(BaseWidget):
