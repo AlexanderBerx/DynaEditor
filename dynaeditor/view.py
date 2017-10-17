@@ -18,21 +18,11 @@ class EditorView(QtWidgets.QWidget):
         self.setLayout(layout_main)
         layout_main.addWidget(self._create_type_widget())
 
-    def _create_type_widget(self):
-        type_widget = QtWidgets.QWidget()
-        type_layout = QtWidgets.QHBoxLayout()
-        type_widget.setLayout(type_layout)
+    def set_attr_widgets(self, attrs):
+        pass
 
-        type_layout.addWidget(QtWidgets.QLabel("Object Type:"))
-        self._lbl_obj_type = QtWidgets.QLabel()
-        self._lbl_obj_type.setTextFormat(QtCore.Qt.RichText)
-        type_layout.addWidget(self._lbl_obj_type)
-        self._lock_type_btn = QtWidgets.QPushButton()
-        type_layout.addWidget(self._lock_type_btn)
-        return type_widget
-
-    def set_m_object_type(self, _type):
-        self._lbl_obj_type.setText("<b>{}</b>".format(_type))
+    def set_display_type(self, _type):
+        self._lbl_display_type.setText("<b>{}</b>".format(_type))
 
     def lock_type(self, lock=True):
         if lock:

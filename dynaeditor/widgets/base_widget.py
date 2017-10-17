@@ -26,4 +26,9 @@ class BaseWidget(QtWidgets.QWidget):
         raise NotImplementedError("Method must be overwritten in child Classes")
 
     def set_default_value(self, default_value):
+        """
+        set the default value of the widget must be overwritten by child classes
+        :param default_value:
+        :return:
+        """
         raise NotImplementedError("Method must be overwritten in child Classes")
