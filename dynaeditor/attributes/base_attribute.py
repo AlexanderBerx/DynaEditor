@@ -1,8 +1,8 @@
 
 
 class BaseAttribute(object):
-    def __init__(self):
-        self._widget = None
+    def __init__(self, widget):
+        self._widget = widget
 
     @property
     def widget(self):
