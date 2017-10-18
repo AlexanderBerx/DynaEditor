@@ -14,5 +14,4 @@ class Attribute(object):
         else:
             raise TypeError("Not Implemented type")
 
-        instance = _class(*args, **kwargs)
-        return instance
+        return _class(*args, **kwargs)
