@@ -16,10 +16,23 @@ class EditorView(QtWidgets.QWidget):
     def _init_ui(self):
         layout_main = QtWidgets.QVBoxLayout()
         self.setLayout(layout_main)
-        layout_main.addWidget(self._create_type_widget())
+        layout_main.addWidget(self._create_header_widget())
+        layout_main.addWidget(self._create_editor_widget())
 
-    def set_attr_widgets(self, attrs):
-        pass
+    def _create_header_widget(self):
+        widget_header = QtWidgets.QWidget()
+        layout_header = QtWidgets.QHBoxLayout()
+        widget_header.setLayout(layout_header)
+        layout_header.addWidget(QtWidgets.QLabel("Type:"))
+        self._lbl_display_type = QtWidgets.QLabel("----")
+        layout_header.addWidget(self._lbl_display_type)
+        self._btn_lock_type = QtWidgets.QPushButton("Lock")
+        layout_header.addWidget(self._btn_lock_type)
+        return widget_header
+
+    def _create_editor_widget(self):
+        editor = QtWidgets.QListWidget()
+        return editor
 
     def set_display_type(self, _type):
         self._lbl_display_type.setText("<b>{}</b>".format(_type))
@@ -34,7 +47,6 @@ class EditorView(QtWidgets.QWidget):
 def main():
     app = QtWidgets.QApplication([])
     view = EditorView()
-    view.set_m_object_type("test")
     view.show()
     app.exec_()
 
