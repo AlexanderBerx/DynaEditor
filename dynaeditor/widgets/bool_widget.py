@@ -1,10 +1,11 @@
 import sys
-from PySide2 import QtWidgets, QtCore
+from PySide2 import QtWidgets
 from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class BoolWidget(BaseWidget):
     def __init__(self, attribute_name, default_value):
+        self._chb_bool = None
         super(BoolWidget, self).__init__(attribute_name, default_value)
 
     def create_type_widget(self):
@@ -13,6 +14,7 @@ class BoolWidget(BaseWidget):
 
     def set_default_value(self, default_value):
         self._chb_bool.setChecked(bool(default_value))
+
 
 def main():
     app = QtWidgets.QApplication([])
