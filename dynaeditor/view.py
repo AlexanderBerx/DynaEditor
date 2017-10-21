@@ -40,6 +40,15 @@ class EditorView(QtWidgets.QWidget):
     def clear_editor(self):
         self.editor.clear()
 
+    def add_attr_widget(self, widget):
+        """
+        :param QtWidgets.QWidget widget:
+        :return:
+        """
+        item = QtWidgets.QListWidgetItem(self.editor)
+        item.setSizeHint(widget.sizeHint())
+        self.editor.setItemWidget(item, widget)
+
     def lock_type(self, lock=True):
         if lock:
             self._lbl_obj_type.setEnabled(False)

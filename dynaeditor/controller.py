@@ -17,9 +17,10 @@ class Editor(object):
         for mapping in attr_mappings:
             if not Attribute.is_type_supported(mapping[const.ATTR_ARG_TYPE]):
                 continue
-            print mapping
+
             attribute = Attribute(**mapping)
-            # self._attributes.append()
+            self._attributes.append(attribute)
+            self._view.add_attr_widget(attribute.widget)
 
     def clear_attributes(self):
         self._attributes = []
