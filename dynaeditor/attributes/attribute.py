@@ -7,10 +7,10 @@ class Attribute(object):
     """
     Factory class for instancing attribute attributes
     """
-    TYPE_MAPPING = {const.ATYPE_BOOL:BoolAttribute,
-                    const.ATYPE_ENUM:EnumAttribute}
+    TYPE_MAPPING = {const.ATYPE_BOOL: BoolAttribute,
+                    const.ATYPE_ENUM: EnumAttribute}
 
-    def __new__(cls,_type, *args, **kwargs):
+    def __new__(cls, _type, *args, **kwargs):
         for keys, _class in cls.TYPE_MAPPING.items():
             if _type == keys:
                 break
@@ -18,3 +18,9 @@ class Attribute(object):
             raise TypeError("Not Implemented type")
 
         return _class(*args, **kwargs)
+
+    @staticmethod
+    def is_type_supported(_type):
+        if _type in Attribute.TYPE_MAPPING.keys():
+            return True
+        return False
