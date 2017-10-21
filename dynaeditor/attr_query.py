@@ -1,6 +1,7 @@
 import os
 import json
 from maya import cmds
+from dynaeditor import const
 
 
 def get_attr_type(node, attr):
@@ -64,13 +65,18 @@ def iter_obj_attrs(obj):
         options = get_attr_enum(obj, attr)
         file_path = cmds.attributeQuery(attr, node=obj, usedAsFilename=True)
         color = cmds.attributeQuery(attr, node=obj, usedAsColor=True)
-            
         categories = cmds.attributeQuery(attr, node=obj, categories=True)
         
         yield _type, attr, nice_name, _min, _max, default_value, options, file_path, color, categories
-        
 
-def attr_mapping_to_file(obj, output):
+
+def iter_obj_attrs_mapped(obj):
+    for items in iter_obj_attrs(obj):
+        attr = zip(const.ARG_KEYS, items)
+        yield {key: value for key, value in attr if value}
+
+
+def obj_attrs_to_file(obj, output):
     output = os.path.normpath(output)
     with open(output, 'w') as file_out:
         json.dump(list(iter_obj_attrs(obj)), file_out, indent=4)
