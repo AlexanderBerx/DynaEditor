@@ -4,9 +4,9 @@ from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class BoolWidget(BaseWidget):
-    def __init__(self, attribute_name, default_value):
+    def __init__(self, nice_name, default_value):
         self._chb_bool = None
-        super(BoolWidget, self).__init__(attribute_name, default_value)
+        super(BoolWidget, self).__init__(nice_name, default_value)
 
     def create_type_widget(self):
         self._chb_bool = QtWidgets.QCheckBox()

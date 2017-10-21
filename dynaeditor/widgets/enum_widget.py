@@ -4,9 +4,9 @@ from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class EnumWidget(BaseWidget):
-    def __init__(self, attribute_name, default_value):
+    def __init__(self, nice_name, default_value):
         self._cbo_enum = None
-        super(EnumWidget, self).__init__(attribute_name, default_value)
+        super(EnumWidget, self).__init__(nice_name, default_value)
 
     def create_type_widget(self):
         self._cbo_enum = QtWidgets.QComboBox()

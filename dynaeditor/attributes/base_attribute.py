@@ -1,9 +1,9 @@
 
 
 class BaseAttribute(object):
-    def __init__(self, widget, attribute_name):
+    def __init__(self, widget, attr):
         self.widget = widget
-        self.name = attribute_name
+        self.name = attr
 
     @property
     def widget(self):
