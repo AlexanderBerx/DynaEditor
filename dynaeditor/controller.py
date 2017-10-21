@@ -1,7 +1,5 @@
-import json
 from PySide2 import QtWidgets
 from dynaeditor import const
-from dynaeditor import utils
 from dynaeditor.view import EditorView
 from dynaeditor.attributes.attribute import Attribute
 
@@ -9,28 +7,30 @@ from dynaeditor.attributes.attribute import Attribute
 class Editor(object):
     def __init__(self):
         self._view = EditorView()
-        self._view.show()
-        self._editors = []
+        self._attributes = []
 
     def selection_change(self):
         pass
 
-    def set_editor_options(self, attr_mapping):
-        for item in attr_mapping:
-            # first arg is the type, check if supported before proceeding
-            if not item[0] in const.SUPPORTED_ATTR_TYPES:
+    def set_editor_options(self, attr_mappings):
+        self.clear_attributes()
+        for mapping in attr_mappings:
+            if not Attribute.is_type_supported(mapping[const.ATTR_ARG_TYPE]):
                 continue
-            args = utils.attr_mapping_to_dict(item)
-            attr = Attribute(**args)
-            print(attr)
+            print mapping
+            attribute = Attribute(**mapping)
+            # self._attributes.append()
+
+    def clear_attributes(self):
+        self._attributes = []
+        self._view.clear_editor()
+
 
 
 def main():
     app = QtWidgets.QApplication([])
     editor = Editor()
-    with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
-        mapping = json.load(file_in)
-    editor.set_editor_options(mapping)
+    editor._view.show()
     app.exec_()
 
 

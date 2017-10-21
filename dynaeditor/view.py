@@ -31,11 +31,14 @@ class EditorView(QtWidgets.QWidget):
         return widget_header
 
     def _create_editor_widget(self):
-        editor = QtWidgets.QListWidget()
-        return editor
+        self.editor = QtWidgets.QListWidget()
+        return self.editor
 
     def set_display_type(self, _type):
         self._lbl_display_type.setText("<b>{}</b>".format(_type))
+
+    def clear_editor(self):
+        self.editor.clear()
 
     def lock_type(self, lock=True):
         if lock:
