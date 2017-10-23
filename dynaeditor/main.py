@@ -18,7 +18,7 @@ def main():
 
     mapped_items = []
     for item in items:
-        mapped_items.append(utils.attr_mapping_to_dict(item))
+        mapped_items.append(utils.key_map_config(item))
 
     editor.set_editor_options(mapped_items)
 

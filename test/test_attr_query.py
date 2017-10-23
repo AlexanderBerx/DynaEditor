@@ -1,8 +1,6 @@
 import pytest
-if __name__ == "__main__":
-    from dynaeditor import utils
-    utils.reset_session()
-    from dynaeditor import utils
+from dynaeditor import utils
+from dynaeditor import attr_query
 
 try:
     from maya import cmds
@@ -15,7 +13,7 @@ except ImportError:
 
 class TestAttrQuery(object):
     TEST_ATTRS = [('bool', 'test_bool', 'test bool', 0.0, 1.0, 0.0, None, False, False, ["tests"]),
-                  ('enum', u'test_enum', 'test enum', 0.0, 3.0, 0.0,
+                  ('enum', 'test_enum', 'test enum', 0.0, 3.0, 0.0,
                    ['test1', 'test2', 'test3', 'test4'], False, False, ["tests"])]
 
     @classmethod
@@ -50,11 +48,8 @@ class TestAttrQuery(object):
 
     def test_query(self):
         test_node = self.create_test_node()
-
-
-def main():
-    tester = TestAttrQuery()
-    tester.test_query()
-
-if __name__ == "__main__":
-    main()
+        # collect all the obj attrs
+        obj_attrs = list(attr_query.iter_obj_attrs(test_node))
+        # check if each test attr occurs in the object attr's & matches
+        for attr in self.TEST_ATTRS:
+            assert attr in obj_attrs
