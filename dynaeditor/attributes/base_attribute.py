@@ -1,7 +1,10 @@
+from PySide2 import QtCore
 
+class BaseAttribute(QtCore.QObject):
+    signal_apply_attr = QtCore.Signal(str)
 
-class BaseAttribute(object):
     def __init__(self, widget, attr):
+        super(BaseAttribute, self).__init__()
         self.widget = widget
         self.name = attr
 
