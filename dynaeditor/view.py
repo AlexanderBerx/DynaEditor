@@ -1,23 +1,38 @@
 from PySide2 import QtWidgets, QtCore
+from dynaeditor import utils
 
 
 class EditorView(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
 
-    def __init__(self):
-        super(EditorView, self).__init__()
+    def __init__(self, parent=None):
+        if not parent:
+            parent = utils.get_maya_main_window()
+
+        super(EditorView, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)
         self.setObjectName(self.OBJ_NAME)
+        self.setWindowFlags(QtCore.Qt.Window)
 
         self._lock_type = False
         self._init_ui()
+        self.center_to_parent()
 
     def _init_ui(self):
         layout_main = QtWidgets.QVBoxLayout()
         self.setLayout(layout_main)
         layout_main.addWidget(self._create_header_widget())
         layout_main.addWidget(self._create_editor_widget())
+
+    def center_to_parent(self):
+        if self.parent():
+            parent_pos = self.parent().pos()
+            parent_width = self.parent().width()
+            parent_height = self.parent().height()
+
+            parent_center = [parent_pos.x() + parent_width / 2, parent_pos.y() + parent_height / 2]
+            self.move(QtCore.QPoint(parent_center[0] - self.width() / 2, parent_center[1] - self.height() / 2))
 
     def _create_header_widget(self):
         widget_header = QtWidgets.QWidget()

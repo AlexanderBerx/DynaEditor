@@ -1,6 +1,7 @@
 import os
 import sys
 import inspect
+from PySide2 import QtWidgets
 from dynaeditor import const
 
 
@@ -63,3 +64,10 @@ def reset_session(user_path=None):
 
     for loaded_module in mod_to_delete:
         del (sys.modules[loaded_module])
+
+
+def get_maya_main_window():
+    for obj in QtWidgets.qApp.topLevelWidgets():
+        if obj.objectName() == 'MayaWindow':
+            return obj
+    return None

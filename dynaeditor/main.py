@@ -1,5 +1,6 @@
+from dynaeditor import utils
+utils.reset_session()
 import sys
-import json
 from PySide2 import QtWidgets
 from dynaeditor import utils
 from dynaeditor.controller import Editor
@@ -13,19 +14,10 @@ def main():
     editor = Editor()
     editor._view.show()
 
-    with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
-        items = json.load(file_in)
-
-    mapped_items = []
-    for item in items:
-        mapped_items.append(utils.key_map_config(item))
-
-    editor.set_editor_options(mapped_items)
-
     if utils.in_maya_standalone():
         sys.exit(app.exec_())
 
     return editor
 
 if __name__ == '__main__':
-    main()
+    editor = main()
