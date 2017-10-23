@@ -1,5 +1,3 @@
-from dynaeditor import utils
-utils.reset_session()
 import sys
 from PySide2 import QtWidgets
 from dynaeditor import utils

@@ -10,9 +10,9 @@ class Editor(QtCore.QObject):
     def __init__(self):
         super(Editor, self).__init__()
 
-        self.job_manager = JobManager()
-        self.job_manager.clean_up_jobs()
-        self.job_manager.create_job(event=["SelectionChanged", lambda :self.selection_change()])
+        self._job_manager = JobManager()
+        self._job_manager.clean_up_jobs()
+        self._job_manager.create_job(event=["SelectionChanged", lambda :self.selection_change()])
 
         self.check_for_existing_window()
         self._view = EditorView()
