@@ -1,6 +1,7 @@
 from maya import cmds
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import const
+from dynaeditor import utils
 from dynaeditor.view import EditorView
 from dynaeditor.job_manager import JobManager
 from dynaeditor.attributes.attribute import Attribute
@@ -24,6 +25,17 @@ class Editor(QtCore.QObject):
 
     def selection_change(self):
         print("change")
+        self.update_to_selection()
+
+    def update_to_selection(self):
+        selection = cmds.ls(selection=True, long=True)
+        for obj in selection:
+            obj_type = cmds.objectType(obj)
+            if obj_type == "transform":
+                child_shapes = cmds.listRelatives(obj, shapes=True, fullPath=True)
+                if not child_shapes:
+                    continue
+
 
     @QtCore.Slot()
     def apply_attr_to_selection(self):
@@ -45,11 +57,18 @@ class Editor(QtCore.QObject):
 
 
 def main():
-    app = QtWidgets.QApplication([])
+    app = None
+    if utils.in_maya_standalone():
+        app = QtWidgets.QApplication([])
+
     editor = Editor()
     editor._view.show()
-    app.exec_()
+
+    if utils.in_maya_standalone():
+        sys.exit(app.exec_())
+
+    return editor
 
 
 if __name__ == '__main__':
-    main()
+    editor = main()
