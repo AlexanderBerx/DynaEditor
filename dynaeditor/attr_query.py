@@ -4,6 +4,14 @@ from maya import cmds
 from dynaeditor import const
 
 
+def _unpack_result(result):
+    if not result:
+        return None
+    elif len(result) == 1:
+        return result[0]
+    return result
+
+
 def get_attr_type(node, attr):
     try:
         return cmds.attributeQuery(attr, node=node, attributeType=True)
@@ -13,17 +21,20 @@ def get_attr_type(node, attr):
 
 def get_attr_min(node, attr):
     if cmds.attributeQuery(attr, node=node, minExists=True):
-        return cmds.attributeQuery(attr, node=node, min=True)
+        _min = cmds.attributeQuery(attr, node=node, min=True)
+        return _unpack_result(_min)
     
     
 def get_attr_max(node, attr):
     if cmds.attributeQuery(attr, node=node, maxExists=True):
-        return cmds.attributeQuery(attr, node=node, max=True)
+        _max = cmds.attributeQuery(attr, node=node, max=True)
+        return _unpack_result(_max)
     
         
 def get_attr_default_value(node, attr):
-    try: 
-        return cmds.attributeQuery(attr, node=node, listDefault=True)
+    try:
+        default_value = cmds.attributeQuery(attr, node=node, listDefault=True)
+        return _unpack_result(default_value)
     except RuntimeError:
         return None
         
