@@ -21,7 +21,29 @@ ARG_KEYS = [ATTR_ARG_TYPE,
             ATTR_ARG_COLOR,
             ATTR_ARG_CATEGORIES]
 
+# maya argument keys, only needed for unit testing
+M_ATTR_ARG_TYPE = "attributeType"
+M_ATTR_ARG_ATTR = "shortName"
+M_ATTR_ARG_NICE_NAME = "niceName"
+M_ATTR_ARG_MIN = "minValue"
+M_ATTR_ARG_MAX = "maxValue"
+M_ATTR_ARG_DEFAULT_VALUE = "defaultValue"
+M_ATTR_ARG_OPTIONS = "enumName"
+M_ATTR_ARG_FILE_PATH = "usedAsFilename"
+M_ATTR_ARG_COLOR = "usedAsColor"
+M_ATTR_ARG_CATEGORIES = "category"
+
+M_ARG_KEYS = [M_ATTR_ARG_TYPE,
+              M_ATTR_ARG_ATTR,
+              M_ATTR_ARG_NICE_NAME,
+              M_ATTR_ARG_MIN,
+              M_ATTR_ARG_MAX,
+              M_ATTR_ARG_DEFAULT_VALUE,
+              M_ATTR_ARG_OPTIONS,
+              M_ATTR_ARG_FILE_PATH,
+              M_ATTR_ARG_COLOR,
+              M_ATTR_ARG_CATEGORIES]
+
 # attribute types
 ATYPE_BOOL = "bool"
 ATYPE_ENUM = "enum"
-SUPPORTED_ATTR_TYPES = [ATYPE_BOOL, ATYPE_ENUM]
