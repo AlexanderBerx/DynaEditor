@@ -5,6 +5,7 @@ from dynaeditor import utils
 class EditorView(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
+    signal_lock_type = QtCore.Signal()
 
     def __init__(self, parent=None):
         if not parent:
@@ -15,7 +16,6 @@ class EditorView(QtWidgets.QWidget):
         self.setObjectName(self.OBJ_NAME)
         self.setWindowFlags(QtCore.Qt.Window)
 
-        self._lock_type = False
         self._init_ui()
         self.center_to_parent()
 
@@ -42,6 +42,7 @@ class EditorView(QtWidgets.QWidget):
         self._lbl_display_type = QtWidgets.QLabel("----")
         layout_header.addWidget(self._lbl_display_type)
         self._btn_lock_type = QtWidgets.QPushButton("Lock")
+        self._btn_lock_type.clicked.connect(self.signal_lock_type)
         layout_header.addWidget(self._btn_lock_type)
         return widget_header
 
@@ -66,9 +67,9 @@ class EditorView(QtWidgets.QWidget):
 
     def lock_type(self, lock=True):
         if lock:
-            self._lbl_obj_type.setEnabled(False)
+            self._lbl_display_type.setEnabled(False)
         else:
-            self._lbl_obj_type.setEnabled(True)
+            self._lbl_display_type.setEnabled(True)
 
 
 def main():

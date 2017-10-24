@@ -10,7 +10,7 @@ def main():
         app = QtWidgets.QApplication([])
 
     editor = Editor()
-    editor._view.show()
+    editor.view.show()
 
     if utils.in_maya_standalone():
         sys.exit(app.exec_())
