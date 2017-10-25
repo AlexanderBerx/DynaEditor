@@ -1,12 +1,26 @@
 from PySide2 import QtCore
+from dynaeditor.widgets.base_widget import BaseWidget
+
 
 class BaseAttribute(QtCore.QObject):
-    signal_apply_attr = QtCore.Signal(str)
+    signal_apply_attr = QtCore.Signal(str, str, str)
 
-    def __init__(self, widget, attr):
+    def __init__(self, _type, widget, attr):
         super(BaseAttribute, self).__init__()
-        self.widget = widget
+        self.type_ = _type
+        self.widget = widget #type:BaseWidget
         self.name = attr
+        self.connect_signals()
+
+    @property
+    def type_(self):
+        if not self._type:
+            raise NotImplementedError("No type set")
+        return self._type
+
+    @type_.setter
+    def type_(self, value):
+        self._type = value
 
     @property
     def widget(self):
@@ -27,3 +41,10 @@ class BaseAttribute(QtCore.QObject):
     @name.setter
     def name(self, value):
         self._name = value
+
+    def connect_signals(self):
+        pass
+
+    @QtCore.slot(str)
+    def _emit_attr(self):
+        pass

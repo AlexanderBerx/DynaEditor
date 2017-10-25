@@ -15,6 +15,8 @@ class BoolWidget(BaseWidget):
     def set_default_value(self, default_value):
         self._chb_bool.setChecked(bool(default_value))
 
+    def get_value(self):
+        return bool(self._chb_bool.isChecked())
 
 def main():
     app = QtWidgets.QApplication([])
