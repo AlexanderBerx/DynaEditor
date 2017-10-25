@@ -1,4 +1,5 @@
 import sys
+import json
 from maya import cmds
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import utils
@@ -44,9 +45,13 @@ class Editor(QtCore.QObject):
         # update to the shape node
         self.set_editor_options(attr_query.iter_obj_attrs_mapped(selected_shape))
 
-    @QtCore.Slot()
-    def apply_attr_to_selection(self):
-        pass
+    @QtCore.Slot(str, str, str)
+    def apply_attr_to_selection(self, name, _type, value):
+        print("Applying attr: {}".format(name))
+        print("_type: {}".format(_type))
+        print("value: {}".format(value))
+
+        value = json.loads(value)
 
     @QtCore.Slot()
     def toggle_type_lock(self):
@@ -56,11 +61,13 @@ class Editor(QtCore.QObject):
     def set_editor_options(self, attr_mappings):
         self.clear_attributes()
         for mapping in attr_mappings:
+            mapping = utils.key_map_config(mapping)
             try:
                 attribute = Attribute(**mapping)
             # skip not implemented types
             except TypeError:
                 continue
+            attribute.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
             self._attributes.append(attribute)
             self.view.add_attr_widget(attribute.widget)
 
@@ -77,6 +84,10 @@ def main():
     attr_editor = Editor()
     attr_editor.view.show()
 
+    with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
+        test_data = json.load(file_in)
+
+    attr_editor.set_editor_options(test_data)
     if utils.in_maya_standalone():
         sys.exit(app.exec_())
 

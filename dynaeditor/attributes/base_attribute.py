@@ -43,8 +43,8 @@ class BaseAttribute(QtCore.QObject):
         self._name = value
 
     def connect_signals(self):
-        pass
+        self.widget.signal_apply_attr[str].connect(self._emit_attr)
 
-    @QtCore.slot(str)
-    def _emit_attr(self):
-        pass
+    @QtCore.Slot(str)
+    def _emit_attr(self, value):
+        self.signal_apply_attr.emit(self.name, self.type_, value)
