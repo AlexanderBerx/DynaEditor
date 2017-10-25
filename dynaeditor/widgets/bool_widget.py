@@ -1,5 +1,5 @@
 import sys
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
 from dynaeditor.widgets.base_widget import BaseWidget
 
 
