@@ -13,19 +13,25 @@ class BaseWidget(QtWidgets.QWidget):
 
     def _create_ui(self, nice_name):
         layout_main = QtWidgets.QGridLayout()
+        layout_main.setMargin(1)
         self.setLayout(layout_main)
 
         layout_main.addWidget(QtWidgets.QLabel(nice_name))
-        layout_main.addWidget(self.create_type_widget(), 0, 1)
+        layout_main.addWidget(self.create_type_widget(), 0, 1, QtCore.Qt.AlignRight)
+
+        spacer = QtWidgets.QSpacerItem(50, 10)
+        layout_main.addItem(spacer, 0, 2)
 
         self._btn_set = QtWidgets.QPushButton("Set")
-        layout_main.addWidget(self._btn_set, 0, 2)
+        self._btn_set.setMaximumWidth(80)
+        self._btn_set.setMinimumWidth(80)
+        layout_main.addWidget(self._btn_set, 0, 3)
 
     def create_type_widget(self):
         """
         creates & returns the widget specific to the type of the widget,
         must be overwritten by child classes
-        :return: QtWidgets.QWidget
+        :return: QtWidgets.QLayout
         """
         raise NotImplementedError("Method must be overwritten in child Classes")
 
