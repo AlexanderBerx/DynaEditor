@@ -64,6 +64,7 @@ class EditorView(QtWidgets.QWidget):
         item = QtWidgets.QListWidgetItem(self.editor)
         item.setSizeHint(widget.sizeHint())
         self.editor.setItemWidget(item, widget)
+        print "Added"
 
     def lock_type(self, lock=True):
         if lock:

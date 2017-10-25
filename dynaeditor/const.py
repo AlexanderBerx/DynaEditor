@@ -47,3 +47,4 @@ M_ARG_KEYS = [M_ATTR_ARG_TYPE,
 # attribute types
 ATYPE_BOOL = "bool"
 ATYPE_ENUM = "enum"
+ATYPE_TYPED = "typed"

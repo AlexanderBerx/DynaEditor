@@ -3,12 +3,15 @@ from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class BaseAttribute(QtCore.QObject):
+    _type = None
+    _widget = None
+    _name = None
     signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self, _type, widget, attr):
         super(BaseAttribute, self).__init__()
         self.type_ = _type
-        self.widget = widget #type:BaseWidget
+        self.widget = widget  # type:BaseWidget
         self.name = attr
         self.connect_signals()
 
