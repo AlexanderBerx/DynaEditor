@@ -5,8 +5,11 @@ from dynaeditor.widgets.float_field_widget import FloatField
 
 
 class Float3Widget(BaseWidget):
-    def __init__(self, nice_name, default_value):
+    def __init__(self, nice_name, default_value, _min, _max):
+        # TODO: Implement min & max
         super(Float3Widget, self).__init__(nice_name, default_value)
+        self.set_min(_min)
+        self.set_max(_max)
 
     def create_type_widget(self):
         widget_vector = QtWidgets.QWidget()
@@ -28,12 +31,18 @@ class Float3Widget(BaseWidget):
         if not len(default_value) == 3:
             return
 
-        self._ff_x.setText(default_value[0])
-        self._ff_y.setText(default_value[1])
-        self._ff_z.setText(default_value[2])
+        self._ff_x.setText(str(default_value[0]))
+        self._ff_y.setText(str(default_value[1]))
+        self._ff_z.setText(str(default_value[2]))
 
     def get_value(self):
         return self._ff_x.text(), self._ff_y.text(), self._ff_z.text()
+
+    def set_min(self, _min):
+        pass
+
+    def set_max(self, _max):
+        pass
 
 
 def main():

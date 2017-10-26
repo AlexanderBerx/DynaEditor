@@ -48,3 +48,4 @@ M_ARG_KEYS = [M_ATTR_ARG_TYPE,
 ATYPE_BOOL = "bool"
 ATYPE_ENUM = "enum"
 ATYPE_TYPED = "typed"
+ATYPE_FLOAT3 = "float3"

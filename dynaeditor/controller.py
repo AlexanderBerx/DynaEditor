@@ -64,9 +64,9 @@ class Editor(QtCore.QObject):
             mapping = utils.key_map_config(mapping)
             try:
                 attribute = Attribute(**mapping)
-                print attribute
             # skip not implemented types
             except TypeError as e:
+                print e
                 continue
 
             attribute.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
