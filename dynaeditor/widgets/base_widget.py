@@ -3,6 +3,10 @@ from PySide2 import QtWidgets, QtCore
 
 
 class BaseWidget(QtWidgets.QWidget):
+    """
+    Abstract widget class, serves as a base for all attribute widget classes
+    child classes need to overwrite all abstract methods
+    """
     signal_apply_attr = QtCore.Signal(str)
 
     def __init__(self, nice_name, default_value):
@@ -12,6 +16,11 @@ class BaseWidget(QtWidgets.QWidget):
         self.connect_signals()
 
     def _create_ui(self, nice_name):
+        """
+        creates the ui of the widget
+        :param str nice_name: nice name of the attribute to be displayed
+        :return: None
+        """
         layout_main = QtWidgets.QGridLayout()
         layout_main.setMargin(1)
         self.setLayout(layout_main)
