@@ -5,7 +5,7 @@ from dynaeditor.widgets.base_widget import BaseWidget
 
 class EnumWidget(BaseWidget):
     def __init__(self, nice_name, default_value, options):
-        self._cbo_enum = None # type: QtWidgets.QComboBox
+        self._cbo_enum = None  # type: QtWidgets.QComboBox
         super(EnumWidget, self).__init__(nice_name, default_value)
         self.set_options(options)
 
@@ -14,6 +14,7 @@ class EnumWidget(BaseWidget):
         return self._cbo_enum
 
     def set_default_value(self, default_value):
+        # TODO: Implement this
         pass
 
     def get_value(self):
@@ -26,7 +27,7 @@ class EnumWidget(BaseWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    widget = EnumWidget("test", "")
+    widget = EnumWidget("test", "", [])
     widget.show()
     sys.exit(app.exec_())
 
