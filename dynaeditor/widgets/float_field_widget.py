@@ -7,5 +7,15 @@ class FloatField(QtWidgets.QLineEdit):
         super(FloatField, self).__init__()
         self._validator = QtGui.QDoubleValidator(_min, _max, decimals)
         self.setValidator(self._validator)
+
+        self.set_min(_min)
+        self.set_max(_max)
+
         self.setMinimumWidth(self.WIDTH)
         self.setMaximumWidth(self.WIDTH)
+
+    def set_min(self, _min):
+        self._validator.setBottom(_min)
+
+    def set_max(self, _max):
+        self._validator.setTop(_max)
