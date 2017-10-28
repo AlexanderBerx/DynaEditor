@@ -1,5 +1,6 @@
 from dynaeditor import const
 from dynaeditor.widgets.float3_widget import Float3Widget
+from dynaeditor.widgets.float3_color_widget import Float3ColorWidget
 from dynaeditor.attributes.base_attribute import BaseAttribute
 
 
@@ -12,7 +13,10 @@ class Float3Attribute(BaseAttribute):
 
         _type = const.ATYPE_BOOL
         # TODO: implement color widget
-        widget = Float3Widget(nice_name, default_value, _min, _max)
+        if color:
+            widget = Float3ColorWidget(nice_name, default_value)
+        else:
+            widget = Float3Widget(nice_name, default_value, _min, _max)
         super(Float3Attribute, self).__init__(_type, widget, attr)
 
 

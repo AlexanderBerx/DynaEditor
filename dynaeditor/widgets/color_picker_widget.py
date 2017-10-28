@@ -6,19 +6,19 @@ class ColorPickerWidget(QtWidgets.QWidget):
         self._color = QtGui.QColor()
         self._create_ui()
         self._connect_signals()
-        self.color = QtGui.QColor(128, 128, 128)
+
     @property
     def color(self):
         return self._color
 
     @color.setter
     def color(self, value):
-        print 1
         self._color = value
         self._update_to_color(value)
 
     def _create_ui(self):
         main_layout = QtWidgets.QHBoxLayout()
+        main_layout.setMargin(0)
         self.setLayout(main_layout)
 
         self._btn_pick = QtWidgets.QPushButton()
