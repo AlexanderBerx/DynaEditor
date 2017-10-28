@@ -1,4 +1,5 @@
 import json
+import logging
 from PySide2 import QtWidgets, QtCore
 
 
@@ -14,6 +15,8 @@ class BaseWidget(QtWidgets.QWidget):
         self._create_ui(nice_name)
         self.set_default_value(default_value)
         self.connect_signals()
+        logger = logging.getLogger(__name__)
+        logger.debug("Initialised BaseWidget")
 
     def _create_ui(self, nice_name):
         """
@@ -67,6 +70,8 @@ class BaseWidget(QtWidgets.QWidget):
         value = self.get_value()
         value = json.dumps(value)
         self.signal_apply_attr.emit(value)
+        logger = logging.getLogger(__name__)
+        logger.debug("emitted widget attr")
 
     def connect_signals(self):
         """
@@ -74,3 +79,5 @@ class BaseWidget(QtWidgets.QWidget):
         :return: None
         """
         self._btn_set.clicked.connect(self._emit_attr)
+        logger = logging.getLogger(__name__)
+        logger.debug("Connected widget signals")
