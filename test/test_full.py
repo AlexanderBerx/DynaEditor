@@ -4,6 +4,7 @@ from dynaeditor.controller import Editor
 
 
 def test_full():
+    # TODO: implement check to see if an QApplication is already running
     app = QtWidgets.QApplication([])
     attr_editor = Editor()
     attr_editor.view.show()

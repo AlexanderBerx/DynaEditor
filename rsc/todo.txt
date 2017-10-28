@@ -1,0 +1,48 @@
+# todo's:
+## Widgets
+* implement remaining attribute widgets:
+    short
+    polyFaces
+    float
+    typed
+    long
+    double
+    long3
+    time
+    compound
+    double2
+    double3
+    byte
+    doubleAngle
+    message
+    float2
+
+## Attributes
+* implement the following attributes
+    short
+    polyFaces
+    float
+    typed
+    long
+    double
+    long3
+    time
+    compound
+    double2
+    double3
+    byte
+    doubleAngle
+    message
+    float2
+
+## unittest
+* test widgets
+* test attributes
+
+## coding
+* implement logging
+* add logging config
+* finish up maya side of things (dynamically reading attrs in maya etc)
+* implement type locking
+* add docstrings to everything
+* figure out how to create images from profiling
