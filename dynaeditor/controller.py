@@ -1,5 +1,6 @@
 import sys
 import json
+import traceback
 from maya import cmds
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import utils
@@ -52,7 +53,6 @@ class Editor(QtCore.QObject):
         print("Applying attr: {}".format(name))
         print("_type: {}".format(_type))
         print("value: {}".format(value))
-
         value = json.loads(value)
 
     @QtCore.Slot()
@@ -67,7 +67,8 @@ class Editor(QtCore.QObject):
                 attribute = Attribute(**mapping)
             # skip not implemented types
             except TypeError as e:
-                print e
+                # print e
+                # traceback.print_exc(file=sys.stdout)
                 continue
 
             attribute.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
@@ -90,8 +91,9 @@ def main():
 
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
+    mapped_data = [utils.key_map_config(data) for data in test_data]
 
-    attr_editor.set_editor_options(test_data)
+    attr_editor.set_editor_options(mapped_data)
 
 
     if utils.in_maya_standalone():

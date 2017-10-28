@@ -48,6 +48,7 @@ class EditorView(QtWidgets.QWidget):
 
     def _create_editor_widget(self):
         self.editor = QtWidgets.QListWidget()
+        self.editor.setAlternatingRowColors(True)
         return self.editor
 
     def set_display_type(self, _type):

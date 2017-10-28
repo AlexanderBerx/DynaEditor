@@ -5,6 +5,7 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 
 class Float3Attribute(BaseAttribute):
     def __init__(self, attr, default_value, nice_name, _min=None, _max=None):
+        print("float 3")
         if not _min:
             _min = [0, 0, 0]
         if not _max:

@@ -13,10 +13,7 @@ class Float3Widget(BaseWidget):
     def create_type_widget(self):
         widget_vector = QtWidgets.QWidget()
         layout_vector = QtWidgets.QHBoxLayout()
-        # layout_vector.setMargin(0)
-        widget_vector.setContentsMargins(0)
         layout_vector.setMargin(0)
-        layout_vector.setContentsMargins(0)
         widget_vector.setLayout(layout_vector)
 
         self._ff_x = FloatField()
