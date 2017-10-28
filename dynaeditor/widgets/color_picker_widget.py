@@ -1,5 +1,6 @@
 from PySide2 import QtWidgets, QtCore, QtGui
 
+
 class ColorPickerWidget(QtWidgets.QWidget):
     def __init__(self):
         super(ColorPickerWidget, self).__init__()
@@ -34,22 +35,18 @@ class ColorPickerWidget(QtWidgets.QWidget):
         self._slider.valueChanged[int].connect(self._slider_change)
 
     def pick_color(self):
-        if self.parent():
-            color = QtWidgets.QColorDialog.getColor(parent=self.parent())
-        else:
-            color = QtWidgets.QColorDialog.getColor() # type: QtGui.QColor
-
+        color = QtWidgets.QColorDialog.getColor(parent=self)  # type: QtGui.QColor
         if not color:
             return
         self.color = color
 
     @QtCore.Slot(int)
     def _slider_change(self, value):
-        color = self.color # type: QtGui.QColor
+        color = self.color
         hue = color.hue()
         saturation = color.saturation()
         alpha = color.alpha()
-        color.setHsv(hue,saturation, value, alpha)
+        color.setHsv(hue, saturation, value, alpha)
         self.color = color
 
     def _update_to_color(self, color):

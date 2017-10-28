@@ -54,9 +54,5 @@ class Attribute(object):
 
     @staticmethod
     def validate_attr_args(_type, *args, **kwargs):
-        logger = logging.getLogger(__name__)
-        logger.debug("Validating args for: {}".format(_type))
-        logger.debug("args".format(args))
-        logger.debug("kwargs: {}".format(kwargs))
         attr_class = Attribute.get_class_for_type(_type)
         return attr_class.validate_args(*args, **kwargs)

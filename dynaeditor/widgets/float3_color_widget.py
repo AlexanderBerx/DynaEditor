@@ -3,6 +3,7 @@ from PySide2 import QtWidgets, QtGui
 from dynaeditor.widgets.base_widget import BaseWidget
 from dynaeditor.widgets.color_picker_widget import ColorPickerWidget
 
+
 class Float3ColorWidget(BaseWidget):
     """
     Float3Widget for displaying float3 attributes, inherits from BaseWidget
@@ -13,16 +14,16 @@ class Float3ColorWidget(BaseWidget):
         :param str nice_name: name of the widget to be displayed
         :param list default_value: default value of the widget, float list of length 3
         """
+        self._color_picker = None
         super(Float3ColorWidget, self).__init__(nice_name, default_value)
-
 
     def create_type_widget(self):
         """
         creates & returns the type widget
         :return: ColorPickerWidget
         """
-        self.color_picker = ColorPickerWidget()
-        return self.color_picker
+        self._color_picker = ColorPickerWidget()
+        return self._color_picker
 
     def set_default_value(self, default_value):
         """
@@ -31,14 +32,14 @@ class Float3ColorWidget(BaseWidget):
         :return: None
         """
         color = QtGui.QColor.fromRgbF(*default_value)
-        self.color_picker.color = color
+        self._color_picker.color = color
 
     def get_value(self):
         """
         returns the current value of the widget
         :return: list
         """
-        color = self.color_picker.color
+        color = self._color_picker.color
         value = list(color.getHsvF())
         value.pop(3)
         return value
