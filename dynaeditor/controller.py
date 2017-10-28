@@ -6,19 +6,20 @@ from PySide2 import QtWidgets, QtCore
 from dynaeditor import attr_query
 from dynaeditor import maya_utils
 from dynaeditor import utils
-from dynaeditor.attributes import attribute
 from dynaeditor.job_manager import JobManager
 from dynaeditor.widgets.view import EditorView
+from dynaeditor.attributes.attribute import Attribute
+from dynaeditor.attributes.attr_type_error import AttrTypeError
 from maya import cmds
 
-reload(attribute)
-from dynaeditor.attributes.attribute import Attribute
+
+
 
 
 class Editor(QtCore.QObject):
     def __init__(self):
-        self.logger = logging.getLogger(__name__)
-        self.logger.debug("Creating Editor Instance")
+        logger = logging.getLogger(__name__)
+        logger.debug("Creating Editor Instance")
         super(Editor, self).__init__()
 
         self._job_manager = JobManager()
@@ -31,7 +32,7 @@ class Editor(QtCore.QObject):
 
         self._attributes = []
         self._lock_type = False
-        self.logger.debug("Created Editor instance")
+        logger.debug("Created Editor instance")
 
     def _connect_signals(self):
         self.view.signal_lock_type.connect(self.toggle_type_lock)
@@ -55,9 +56,10 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot(str, str, str)
     def apply_attr_to_selection(self, name, _type, value):
-        print("Applying attr: {}".format(name))
-        print("_type: {}".format(_type))
-        print("value: {}".format(value))
+        logger = logging.getLogger(__name__)
+        logger.info("Applying attr: {}".format(name))
+        logger.info("_type: {}".format(_type))
+        logger.info("value: {}".format(value))
         value = json.loads(value)
 
     @QtCore.Slot()
@@ -67,13 +69,13 @@ class Editor(QtCore.QObject):
 
     def set_editor_options(self, attr_mappings):
         self.clear_attributes()
+        logger = logging.getLogger(__name__)
         for mapping in attr_mappings:
             try:
                 attribute = Attribute(**mapping)
             # skip not implemented types
-            except TypeError as e:
-                # print e
-                # traceback.print_exc(file=sys.stdout)
+            except AttrTypeError as e:
+                logger.warning(e)
                 continue
 
             attribute.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)

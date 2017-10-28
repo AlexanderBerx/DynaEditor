@@ -1,7 +1,9 @@
+import logging
 from dynaeditor import const
 from dynaeditor.attributes.bool_attribute import BoolAttribute
 from dynaeditor.attributes.enum_attribute import EnumAttribute
 from dynaeditor.attributes.float3_attribute import Float3Attribute
+from dynaeditor.attributes.attr_type_error import AttrTypeError
 
 
 class Attribute(object):
@@ -19,11 +21,15 @@ class Attribute(object):
         :param str _type: name of the wanted type
         :return: Attribute
         """
+        logger = logging.getLogger(__name__)
+        logger.debug("Creating attribute of type: {}".format(_type))
+        logger.debug("args: {}".format(args))
+        logger.debug("kwargs: {}".format(kwargs))
         for keys, _class in cls.TYPE_MAPPING.items():
             if _type == keys:
                 break
         else:
-            raise TypeError("Not Implemented type: {}".format(_type))
+            raise AttrTypeError("Not Implemented type: {}".format(_type))
 
         return _class(*args, **kwargs)
 

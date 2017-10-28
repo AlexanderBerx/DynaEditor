@@ -5,7 +5,7 @@ class FloatField(QtWidgets.QLineEdit):
     """
     FloatField widget textfield for float values, inherits from QtWidgets.QLineEdit
     """
-    WIDTH = 75
+    WIDTH = 50
     def __init__(self, _min=0.0, _max=10000000.0, decimals=5):
         """
         initialises the widget
