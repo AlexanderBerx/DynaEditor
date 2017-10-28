@@ -1,4 +1,3 @@
-import pytest
 from dynaeditor import utils
 from dynaeditor import attr_query
 
@@ -7,8 +6,7 @@ try:
     if utils.in_maya_standalone():
         from maya import standalone
 except ImportError:
-    print("Can't run tests due to no maya modules present in current environment")
-    raise
+    raise("Can't run tests due to no maya modules present in current environment")
 
 
 class TestAttrQuery(object):
@@ -52,4 +50,5 @@ class TestAttrQuery(object):
         obj_attrs = list(attr_query.iter_obj_attrs(test_node))
         # check if each test attr occurs in the object attr's & matches
         for attr in self.TEST_ATTRS:
-            assert attr in obj_attrs
+            if attr not in obj_attrs:
+                raise ValueError("attr not returned from query")
