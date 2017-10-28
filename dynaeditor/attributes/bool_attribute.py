@@ -8,3 +8,9 @@ class BoolAttribute(BaseAttribute):
         _type = const.ATYPE_BOOL
         widget = BoolWidget(nice_name, default_value)
         super(BoolAttribute, self).__init__(_type, widget, attr)
+
+    @staticmethod
+    def validate_args(attr=None, nice_name=None, default_value=None, _min=None, _max=None):
+        if not attr or not nice_name or not default_value:
+            return False
+        return True

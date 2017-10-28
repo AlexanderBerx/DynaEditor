@@ -51,3 +51,7 @@ class BaseAttribute(QtCore.QObject):
     @QtCore.Slot(str)
     def _emit_attr(self, value):
         self.signal_apply_attr.emit(self.name, self.type_, value)
+
+    @staticmethod
+    def validate_args():
+        raise NotImplementedError

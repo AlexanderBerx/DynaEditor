@@ -37,7 +37,7 @@ class EnumWidget(BaseWidget):
         """
         if default_value > self._cbo_enum.count():
             return
-        self._cbo_enum.currentIndex(int(default_value))
+        self._cbo_enum.setCurrentIndex(int(default_value))
 
     def get_value(self):
         """

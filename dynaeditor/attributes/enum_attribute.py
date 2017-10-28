@@ -8,3 +8,9 @@ class EnumAttribute(BaseAttribute):
         _type = const.ATYPE_ENUM
         widget = EnumWidget(nice_name, default_value, options)
         super(EnumAttribute, self).__init__(_type, widget, attr)
+
+    @staticmethod
+    def validate_args(attr=None, nice_name=None, default_value=None, options=None,  _min=None, _max=None):
+        if not attr or not nice_name or not default_value or not options:
+            return False
+        return True

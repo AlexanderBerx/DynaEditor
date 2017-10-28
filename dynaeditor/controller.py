@@ -1,19 +1,16 @@
 import json
 import logging
 import sys
-
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import attr_query
 from dynaeditor import maya_utils
 from dynaeditor import utils
 from dynaeditor.job_manager import JobManager
 from dynaeditor.widgets.view import EditorView
+from dynaeditor import const
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.attributes.attr_type_error import AttrTypeError
 from maya import cmds
-
-
-
 
 
 class Editor(QtCore.QObject):
@@ -72,6 +69,8 @@ class Editor(QtCore.QObject):
         logger = logging.getLogger(__name__)
         for mapping in attr_mappings:
             try:
+                if not Attribute.validate_attr_args(**mapping):
+                    continue
                 attribute = Attribute(**mapping)
             # skip not implemented types
             except AttrTypeError as e:

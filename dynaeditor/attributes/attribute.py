@@ -34,6 +34,14 @@ class Attribute(object):
         return _class(*args, **kwargs)
 
     @staticmethod
+    def get_class_for_type(_type):
+        for keys, _class in Attribute.TYPE_MAPPING.items():
+            if _type == keys:
+                return _class
+        else:
+            raise AttrTypeError("Not Implemented type: {}".format(_type))
+
+    @staticmethod
     def is_type_supported(_type):
         """
         static method which checks if the given attribute type is supported or not
@@ -43,3 +51,12 @@ class Attribute(object):
         if _type in Attribute.TYPE_MAPPING.keys():
             return True
         return False
+
+    @staticmethod
+    def validate_attr_args(_type, *args, **kwargs):
+        logger = logging.getLogger(__name__)
+        logger.debug("Validating args for: {}".format(_type))
+        logger.debug("args".format(args))
+        logger.debug("kwargs: {}".format(kwargs))
+        attr_class = Attribute.get_class_for_type(_type)
+        return attr_class.validate_args(*args, **kwargs)
