@@ -46,3 +46,14 @@
 * implement type locking
 * add docstrings to everything
 * figure out how to create images from profiling
+* create icon's
+* create .qrc file
+* implement icons
+* add top bar to main view
+* add help tab
+* add prefs tab
+* implement qprefs
+* implement attr hiding
+* store everything to prefs (window size, hidden attrs, etc...)
+* hide by default 'not important' attrs
+* implement set all?
