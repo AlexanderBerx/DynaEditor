@@ -161,6 +161,7 @@ def main():
     print selection
     if not selection:
         return
+    obj_attrs_to_file(selection[0], r'C:\Workspace\DynaEditor\rsc\test_data.json')
     for attr in iter_obj_attrs(selection[0]):
         print attr
 

@@ -3,15 +3,9 @@
         "bool", 
         "caching", 
         "Caching", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -21,15 +15,9 @@
         "byte", 
         "isHistoricallyInteresting", 
         "Is Historically Interesting", 
-        [
-            0.0
-        ], 
-        [
-            255.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        255.0, 
+        2.0, 
         null, 
         false, 
         false, 
@@ -39,15 +27,9 @@
         "enum", 
         "nodeState", 
         "Node State", 
-        [
-            0.0
-        ], 
-        [
-            10.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        10.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -69,15 +51,9 @@
         "bool", 
         "frozen", 
         "Frozen", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -99,15 +75,9 @@
         "bool", 
         "isCollapsed", 
         "Is Collapsed", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -117,15 +87,9 @@
         "bool", 
         "blackBox", 
         "Black Box", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -147,15 +111,9 @@
         "bool", 
         "isHierarchicalConnection", 
         "Is Hierarchical Connection", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -237,15 +195,9 @@
         "enum", 
         "viewMode", 
         "View Mode", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        2.0, 
+        2.0, 
         [
             "Flat", 
             "Use Template", 
@@ -261,9 +213,7 @@
         "Template Version", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -273,15 +223,9 @@
         "enum", 
         "uiTreatment", 
         "Ui Treatment", 
-        [
-            0.0
-        ], 
-        [
-            1000.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1000.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -339,15 +283,9 @@
         "bool", 
         "visibility", 
         "Visibility", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -357,15 +295,9 @@
         "bool", 
         "intermediateObject", 
         "Intermediate Object", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -375,15 +307,9 @@
         "bool", 
         "template", 
         "Template", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -393,15 +319,9 @@
         "bool", 
         "ghosting", 
         "Ghosting", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -455,15 +375,9 @@
         "enum", 
         "useObjectColor", 
         "Use Object Color", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        2.0, 
+        0.0, 
         [
             "Default", 
             "Indexed", 
@@ -477,15 +391,9 @@
         "short", 
         "objectColor", 
         "Object Color", 
-        [
-            0.0
-        ], 
-        [
-            7.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        7.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -507,15 +415,9 @@
         "bool", 
         "lodVisibility", 
         "Lod Visibility", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -525,15 +427,9 @@
         "bool", 
         "selectionChildHighlighting", 
         "Selection Child Highlighting", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -575,15 +471,9 @@
         "enum", 
         "ghostingControl", 
         "Ghosting Control", 
-        [
-            0.0
-        ], 
-        [
-            4.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        4.0, 
+        0.0, 
         [
             "Global Prefs", 
             "Custom Frames", 
@@ -629,9 +519,7 @@
         "Ghost Color Pre A", 
         null, 
         null, 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
         false, 
         false, 
@@ -667,9 +555,7 @@
         "Ghost Color Post A", 
         null, 
         null, 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
         false, 
         false, 
@@ -705,9 +591,7 @@
         "Ghost Range Start", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -719,9 +603,7 @@
         "Ghost Range End", 
         null, 
         null, 
-        [
-            100.0
-        ], 
+        100.0, 
         null, 
         false, 
         false, 
@@ -743,15 +625,9 @@
         "bool", 
         "hiddenInOutliner", 
         "Hidden In Outliner", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -761,15 +637,9 @@
         "bool", 
         "useOutlinerColor", 
         "Use Outliner Color", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -797,9 +667,7 @@
         "Render Type", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -809,15 +677,9 @@
         "bool", 
         "renderVolume", 
         "Render Volume", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -829,9 +691,7 @@
         "Visible Fraction", 
         null, 
         null, 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
         false, 
         false, 
@@ -841,15 +701,9 @@
         "float", 
         "hardwareFogMultiplier", 
         "Hardware Fog Multiplier", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -859,15 +713,9 @@
         "bool", 
         "motionBlur", 
         "Motion Blur", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -877,15 +725,9 @@
         "bool", 
         "visibleInReflections", 
         "Visible In Reflections", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -895,15 +737,9 @@
         "bool", 
         "visibleInRefractions", 
         "Visible In Refractions", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -913,15 +749,9 @@
         "bool", 
         "castsShadows", 
         "Casts Shadows", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -931,15 +761,9 @@
         "bool", 
         "receiveShadows", 
         "Receive Shadows", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -949,15 +773,9 @@
         "bool", 
         "asBackground", 
         "As Background", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -967,15 +785,9 @@
         "bool", 
         "maxVisibilitySamplesOverride", 
         "Max Visibility Samples Override", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -985,15 +797,9 @@
         "long", 
         "maxVisibilitySamples", 
         "Max Visibility Samples", 
-        [
-            1.0
-        ], 
-        [
-            32.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        32.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1003,15 +809,9 @@
         "bool", 
         "geometryAntialiasingOverride", 
         "Geometry Antialiasing Override", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1021,15 +821,9 @@
         "long", 
         "antialiasingLevel", 
         "Antialiasing Level", 
-        [
-            1.0
-        ], 
-        [
-            5.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        5.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1039,15 +833,9 @@
         "bool", 
         "shadingSamplesOverride", 
         "Shading Samples Override", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1057,15 +845,9 @@
         "long", 
         "shadingSamples", 
         "Shading Samples", 
-        [
-            1.0
-        ], 
-        [
-            32.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        32.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1075,15 +857,9 @@
         "long", 
         "maxShadingSamples", 
         "Max Shading Samples", 
-        [
-            1.0
-        ], 
-        [
-            32.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        32.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1093,15 +869,9 @@
         "bool", 
         "volumeSamplesOverride", 
         "Volume Samples Override", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1113,9 +883,7 @@
         "Volume Samples", 
         null, 
         null, 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1125,15 +893,9 @@
         "bool", 
         "depthJitter", 
         "Depth Jitter", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1143,15 +905,9 @@
         "bool", 
         "ignoreSelfShadowing", 
         "Ignore Self Shadowing", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1161,15 +917,9 @@
         "bool", 
         "primaryVisibility", 
         "Primary Visibility", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1215,15 +965,9 @@
         "bool", 
         "tweak", 
         "Tweak", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1233,15 +977,9 @@
         "bool", 
         "relativeTweak", 
         "Relative Tweak", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1269,9 +1007,7 @@
         "Weights", 
         null, 
         null, 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1344,15 +1080,9 @@
         "bool", 
         "displayImmediate", 
         "Display Immediate", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1362,15 +1092,9 @@
         "bool", 
         "displayColors", 
         "Display Colors", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1416,15 +1140,9 @@
         "bool", 
         "ignoreHwShader", 
         "Ignore Hw Shader", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1434,15 +1152,9 @@
         "bool", 
         "doubleSided", 
         "Double Sided", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1452,15 +1164,9 @@
         "bool", 
         "opposite", 
         "Opposite", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1470,15 +1176,9 @@
         "bool", 
         "holdOut", 
         "Hold Out", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1488,15 +1188,9 @@
         "bool", 
         "smoothShading", 
         "Smooth Shading", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1526,15 +1220,9 @@
         "bool", 
         "featureDisplacement", 
         "Feature Displacement", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1544,13 +1232,9 @@
         "long", 
         "initialSampleRate", 
         "Initial Sample Rate", 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
-        [
-            6.0
-        ], 
+        6.0, 
         null, 
         false, 
         false, 
@@ -1560,13 +1244,9 @@
         "long", 
         "extraSampleRate", 
         "Extra Sample Rate", 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
-        [
-            5.0
-        ], 
+        5.0, 
         null, 
         false, 
         false, 
@@ -1576,15 +1256,9 @@
         "long", 
         "textureThreshold", 
         "Texture Threshold", 
-        [
-            0.0
-        ], 
-        [
-            100.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        100.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1594,15 +1268,9 @@
         "float", 
         "normalThreshold", 
         "Normal Threshold", 
-        [
-            0.0
-        ], 
-        [
-            180.0
-        ], 
-        [
-            30.0
-        ], 
+        0.0, 
+        180.0, 
+        30.0, 
         null, 
         false, 
         false, 
@@ -1612,15 +1280,9 @@
         "bool", 
         "displayHWEnvironment", 
         "Display HWEnvironment", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1766,15 +1428,9 @@
         "bool", 
         "smoothWarn", 
         "Smooth Warn", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1784,15 +1440,9 @@
         "short", 
         "smoothLevel", 
         "Smooth Level", 
-        [
-            0.0
-        ], 
-        [
-            15.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        15.0, 
+        2.0, 
         null, 
         false, 
         false, 
@@ -1802,15 +1452,9 @@
         "enum", 
         "smoothDrawType", 
         "Smooth Draw Type", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        3.0, 
+        2.0, 
         null, 
         false, 
         false, 
@@ -1820,15 +1464,9 @@
         "bool", 
         "useGlobalSmoothDrawType", 
         "Use Global Smooth Draw Type", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1838,15 +1476,9 @@
         "bool", 
         "showDisplacements", 
         "Show Displacements", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1856,15 +1488,9 @@
         "enum", 
         "displacementType", 
         "Displacement Type", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         [
             "Scalar", 
             "Vector (global space)"
@@ -1877,15 +1503,9 @@
         "bool", 
         "loadTiledTextures", 
         "Load Tiled Textures", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1895,15 +1515,9 @@
         "bool", 
         "enableOpenCL", 
         "Enable Open CL", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1913,15 +1527,9 @@
         "short", 
         "smoothTessLevel", 
         "Smooth Tess Level", 
-        [
-            1.0
-        ], 
-        [
-            10.0
-        ], 
-        [
-            7.0
-        ], 
+        1.0, 
+        10.0, 
+        7.0, 
         null, 
         false, 
         false, 
@@ -1931,15 +1539,9 @@
         "bool", 
         "smoothOsdColorizePatches", 
         "Smooth Osd Colorize Patches", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -1949,15 +1551,9 @@
         "bool", 
         "useOsdBoundaryMethods", 
         "Use Osd Boundary Methods", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -1967,15 +1563,9 @@
         "enum", 
         "osdVertBoundary", 
         "Osd Vert Boundary", 
-        [
-            1.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        2.0, 
+        1.0, 
         [
             "Sharp edges and corners", 
             "Sharp edges"
@@ -1988,15 +1578,9 @@
         "enum", 
         "osdFvarBoundary", 
         "Osd Fvar Boundary", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            3.0
-        ], 
+        0.0, 
+        3.0, 
+        3.0, 
         [
             "None", 
             "Preserve Edges and Corners", 
@@ -2011,15 +1595,9 @@
         "bool", 
         "osdFvarPropagateCorners", 
         "Osd Fvar Propagate Corners", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2029,15 +1607,9 @@
         "bool", 
         "osdSmoothTriangles", 
         "Osd Smooth Triangles", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2047,15 +1619,9 @@
         "enum", 
         "osdCreaseMethod", 
         "Osd Crease Method", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         [
             "Normal", 
             "Chaikin"
@@ -2068,15 +1634,9 @@
         "bool", 
         "osdIndependentUVChannels", 
         "Osd Independent UVChannels", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2086,15 +1646,9 @@
         "float", 
         "continuity", 
         "Continuity", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2104,15 +1658,9 @@
         "bool", 
         "smoothUVs", 
         "Smooth UVs", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2122,15 +1670,9 @@
         "bool", 
         "keepBorder", 
         "Keep Border", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2140,15 +1682,9 @@
         "enum", 
         "boundaryRule", 
         "Boundary Rule", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        2.0, 
+        1.0, 
         [
             "Legacy", 
             "Crease All", 
@@ -2162,15 +1698,9 @@
         "bool", 
         "keepHardEdge", 
         "Keep Hard Edge", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2180,15 +1710,9 @@
         "bool", 
         "propagateEdgeHardness", 
         "Propagate Edge Hardness", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2198,15 +1722,9 @@
         "enum", 
         "keepMapBorders", 
         "Keep Map Borders", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        2.0, 
+        1.0, 
         [
             "None", 
             "Internal", 
@@ -2236,15 +1754,9 @@
         "bool", 
         "displaySubdComps", 
         "Display Subd Comps", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2254,15 +1766,9 @@
         "bool", 
         "useSmoothPreviewForRender", 
         "Use Smooth Preview For Render", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2272,15 +1778,9 @@
         "short", 
         "renderSmoothLevel", 
         "Render Smooth Level", 
-        [
-            0.0
-        ], 
-        [
-            7.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        7.0, 
+        2.0, 
         null, 
         false, 
         false, 
@@ -2290,15 +1790,9 @@
         "bool", 
         "useMaxEdgeLength", 
         "Use Max Edge Length", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2308,15 +1802,9 @@
         "bool", 
         "useMinEdgeLength", 
         "Use Min Edge Length", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2326,15 +1814,9 @@
         "bool", 
         "useMaxSubdivisions", 
         "Use Max Subdivisions", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2344,15 +1826,9 @@
         "bool", 
         "useMaxUV", 
         "Use Max UV", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2362,15 +1838,9 @@
         "bool", 
         "useMinScreen", 
         "Use Min Screen", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2380,15 +1850,9 @@
         "bool", 
         "useNumTriangles", 
         "Use Num Triangles", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2400,9 +1864,7 @@
         "Num Triangles", 
         null, 
         null, 
-        [
-            100.0
-        ], 
+        100.0, 
         null, 
         false, 
         false, 
@@ -2414,9 +1876,7 @@
         "Max Edge Length", 
         null, 
         null, 
-        [
-            0.10000000149011612
-        ], 
+        0.10000000149011612, 
         null, 
         false, 
         false, 
@@ -2428,9 +1888,7 @@
         "Min Edge Length", 
         null, 
         null, 
-        [
-            0.009999999776482582
-        ], 
+        0.009999999776482582, 
         null, 
         false, 
         false, 
@@ -2442,9 +1900,7 @@
         "Max Subd", 
         null, 
         null, 
-        [
-            5.0
-        ], 
+        5.0, 
         null, 
         false, 
         false, 
@@ -2456,9 +1912,7 @@
         "Max Uv", 
         null, 
         null, 
-        [
-            0.5
-        ], 
+        0.5, 
         null, 
         false, 
         false, 
@@ -2470,9 +1924,7 @@
         "Min Screen", 
         null, 
         null, 
-        [
-            14.0
-        ], 
+        14.0, 
         null, 
         false, 
         false, 
@@ -2482,13 +1934,9 @@
         "long", 
         "maxTriangles", 
         "Max Triangles", 
-        [
-            1.0
-        ], 
+        1.0, 
         null, 
-        [
-            60000.0
-        ], 
+        60000.0, 
         null, 
         false, 
         false, 
@@ -2678,15 +2126,9 @@
         "bool", 
         "displayVertices", 
         "Display Vertices", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2696,15 +2138,9 @@
         "bool", 
         "displayBorders", 
         "Display Borders", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2714,15 +2150,9 @@
         "enum", 
         "displayEdges", 
         "Display Edges", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        3.0, 
+        0.0, 
         [
             "Standard", 
             "Soft/Hard", 
@@ -2739,9 +2169,7 @@
         "Display Faces With Group Id", 
         null, 
         null, 
-        [
-            -2.0
-        ], 
+        -2.0, 
         null, 
         false, 
         false, 
@@ -2751,15 +2179,9 @@
         "bool", 
         "displayCenter", 
         "Display Center", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2769,15 +2191,9 @@
         "bool", 
         "displayTriangles", 
         "Display Triangles", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2787,15 +2203,9 @@
         "bool", 
         "displayUVs", 
         "Display UVs", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2807,9 +2217,7 @@
         "Display Item Numbers", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2819,15 +2227,9 @@
         "bool", 
         "displayNonPlanar", 
         "Display Non Planar", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2837,15 +2239,9 @@
         "enum", 
         "backfaceCulling", 
         "Backface Culling", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        3.0, 
+        0.0, 
         [
             "off", 
             "wire", 
@@ -2860,15 +2256,9 @@
         "bool", 
         "vertexBackfaceCulling", 
         "Vertex Backface Culling", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -2880,9 +2270,7 @@
         "Vertex Size", 
         null, 
         null, 
-        [
-            3.0
-        ], 
+        3.0, 
         null, 
         false, 
         false, 
@@ -2894,9 +2282,7 @@
         "Uv Size", 
         null, 
         null, 
-        [
-            4.0
-        ], 
+        4.0, 
         null, 
         false, 
         false, 
@@ -2908,9 +2294,7 @@
         "Border Width", 
         null, 
         null, 
-        [
-            2.0
-        ], 
+        2.0, 
         null, 
         false, 
         false, 
@@ -2922,9 +2306,7 @@
         "Normal Size", 
         null, 
         null, 
-        [
-            0.4
-        ], 
+        0.4, 
         null, 
         false, 
         false, 
@@ -2934,15 +2316,9 @@
         "enum", 
         "normalType", 
         "Normal Type", 
-        [
-            1.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            1.0
-        ], 
+        1.0, 
+        3.0, 
+        1.0, 
         [
             "face", 
             "vtx", 
@@ -2956,15 +2332,9 @@
         "bool", 
         "displayNormal", 
         "Display Normal", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2974,15 +2344,9 @@
         "bool", 
         "displayTangent", 
         "Display Tangent", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -2992,15 +2356,9 @@
         "enum", 
         "tangentSpace", 
         "Tangent Space", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        3.0, 
+        0.0, 
         [
             "detectWindingRightHanded", 
             "rightHanded", 
@@ -3017,9 +2375,7 @@
         "Tangent Smoothing Angle", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3031,9 +2387,7 @@
         "Tangent Normal Threshold", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3043,15 +2397,9 @@
         "bool", 
         "allowTopologyMod", 
         "Allow Topology Mod", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            1.0
-        ], 
+        0.0, 
+        1.0, 
+        1.0, 
         null, 
         false, 
         false, 
@@ -3061,15 +2409,9 @@
         "enum", 
         "materialBlend", 
         "Material Blend", 
-        [
-            0.0
-        ], 
-        [
-            6.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        6.0, 
+        0.0, 
         [
             "overwrite", 
             "add", 
@@ -3111,15 +2453,9 @@
         "enum", 
         "dispResolution", 
         "Disp Resolution", 
-        [
-            0.0
-        ], 
-        [
-            6.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        6.0, 
+        0.0, 
         [
             "0 (Base)", 
             "1", 
@@ -3137,15 +2473,9 @@
         "bool", 
         "vertexIdMap", 
         "Vertex Id Map", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3155,15 +2485,9 @@
         "bool", 
         "edgeIdMap", 
         "Edge Id Map", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3173,15 +2497,9 @@
         "bool", 
         "faceIdMap", 
         "Face Id Map", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3191,15 +2509,9 @@
         "enum", 
         "displaySmoothMesh", 
         "Display Smooth Mesh", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        2.0, 
+        0.0, 
         [
             "Base Mesh Only", 
             "Base and Smooth Mesh", 
@@ -3213,15 +2525,9 @@
         "enum", 
         "smoothMeshSelectionMode", 
         "Smooth Mesh Selection Mode", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        2.0, 
+        0.0, 
         [
             "Base Cage", 
             "Projected Cage", 
@@ -3235,15 +2541,9 @@
         "bool", 
         "inForceNodeUVUpdate", 
         "In Force Node UVUpdate", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3253,15 +2553,9 @@
         "bool", 
         "outForceNodeUVUpdate", 
         "Out Force Node UVUpdate", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3271,15 +2565,9 @@
         "bool", 
         "reuseTriangles", 
         "Reuse Triangles", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3289,15 +2577,9 @@
         "enum", 
         "quadSplit", 
         "Quad Split", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            2.0
-        ], 
+        0.0, 
+        2.0, 
+        2.0, 
         [
             "Left", 
             "Right", 
@@ -3311,15 +2593,9 @@
         "enum", 
         "vertexNormalMethod", 
         "Vertex Normal Method", 
-        [
-            0.0
-        ], 
-        [
-            3.0
-        ], 
-        [
-            3.0
-        ], 
+        0.0, 
+        3.0, 
+        3.0, 
         [
             "Unweighted", 
             "Angle Weighted", 
@@ -3336,9 +2612,7 @@
         "Per Instance Index", 
         null, 
         null, 
-        [
-            -1.0
-        ], 
+        -1.0, 
         null, 
         false, 
         false, 
@@ -3350,9 +2624,7 @@
         "Per Instance Tag", 
         null, 
         null, 
-        [
-            -1.0
-        ], 
+        -1.0, 
         null, 
         false, 
         false, 
@@ -3362,15 +2634,9 @@
         "bool", 
         "displayAlphaAsGreyScale", 
         "Display Alpha As Grey Scale", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3380,15 +2646,9 @@
         "bool", 
         "displayInvisibleFaces", 
         "Display Invisible Faces", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3398,15 +2658,9 @@
         "bool", 
         "useMeshSculptCache", 
         "Use Mesh Sculpt Cache", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3416,15 +2670,9 @@
         "bool", 
         "computeFromSculptCache", 
         "Compute From Sculpt Cache", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3434,15 +2682,9 @@
         "bool", 
         "useMeshTexSculptCache", 
         "Use Mesh Tex Sculpt Cache", 
-        [
-            0.0
-        ], 
-        [
-            1.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        1.0, 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3454,9 +2696,7 @@
         "Freeze", 
         null, 
         null, 
-        [
-            0.0
-        ], 
+        0.0, 
         null, 
         false, 
         false, 
@@ -3478,15 +2718,9 @@
         "enum", 
         "vertexColorSource", 
         "Vertex Color Source", 
-        [
-            0.0
-        ], 
-        [
-            2.0
-        ], 
-        [
-            0.0
-        ], 
+        0.0, 
+        2.0, 
+        0.0, 
         [
             "None", 
             "Current Color Set", 
