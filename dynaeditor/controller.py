@@ -7,6 +7,8 @@ from dynaeditor import maya_utils
 from dynaeditor import attr_query
 from dynaeditor.view import EditorView
 from dynaeditor.job_manager import JobManager
+from dynaeditor.attributes import attribute
+reload(attribute)
 from dynaeditor.attributes.attribute import Attribute
 
 
@@ -61,7 +63,6 @@ class Editor(QtCore.QObject):
     def set_editor_options(self, attr_mappings):
         self.clear_attributes()
         for mapping in attr_mappings:
-            mapping = utils.key_map_config(mapping)
             try:
                 attribute = Attribute(**mapping)
             # skip not implemented types
@@ -86,10 +87,13 @@ def main():
     attr_editor = Editor()
     attr_editor.view.show()
 
+
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
 
     attr_editor.set_editor_options(test_data)
+
+
     if utils.in_maya_standalone():
         sys.exit(app.exec_())
 

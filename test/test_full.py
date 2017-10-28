@@ -5,7 +5,11 @@ from dynaeditor.controller import Editor
 
 def test_full():
     # TODO: implement check to see if an QApplication is already running
-    app = QtWidgets.QApplication([])
+    try:
+        app = QtWidgets.QApplication([])
+    except RuntimeError:
+        # in case an QApplication is already running
+        pass
     attr_editor = Editor()
     attr_editor.view.show()
 

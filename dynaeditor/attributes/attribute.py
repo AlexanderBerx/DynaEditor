@@ -23,7 +23,7 @@ class Attribute(object):
             if _type == keys:
                 break
         else:
-            raise TypeError("Not Implemented type")
+            raise TypeError("Not Implemented type: {}".format(_type))
 
         return _class(*args, **kwargs)
 
