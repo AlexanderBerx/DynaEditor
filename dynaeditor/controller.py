@@ -1,20 +1,24 @@
-import sys
 import json
-import traceback
-from maya import cmds
+import logging
+import sys
+
 from PySide2 import QtWidgets, QtCore
-from dynaeditor import utils
-from dynaeditor import maya_utils
 from dynaeditor import attr_query
-from dynaeditor.view import EditorView
-from dynaeditor.job_manager import JobManager
+from dynaeditor import maya_utils
+from dynaeditor import utils
 from dynaeditor.attributes import attribute
+from dynaeditor.job_manager import JobManager
+from dynaeditor.widgets.view import EditorView
+from maya import cmds
+
 reload(attribute)
 from dynaeditor.attributes.attribute import Attribute
 
 
 class Editor(QtCore.QObject):
     def __init__(self):
+        self.logger = logging.getLogger(__name__)
+        self.logger.debug("Creating Editor Instance")
         super(Editor, self).__init__()
 
         self._job_manager = JobManager()
@@ -27,6 +31,7 @@ class Editor(QtCore.QObject):
 
         self._attributes = []
         self._lock_type = False
+        self.logger.debug("Created Editor instance")
 
     def _connect_signals(self):
         self.view.signal_lock_type.connect(self.toggle_type_lock)
