@@ -7,7 +7,6 @@ from dynaeditor import maya_utils
 from dynaeditor import utils
 from dynaeditor.job_manager import JobManager
 from dynaeditor.widgets.view import EditorView
-from dynaeditor import const
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.attributes.attr_type_error import AttrTypeError
 from maya import cmds
@@ -94,13 +93,11 @@ def main():
     attr_editor = Editor()
     attr_editor.view.show()
 
-
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
     mapped_data = [utils.key_map_config(data) for data in test_data]
 
     attr_editor.set_editor_options(mapped_data)
-
 
     if utils.in_maya_standalone():
         sys.exit(app.exec_())

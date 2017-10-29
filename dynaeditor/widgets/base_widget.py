@@ -8,8 +8,8 @@ class BaseWidget(QtWidgets.QWidget):
     child classes need to overwrite all abstract methods
     """
     signal_apply_attr = QtCore.Signal(str)
-    SET_BTN_WIDTH = 50
-    SPACER_WIDTH = 30
+    SET_BTN_WIDTH = 40
+    SPACER_WIDTH = 10
 
     def __init__(self, nice_name, default_value):
         super(BaseWidget, self).__init__()

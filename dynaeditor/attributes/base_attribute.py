@@ -3,6 +3,9 @@ from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class BaseAttribute(QtCore.QObject):
+    """
+    BaseAttribute, abstract class where all attribute classes need to inherit from
+    """
     _type = None
     _widget = None
     _name = None
@@ -14,6 +17,9 @@ class BaseAttribute(QtCore.QObject):
         self.widget = widget  # type:BaseWidget
         self.name = attr
         self.connect_signals()
+
+        if type(self) == BaseAttribute:
+            raise NotImplementedError('BaseAttribute is an abstract class')
 
     @property
     def type_(self):

@@ -25,12 +25,7 @@ class Attribute(object):
         logger.debug("Creating attribute of type: {}".format(_type))
         logger.debug("args: {}".format(args))
         logger.debug("kwargs: {}".format(kwargs))
-        for keys, _class in cls.TYPE_MAPPING.items():
-            if _type == keys:
-                break
-        else:
-            raise AttrTypeError("Not Implemented type: {}".format(_type))
-
+        _class = Attribute.get_class_for_type(_type)
         return _class(*args, **kwargs)
 
     @staticmethod
