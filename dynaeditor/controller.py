@@ -8,7 +8,6 @@ from dynaeditor import utils
 from dynaeditor.job_manager import JobManager
 from dynaeditor.widgets.view import EditorView
 from dynaeditor.attributes.attribute import Attribute
-from dynaeditor.attributes.attr_type_error import AttrTypeError
 from maya import cmds
 
 
@@ -44,9 +43,13 @@ class Editor(QtCore.QObject):
         self.update_to_selection()
 
     def update_to_selection(self):
+        logger = logging.getLogger(__name__)
+        logger.debug("updating to selection")
         selected_shape = maya_utils.get_first_selected_shape()
         if not selected_shape:
             return
+        logger.debug("selected shape: {}".format(selected_shape))
+        self.clear_attributes()
         # update to the shape node
         self.set_editor_options(attr_query.iter_obj_attrs_mapped(selected_shape))
 
@@ -64,15 +67,14 @@ class Editor(QtCore.QObject):
         self.view.lock_type(self._lock_type)
 
     def set_editor_options(self, attr_mappings):
-        self.clear_attributes()
         logger = logging.getLogger(__name__)
+        logger.debug("Setting editor options")
         for mapping in attr_mappings:
+
             try:
-                if not Attribute.validate_attr_args(**mapping):
-                    continue
                 attribute = Attribute(**mapping)
             # skip not implemented types
-            except AttrTypeError as e:
+            except TypeError as e:
                 logger.warning(e)
                 continue
 
@@ -80,7 +82,11 @@ class Editor(QtCore.QObject):
             self._attributes.append(attribute)
             self.view.add_attr_widget(attribute.widget)
 
+        print("Done adding attrs")
+
     def clear_attributes(self):
+        logger = logging.getLogger(__name__)
+        logger.debug("Clearing attributes")
         self._attributes = []
         self.view.clear_editor()
 
@@ -92,13 +98,12 @@ def main():
 
     attr_editor = Editor()
     attr_editor.view.show()
-
+    """
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
     mapped_data = [utils.key_map_config(data) for data in test_data]
-
     attr_editor.set_editor_options(mapped_data)
-
+    """
     if utils.in_maya_standalone():
         sys.exit(app.exec_())
 

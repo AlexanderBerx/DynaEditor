@@ -3,7 +3,6 @@ from dynaeditor import const
 from dynaeditor.attributes.bool_attribute import BoolAttribute
 from dynaeditor.attributes.enum_attribute import EnumAttribute
 from dynaeditor.attributes.float3_attribute import Float3Attribute
-from dynaeditor.attributes.attr_type_error import AttrTypeError
 
 
 class Attribute(object):
@@ -21,10 +20,6 @@ class Attribute(object):
         :param str _type: name of the wanted type
         :return: Attribute
         """
-        logger = logging.getLogger(__name__)
-        logger.debug("Creating attribute of type: {}".format(_type))
-        logger.debug("args: {}".format(args))
-        logger.debug("kwargs: {}".format(kwargs))
         _class = Attribute.get_class_for_type(_type)
         return _class(*args, **kwargs)
 
@@ -33,8 +28,7 @@ class Attribute(object):
         for keys, _class in Attribute.TYPE_MAPPING.items():
             if _type == keys:
                 return _class
-        else:
-            raise AttrTypeError("Not Implemented type: {}".format(_type))
+        raise TypeError("Not Implemented type: {}".format(_type))
 
     @staticmethod
     def is_type_supported(_type):

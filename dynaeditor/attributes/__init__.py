@@ -1,4 +1,3 @@
-from dynaeditor.attributes.attr_type_error import AttrTypeError
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.attributes.base_attribute import BaseAttribute
 from dynaeditor.attributes.bool_attribute import BoolAttribute
