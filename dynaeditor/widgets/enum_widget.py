@@ -59,7 +59,7 @@ class EnumWidget(BaseWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    widget = EnumWidget("test", 1, [])
+    widget = EnumWidget("tests", 1, [])
     widget.show()
     sys.exit(app.exec_())
 

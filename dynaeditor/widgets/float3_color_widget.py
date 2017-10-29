@@ -47,7 +47,7 @@ class Float3ColorWidget(BaseWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    widget = Float3ColorWidget("test", [1, 1, 1])
+    widget = Float3ColorWidget("tests", [1, 1, 1])
     widget.show()
     sys.exit(app.exec_())
 

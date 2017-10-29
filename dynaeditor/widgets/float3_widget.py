@@ -81,7 +81,7 @@ class Float3Widget(BaseWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    widget = Float3Widget("test", [1, 1, 1], [0, 0, 0], [1, 1, 1])
+    widget = Float3Widget("tests", [1, 1, 1], [0, 0, 0], [1, 1, 1])
     widget.show()
     sys.exit(app.exec_())
 

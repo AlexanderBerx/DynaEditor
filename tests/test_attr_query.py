@@ -4,8 +4,8 @@ from dynaeditor import attr_query
 
 
 class TestAttrQuery(object):
-    TEST_ATTRS = [('bool', 'test_bool', 'test bool', 0.0, 1.0, 0.0, None, False, False, ["tests"]),
-                  ('enum', 'test_enum', 'test enum', 0.0, 3.0, 0.0,
+    TEST_ATTRS = [('bool', 'test_bool', 'tests bool', 0.0, 1.0, 0.0, None, False, False, ["tests"]),
+                  ('enum', 'test_enum', 'tests enum', 0.0, 3.0, 0.0,
                    ['test1', 'test2', 'test3', 'test4'], False, False, ["tests"])]
 
 
@@ -29,7 +29,7 @@ class TestAttrQuery(object):
         test_node = self.create_test_node()
         # collect all the obj attrs
         obj_attrs = list(attr_query.iter_obj_attrs(test_node))
-        # check if each test attr occurs in the object attr's & matches
+        # check if each tests attr occurs in the object attr's & matches
         for attr in self.TEST_ATTRS:
             if attr not in obj_attrs:
                 raise ValueError("attr not returned from query")

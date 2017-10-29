@@ -42,7 +42,7 @@ class BoolWidget(BaseWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    widget = BoolWidget("test", True)
+    widget = BoolWidget("tests", True)
     widget.show()
     sys.exit(app.exec_())
 
