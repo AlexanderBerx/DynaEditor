@@ -8,6 +8,8 @@ class BaseWidget(QtWidgets.QWidget):
     child classes need to overwrite all abstract methods
     """
     signal_apply_attr = QtCore.Signal(str)
+    SET_BTN_WIDTH = 50
+    SPACER_WIDTH = 30
 
     def __init__(self, nice_name, default_value):
         super(BaseWidget, self).__init__()
@@ -28,12 +30,12 @@ class BaseWidget(QtWidgets.QWidget):
         layout_main.addWidget(QtWidgets.QLabel(nice_name))
         layout_main.addWidget(self.create_type_widget(), 0, 1, QtCore.Qt.AlignRight)
 
-        spacer = QtWidgets.QSpacerItem(50, 10)
+        spacer = QtWidgets.QSpacerItem(self.SPACER_WIDTH, 10)
         layout_main.addItem(spacer, 0, 2)
 
         self._btn_set = QtWidgets.QPushButton("Set")
-        self._btn_set.setMaximumWidth(80)
-        self._btn_set.setMinimumWidth(80)
+        self._btn_set.setMaximumWidth(self.SET_BTN_WIDTH)
+        self._btn_set.setMinimumWidth(self.SET_BTN_WIDTH)
         layout_main.addWidget(self._btn_set, 0, 3)
 
     def create_type_widget(self):
