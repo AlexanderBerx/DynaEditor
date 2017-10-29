@@ -56,7 +56,7 @@ class Float3Widget(BaseWidget):
         returns the current value of the widget
         :return: list
         """
-        return self._ff_x.text(), self._ff_y.text(), self._ff_z.text()
+        return float(self._ff_x.text()), float(self._ff_y.text()), float(self._ff_z.text())
 
     def set_min(self, _min):
         """

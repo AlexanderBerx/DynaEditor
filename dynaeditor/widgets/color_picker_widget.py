@@ -10,6 +10,9 @@ class ColorPickerWidget(QtWidgets.QWidget):
 
     @property
     def color(self):
+        """
+        :return: QtGui.QColor
+        """
         return self._color
 
     @color.setter

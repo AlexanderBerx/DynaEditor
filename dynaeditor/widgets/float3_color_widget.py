@@ -40,7 +40,7 @@ class Float3ColorWidget(BaseWidget):
         :return: list
         """
         color = self._color_picker.color
-        value = list(color.getHsvF())
+        value = list(color.getRgbF())
         value.pop(3)
         return value
 
