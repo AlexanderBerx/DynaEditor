@@ -67,6 +67,9 @@ def reset_session(user_path=None):
 
 
 def get_maya_main_window():
+    if not QtWidgets.qApp:
+        return None
+
     for obj in QtWidgets.qApp.topLevelWidgets():
         if obj.objectName() == 'MayaWindow':
             return obj

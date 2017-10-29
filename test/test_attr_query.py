@@ -1,12 +1,6 @@
+from maya import cmds
 from dynaeditor import utils
 from dynaeditor import attr_query
-
-try:
-    from maya import cmds
-    if utils.in_maya_standalone():
-        from maya import standalone
-except ImportError:
-    raise("Can't run tests due to no maya modules present in current environment")
 
 
 class TestAttrQuery(object):
@@ -14,19 +8,6 @@ class TestAttrQuery(object):
                   ('enum', 'test_enum', 'test enum', 0.0, 3.0, 0.0,
                    ['test1', 'test2', 'test3', 'test4'], False, False, ["tests"])]
 
-    @classmethod
-    def setup_class(cls):
-        """
-        sets up a maya test env to test the attr query module
-        :return: None
-        """
-        if utils.in_maya_standalone():
-            standalone.initialize()
-
-    @classmethod
-    def teardown_class(cls):
-        if utils.in_maya_standalone():
-            standalone.uninitialize()
 
     def _add_test_attrs_to_node(self, node):
         cmds.select(node)
