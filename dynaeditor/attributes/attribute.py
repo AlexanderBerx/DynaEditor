@@ -1,4 +1,3 @@
-import logging
 from dynaeditor import const
 from dynaeditor.attributes.bool_attribute import BoolAttribute
 from dynaeditor.attributes.enum_attribute import EnumAttribute
@@ -25,6 +24,12 @@ class Attribute(object):
 
     @staticmethod
     def get_class_for_type(_type):
+        """
+        staticmethod, returns the class of the given _type,
+        if the given type can't be found an TypeError will be raised
+        :param str _type: type name of the attribute
+        :return: cls
+        """
         for keys, _class in Attribute.TYPE_MAPPING.items():
             if _type == keys:
                 return _class
@@ -43,5 +48,13 @@ class Attribute(object):
 
     @staticmethod
     def validate_attr_args(_type, *args, **kwargs):
+        """
+        validates the arguments for the class of the given type.
+        If the given type can't be found an TypeError will be raised.
+        :param str _type: name of the class type
+        :param args:
+        :param kwargs:
+        :return: bool
+        """
         attr_class = Attribute.get_class_for_type(_type)
         return attr_class.validate_args(*args, **kwargs)

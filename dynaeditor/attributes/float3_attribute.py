@@ -18,7 +18,6 @@ class Float3Attribute(BaseAttribute):
             widget = Float3Widget(nice_name, default_value, _min, _max)
         super(Float3Attribute, self).__init__(_type, widget, attr)
 
-
     @staticmethod
     def validate_args(attr=None, nice_name=None, default_value=None, color=None, _min=None, _max=None, categories=None):
         if not attr or not nice_name or not default_value:
