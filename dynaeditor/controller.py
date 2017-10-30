@@ -45,12 +45,14 @@ class Editor(QtCore.QObject):
     def update_to_selection(self):
         logger = logging.getLogger(__name__)
         logger.debug("updating to selection")
+        self.clear_attributes()
         selected_shape = maya_utils.get_first_selected_shape()
         if not selected_shape:
+            self.view.set_display_type("----")
             return
         logger.debug("selected shape: {}".format(selected_shape))
-        self.clear_attributes()
         # update to the shape node
+        self.view.set_display_type(cmds.objectType(selected_shape))
         self.set_editor_options(attr_query.iter_obj_attrs_mapped(selected_shape))
 
     @QtCore.Slot(str, str, str)
