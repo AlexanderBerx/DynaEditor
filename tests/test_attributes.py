@@ -45,6 +45,10 @@ def test_bool_attribute():
     assert bool_attr.name == attr
     # test signals
     bool_attr.widget._emit_attr()
+    # test arg validation
+    assert attributes.BoolAttribute.validate_args(attr=attr, nice_name=nice_name) is True
+    assert attributes.BoolAttribute.validate_args(attr=attr) is False
+    assert attributes.BoolAttribute.validate_args(nice_name=nice_name) is False
 
 
 def test_enum_attribute():
@@ -74,6 +78,44 @@ def test_enum_attribute():
     assert type(enum_attr.widget) == widgets.EnumWidget
     # check the type
     assert enum_attr.type_ == enum_type
+    # check if the name was set correctly
+    assert enum_attr.name == attr
+    # test signals
+    enum_attr.widget._emit_attr()
+    # test arg validation
+    assert attributes.EnumAttribute.validate_args(attr=attr,
+                                                  nice_name=nice_name,
+                                                  default_value=default_value,
+                                                  options=test_options) is True
+    assert attributes.EnumAttribute.validate_args(attr=attr) is False
+
+
+def test_float3_attribute():
+    """
+    tests the Float3Attribute class
+    :return: None
+    """
+    attr = "test_float3"
+    nice_name = "test float3"
+    float3_type = "float3"
+    default_value = [0.0, 0.0, 1.0]
+    enum_attr = attributes.Float3Attribute(attr, nice_name, default_value)
+
+    # connect to the attr slot for signal testing
+    @QtCore.Slot(str, str, str)
+    def attr_slot(name, type_, value):
+        assert name == attr
+        assert type_ == float3_type
+        # since the value isn't being changed in the test the emited
+        # value needs to still match the default value
+        assert json.loads(value) == default_value
+
+    enum_attr.signal_apply_attr[str, str, str].connect(attr_slot)
+
+    # check if the widget type is correct
+    assert type(enum_attr.widget) == widgets.Float3Widget
+    # check the type
+    assert enum_attr.type_ == float3_type
     # check if the name was set correctly
     assert enum_attr.name == attr
     # test signals

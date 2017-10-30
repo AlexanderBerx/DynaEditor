@@ -5,14 +5,13 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 
 
 class Float3Attribute(BaseAttribute):
-    def __init__(self, attr, default_value, nice_name, color=False, _min=None, _max=None, categories=None):
+    def __init__(self, attr, nice_name, default_value, color=False, _min=None, _max=None, categories=None):
         if not _min:
             _min = [0, 0, 0]
         if not _max:
             _max = [100, 100, 100]
 
-        _type = const.ATYPE_BOOL
-        # TODO: implement color widget
+        _type = const.ATYPE_FLOAT3
         if color:
             widget = Float3ColorWidget(nice_name, default_value)
         else:
