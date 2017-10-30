@@ -1,14 +1,14 @@
+import sys
 import json
 import logging
-import sys
-
+from maya import cmds
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets.view import EditorView
-from maya import cmds
+
 
 
 class Editor(QtCore.QObject):
