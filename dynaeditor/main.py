@@ -1,9 +1,10 @@
-import sys
 import json
 import logging
+import sys
+
 from PySide2 import QtWidgets
-from dynaeditor import utils
 from dynaeditor.controller import Editor
+from dynaeditor.utils import general_utils
 
 
 def load_test_data(editor):
@@ -11,7 +12,7 @@ def load_test_data(editor):
     logger.debug("Loading Test data")
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
-    mapped_data = [utils.key_map_config(data) for data in test_data]
+    mapped_data = [general_utils.key_map_config(data) for data in test_data]
 
     editor.set_editor_options(mapped_data)
 
@@ -23,7 +24,7 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info("Starting up Dynamic Attribute Editor")
     app = None
-    if utils.in_maya_standalone():
+    if general_utils.in_maya_standalone():
         app = QtWidgets.QApplication([])
         logger.debug("created QApplication")
 
@@ -32,7 +33,7 @@ def main():
 
     load_test_data(editor)
 
-    if utils.in_maya_standalone():
+    if general_utils.in_maya_standalone():
         logger.info("Executing QApplication")
         sys.exit(app.exec_())
 

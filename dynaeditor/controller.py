@@ -1,13 +1,13 @@
 import json
 import logging
 import sys
+
 from PySide2 import QtWidgets, QtCore
 from dynaeditor import attr_query
-from dynaeditor import maya_utils
-from dynaeditor import utils
-from dynaeditor.job_manager import JobManager
-from dynaeditor.widgets.view import EditorView
 from dynaeditor.attributes.attribute import Attribute
+from dynaeditor.job_manager import JobManager
+from dynaeditor.utils import general_utils, maya_utils
+from dynaeditor.widgets.view import EditorView
 from maya import cmds
 
 
@@ -93,7 +93,7 @@ class Editor(QtCore.QObject):
 
 def main():
     app = None
-    if utils.in_maya_standalone():
+    if general_utils.in_maya_standalone():
         app = QtWidgets.QApplication([])
 
     attr_editor = Editor()
@@ -104,7 +104,7 @@ def main():
     mapped_data = [utils.key_map_config(data) for data in test_data]
     attr_editor.set_editor_options(mapped_data)
     """
-    if utils.in_maya_standalone():
+    if general_utils.in_maya_standalone():
         sys.exit(app.exec_())
 
     return attr_editor

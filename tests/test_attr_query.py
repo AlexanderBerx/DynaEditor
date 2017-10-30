@@ -1,7 +1,6 @@
-from maya import cmds
-from dynaeditor import utils
 from dynaeditor import attr_query
-
+from dynaeditor.utils import general_utils
+from maya import cmds
 
 TEST_ATTRS = [('bool', 'test_bool', 'tests bool', 0.0, 1.0, 0.0, None, False, False, ["tests"]),
               ('enum', 'test_enum', 'tests enum', 0.0, 3.0, 0.0,
@@ -12,7 +11,7 @@ def _add_test_attrs_to_node(node):
     cmds.select(node)
     for attr_setup in TEST_ATTRS:
         # unpack setup values
-        creation_args = utils.key_map_config_maya(attr_setup)
+        creation_args = general_utils.key_map_config_maya(attr_setup)
         cmds.addAttr(**creation_args)
 
 
