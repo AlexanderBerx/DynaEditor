@@ -120,3 +120,13 @@ def test_float3_attribute():
     assert enum_attr.name == attr
     # test signals
     enum_attr.widget._emit_attr()
+
+
+def test_attribute():
+    """
+    tests the Attribute class
+    :return: None
+    """
+    # attribute class needs to raise an type error if an type is not known to it
+    with pytest.raises(TypeError):
+        attributes.Attribute(_type="unknown")
