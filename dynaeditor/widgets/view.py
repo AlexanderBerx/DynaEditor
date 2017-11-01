@@ -36,12 +36,18 @@ class EditorView(QtWidgets.QWidget):
         if prefs_manager.window_size:
             self.resize(prefs_manager.window_size)
 
-
     def _init_ui(self):
         self._lock_icon = QtGui.QIcon(":/icon_lock.png")
         self._unlock_icon = QtGui.QIcon(":/icon_unlock.png")
+
+        self.menu_bar = QtWidgets.QMenuBar()
+        self.menu_bar.addMenu("Preferences")
+        self.menu_bar.addMenu("Help")
+
         layout_main = QtWidgets.QVBoxLayout()
+        layout_main.setMargin(0)
         self.setLayout(layout_main)
+        layout_main.addWidget(self.menu_bar)
         layout_main.addWidget(self._create_header_widget())
         layout_main.addWidget(self._create_editor_widget())
 
