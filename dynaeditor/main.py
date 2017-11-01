@@ -1,8 +1,8 @@
+import os
+import sys
 import json
 import logging
-import sys
-
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
 from dynaeditor.controller import Editor
 from dynaeditor.utils import general_utils
 
@@ -17,10 +17,27 @@ def load_test_data(editor):
     editor.set_editor_options(mapped_data)
 
 
-def main():
+def load_resources():
+    rsc_file = os.path.split(__file__)[0]
+    rsc_file = os.path.join(rsc_file, "../bin/resources.rcc")
+    rsc_file = os.path.abspath(rsc_file)
+    if not os.path.isfile(rsc_file):
+        return
+    resources = QtCore.QResource()
+    print resources.registerResource(rsc_file)
+    print resources.children()
+    print resources.data()
+
+
+def init_logging():
     logging.basicConfig(format='%(asctime)s: %(levelname)s: %(name)s: %(message)s',
                         datefmt='%m/%d/%Y %I:%M:%S %p',
                         level=logging.DEBUG)
+
+
+def main():
+    load_resources()
+    init_logging()
     logger = logging.getLogger(__name__)
     logger.info("Starting up Dynamic Attribute Editor")
     app = None
@@ -31,7 +48,7 @@ def main():
     editor = Editor()
     editor.view.show()
 
-    load_test_data(editor)
+    #load_test_data(editor)
 
     if general_utils.in_maya_standalone():
         logger.info("Executing QApplication")

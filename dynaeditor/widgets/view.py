@@ -1,4 +1,4 @@
-from PySide2 import QtWidgets, QtCore
+from PySide2 import QtWidgets, QtCore, QtGui
 from dynaeditor.utils import general_utils
 
 
@@ -20,6 +20,8 @@ class EditorView(QtWidgets.QWidget):
         self.center_to_parent()
 
     def _init_ui(self):
+        self._lock_icon = QtGui.QIcon(":/icon_lock.png")
+        self._unlock_icon = QtGui.QIcon(":/icon_unlock.png")
         layout_main = QtWidgets.QVBoxLayout()
         self.setLayout(layout_main)
         layout_main.addWidget(self._create_header_widget())
@@ -41,7 +43,8 @@ class EditorView(QtWidgets.QWidget):
         layout_header.addWidget(QtWidgets.QLabel("Type:"))
         self._lbl_display_type = QtWidgets.QLabel("----")
         layout_header.addWidget(self._lbl_display_type)
-        self._btn_lock_type = QtWidgets.QPushButton("Lock")
+        self._btn_lock_type = QtWidgets.QPushButton()
+        self._btn_lock_type.setIcon(self._lock_icon)
         self._btn_lock_type.clicked.connect(self.signal_lock_type)
         layout_header.addWidget(self._btn_lock_type)
         return widget_header
@@ -69,8 +72,10 @@ class EditorView(QtWidgets.QWidget):
     def lock_type(self, lock=True):
         if lock:
             self._lbl_display_type.setEnabled(False)
+            self._btn_lock_type.setIcon(self._unlock_icon)
         else:
             self._lbl_display_type.setEnabled(True)
+            self._btn_lock_type.setIcon(self._lock_icon)
 
 
 def main():
