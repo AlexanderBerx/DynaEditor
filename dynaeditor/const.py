@@ -1,3 +1,7 @@
+# Qt constants
+APP_NAME = "DynaEditor"
+ORGANISATION_NAME = "dynaeditor"
+
 # argument keys
 ATTR_ARG_TYPE = "_type"
 ATTR_ARG_ATTR = "attr"

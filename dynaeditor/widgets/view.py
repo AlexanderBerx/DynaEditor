@@ -1,6 +1,6 @@
 from PySide2 import QtWidgets, QtCore, QtGui
 from dynaeditor.utils import general_utils
-
+from dynaeditor.prefs_manager import PrefsManager
 
 class EditorView(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
@@ -18,6 +18,24 @@ class EditorView(QtWidgets.QWidget):
 
         self._init_ui()
         self.center_to_parent()
+        self.load_prefs()
+
+    def closeEvent(self, *args, **kwargs):
+        self.save_prefs()
+        super(EditorView, self).closeEvent(*args, **kwargs)
+
+    def save_prefs(self):
+        prefs_manager = PrefsManager()
+        prefs_manager.window_pos = self.pos()
+        prefs_manager.window_size = self.size()
+
+    def load_prefs(self):
+        prefs_manager = PrefsManager()
+        if prefs_manager.window_pos:
+            self.move(prefs_manager.window_pos)
+        if prefs_manager.window_size:
+            self.resize(prefs_manager.window_size)
+
 
     def _init_ui(self):
         self._lock_icon = QtGui.QIcon(":/icon_lock.png")
