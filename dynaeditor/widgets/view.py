@@ -41,7 +41,7 @@ class EditorView(QtWidgets.QWidget):
         layout_header = QtWidgets.QHBoxLayout()
         widget_header.setLayout(layout_header)
         layout_header.addWidget(QtWidgets.QLabel("Type:"))
-        self._lbl_display_type = QtWidgets.QLabel("----")
+        self._lbl_display_type = QtWidgets.QLabel("<b>----</b>")
         layout_header.addWidget(self._lbl_display_type)
 
         self._btn_lock_type = QtWidgets.QPushButton()
