@@ -24,10 +24,8 @@ def load_resources():
     if not os.path.isfile(rsc_file):
         return
     resources = QtCore.QResource()
-    print resources.registerResource(rsc_file)
-    print resources.children()
-    print resources.data()
-
+    if resources.registerResource(rsc_file) == False:
+        raise RuntimeError("Failed to register resources")
 
 def init_logging():
     logging.basicConfig(format='%(asctime)s: %(levelname)s: %(name)s: %(message)s',
