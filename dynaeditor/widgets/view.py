@@ -40,14 +40,11 @@ class EditorView(QtWidgets.QWidget):
         self._lock_icon = QtGui.QIcon(":/icon_lock.png")
         self._unlock_icon = QtGui.QIcon(":/icon_unlock.png")
 
-        self.menu_bar = QtWidgets.QMenuBar()
-        self.menu_bar.addMenu("Preferences")
-        self.menu_bar.addMenu("Help")
 
         layout_main = QtWidgets.QVBoxLayout()
         layout_main.setMargin(0)
         self.setLayout(layout_main)
-        layout_main.addWidget(self.menu_bar)
+        layout_main.addWidget(self._create_menu_bar())
         layout_main.addWidget(self._create_header_widget())
         layout_main.addWidget(self._create_editor_widget())
 
@@ -59,6 +56,12 @@ class EditorView(QtWidgets.QWidget):
 
             parent_center = [parent_pos.x() + parent_width / 2, parent_pos.y() + parent_height / 2]
             self.move(QtCore.QPoint(parent_center[0] - self.width() / 2, parent_center[1] - self.height() / 2))
+
+    def _create_menu_bar(self):
+        self._menu_bar = QtWidgets.QMenuBar()
+        self._menu_bar.addMenu("Preferences")
+        self._menu_bar.addMenu("Help")
+        return self._menu_bar
 
     def _create_header_widget(self):
         widget_header = QtWidgets.QWidget()
