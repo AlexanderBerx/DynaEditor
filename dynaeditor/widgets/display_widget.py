@@ -36,8 +36,9 @@ class DisplayWidget(QtWidgets.QWidget):
             self._qlist_attrs.setItemWidget(item, widget)
 
     def get_options(self):
-        for item in self._qlist_attrs.items():
-            print item
+        for index in range(self._qlist_attrs.count()):
+            item = self._qlist_attrs.item(index)
+            widget = ""
 
 
 def main():
