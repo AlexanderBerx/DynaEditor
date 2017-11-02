@@ -10,7 +10,6 @@ class DisplayWidget(QtWidgets.QWidget):
         self.setWindowTitle(self.TITLE)
         self.setObjectName(self.OBJ_NAME)
         self.setWindowFlags(QtCore.Qt.Window)
-
         self._init_ui()
 
     def _init_ui(self):
@@ -27,11 +26,27 @@ class DisplayWidget(QtWidgets.QWidget):
         layout_options.addWidget(self._btn_cancel)
         layout_main.addLayout(layout_options)
 
+    def set_options(self, options):
+        self._qlist_attrs.clear()
+        for status, attr in options:
+            widget = QtWidgets.QCheckBox(str(attr))
+            widget.setChecked(bool(status))
+            item = QtWidgets.QListWidgetItem()
+            self._qlist_attrs.addItem(item)
+            self._qlist_attrs.setItemWidget(item, widget)
+
+    def get_options(self):
+        for item in self._qlist_attrs.items():
+            print item
+
 
 def main():
     app = QtWidgets.QApplication([])
     view = DisplayWidget()
     view.show()
+    options = [(True, item) for item in range(5)]
+    view.set_options(options)
+    view.get_options()
     app.exec_()
 
 if __name__ == '__main__':
