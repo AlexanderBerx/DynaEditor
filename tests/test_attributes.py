@@ -1,6 +1,9 @@
 import json
 import pytest
-from PySide2 import QtCore
+try:
+    from PySide2 import QtCore
+except ImportError:
+    from Qt import QtCore
 from dynaeditor import widgets
 from dynaeditor import attributes
 

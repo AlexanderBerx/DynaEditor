@@ -1,5 +1,8 @@
 import pytest
-from PySide2 import QtGui
+try:
+    from PySide2 import QtGui
+except ImportError:
+    from Qt import QtGui
 from dynaeditor import widgets
 
 def test_base_widget():
