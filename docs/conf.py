@@ -19,7 +19,7 @@
 import os
 import sys
 _path = os.path.abspath('.')
-_path = os.path.join(_path, "../..")
+_path = os.path.join(_path, "..")
 sys.path.insert(0, os.path.abspath(_path))
 
 # -- General configuration ------------------------------------------------
