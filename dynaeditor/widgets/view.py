@@ -1,4 +1,7 @@
-from PySide2 import QtWidgets, QtCore, QtGui
+try:
+    from PySide2 import QtCore, QtWidgets, QtGui
+except ImportError:
+    from Qt import QtCore, QtWidgets, QtGui
 from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
 
