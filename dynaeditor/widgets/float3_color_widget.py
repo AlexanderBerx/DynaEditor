@@ -1,5 +1,8 @@
 import sys
-from PySide2 import QtWidgets, QtGui
+try:
+    from PySide2 import QtCore, QtWidgets
+except ImportError:
+    from Qt import QtCore, QtWidgets
 from dynaeditor.widgets.base_widget import BaseWidget
 from dynaeditor.widgets.color_picker_widget import ColorPickerWidget
 

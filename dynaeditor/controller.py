@@ -2,7 +2,10 @@ import sys
 import json
 import logging
 from maya import cmds
-from PySide2 import QtWidgets, QtCore
+try:
+    from PySide2 import QtCore, QtWidgets
+except ImportError:
+    from Qt import QtCore, QtWidgets
 from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.job_manager import JobManager

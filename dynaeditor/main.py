@@ -2,7 +2,10 @@ import os
 import sys
 import json
 import logging
-from PySide2 import QtWidgets, QtCore
+try:
+    from PySide2 import QtCore, QtWidgets
+except ImportError:
+    from Qt import QtCore, QtWidgets
 from dynaeditor.controller import Editor
 from dynaeditor.utils import general_utils
 

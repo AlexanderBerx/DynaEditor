@@ -1,4 +1,7 @@
-from PySide2 import QtWidgets, QtGui
+try:
+    from PySide2 import QtCore, QtWidgets
+except ImportError:
+    from Qt import QtCore, QtWidgets
 
 
 class FloatField(QtWidgets.QLineEdit):

@@ -1,5 +1,7 @@
-from PySide2 import QtWidgets, QtCore, QtGui
-
+try:
+    from PySide2 import QtCore, QtWidgets, QtGui
+except ImportError:
+    from Qt import QtCore, QtWidgets, QtGui
 
 class ColorPickerWidget(QtWidgets.QWidget):
     def __init__(self):

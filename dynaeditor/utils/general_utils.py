@@ -1,7 +1,10 @@
 import os
 import sys
 import inspect
-from PySide2 import QtWidgets
+try:
+    from PySide2 import QtWidgets
+except ImportError:
+    from Qt import QtWidgets
 from dynaeditor import const
 
 

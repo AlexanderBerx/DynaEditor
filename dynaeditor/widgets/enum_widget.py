@@ -1,5 +1,8 @@
 import sys
-from PySide2 import QtWidgets
+try:
+    from PySide2 import QtWidgets
+except ImportError:
+    from Qt import QtWidgets
 from dynaeditor.widgets.base_widget import BaseWidget
 
 

@@ -1,5 +1,8 @@
 import json
-from PySide2 import QtCore
+try:
+    from PySide2 import QtCore
+except ImportError:
+    from Qt import QtCore
 from dynaeditor.utils import general_utils
 from dynaeditor.attributes.attribute import Attribute
 
