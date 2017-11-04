@@ -87,7 +87,7 @@ class Editor(QtCore.QObject):
             self._attributes.append(attribute)
             self.view.add_attr_widget(attribute.widget)
 
-        print("Done adding attrs")
+        logger.debug("Done adding attrs")
 
     def clear_attributes(self):
         logger = logging.getLogger(__name__)

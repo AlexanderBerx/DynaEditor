@@ -102,6 +102,12 @@ class EditorView(QtWidgets.QWidget):
         item.setSizeHint(widget.sizeHint())
         self.editor.setItemWidget(item, widget)
 
+    def get_attr_model(self):
+        """
+        :return: QtCore.QAbstractListModel
+        """
+        return self.editor.model()
+
     def lock_type(self, lock=True):
         if lock:
             self._lbl_display_type.setEnabled(False)

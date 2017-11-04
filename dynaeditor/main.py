@@ -49,7 +49,7 @@ def main():
     editor = Editor()
     editor.view.show()
 
-    #load_test_data(editor)
+    load_test_data(editor)
 
     if general_utils.in_maya_standalone():
         logger.info("Executing QApplication")
