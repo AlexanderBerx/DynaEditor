@@ -34,6 +34,7 @@ class Editor(QtCore.QObject):
 
     def _connect_signals(self):
         self.view.signal_lock_type.connect(self.toggle_type_lock)
+        self.view.signal_display_prefs.connect(self.display_prefs)
 
     @staticmethod
     def check_for_existing_window():
@@ -75,7 +76,6 @@ class Editor(QtCore.QObject):
         logger = logging.getLogger(__name__)
         logger.debug("Setting editor options")
         for mapping in attr_mappings:
-
             try:
                 attribute = Attribute(**mapping)
             # skip not implemented types
@@ -88,6 +88,10 @@ class Editor(QtCore.QObject):
             self.view.add_attr_widget(attribute.widget)
 
         logger.debug("Done adding attrs")
+
+    @QtCore.Slot()
+    def display_prefs(self):
+        print "display"
 
     def clear_attributes(self):
         logger = logging.getLogger(__name__)

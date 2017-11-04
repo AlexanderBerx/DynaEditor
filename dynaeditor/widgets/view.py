@@ -9,6 +9,7 @@ class EditorView(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
     signal_lock_type = QtCore.Signal()
+    signal_display_prefs  = QtCore.Signal()
 
     def __init__(self, parent=None):
         if not parent:
@@ -62,7 +63,10 @@ class EditorView(QtWidgets.QWidget):
 
     def _create_menu_bar(self):
         self._menu_bar = QtWidgets.QMenuBar()
-        self._menu_bar.addMenu("Preferences")
+        prefs_menu = QtWidgets.QMenu("Preferences")
+        self._menu_bar.addMenu(prefs_menu)
+
+        prefs_menu.addAction("dispaly prefs", self.signal_display_prefs.emit)
         self._menu_bar.addMenu("Help")
         return self._menu_bar
 

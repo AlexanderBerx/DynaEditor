@@ -10,13 +10,15 @@ class AttrDelegate(QtWidgets.QStyledItemDelegate):
         super(AttrDelegate, self).__init__(*args, **kwargs)
 
     def createEditor(self, parent, option, index):
-        print("Getting delegate editor")
         editor = QtWidgets.QComboBox(parent)
+        print "create"
+        print option
+        print type(option)
         return editor
 
     def setEditorData(self, editor, index):
         value = index.model().data(index, QtCore.Qt.EditRole)
-        print value
+
 
     def setModelData(self, editor, model, index):
         return
@@ -25,7 +27,7 @@ class AttrDelegate(QtWidgets.QStyledItemDelegate):
         editor.setGeometry(option.rect)
 
     def paint(self, painter, option, index):
-        QtWidgets.QApplication.style().drawControl(Q.QStyle.CE_CheckBox, check_box_style_option, painter)
+        super(AttrDelegate, self).paint(painter, option, index)
 
 
 class AttrModel(QtCore.QAbstractListModel):
