@@ -5,7 +5,7 @@ except ImportError:
 from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
 
-class EditorView(QtWidgets.QWidget):
+class EditorWidget(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
     signal_lock_type = QtCore.Signal()
@@ -15,7 +15,7 @@ class EditorView(QtWidgets.QWidget):
         if not parent:
             parent = general_utils.get_maya_main_window()
 
-        super(EditorView, self).__init__(parent=parent)
+        super(EditorWidget, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)
         self.setObjectName(self.OBJ_NAME)
         self.setWindowFlags(QtCore.Qt.Window)
@@ -26,7 +26,7 @@ class EditorView(QtWidgets.QWidget):
 
     def closeEvent(self, *args, **kwargs):
         self.save_prefs()
-        super(EditorView, self).closeEvent(*args, **kwargs)
+        super(EditorWidget, self).closeEvent(*args, **kwargs)
 
     def save_prefs(self):
         prefs_manager = PrefsManager()
@@ -123,7 +123,7 @@ class EditorView(QtWidgets.QWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    view = EditorView()
+    view = EditorWidget()
     view.show()
     app.exec_()
 

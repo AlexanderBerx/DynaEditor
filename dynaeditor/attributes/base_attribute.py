@@ -14,13 +14,12 @@ class BaseAttribute(QtCore.QObject):
     _name = None
     signal_apply_attr = QtCore.Signal(str, str, str)
 
-    def __init__(self, _type, widget, attr):
+    def __init__(self, _type, attr):
         super(BaseAttribute, self).__init__()
         self.type_ = _type
-        self.widget = widget  # type:BaseWidget
         self.name = attr
-        self.connect_signals()
 
+        # ensure abstraction
         if type(self) == BaseAttribute:
             raise NotImplementedError('BaseAttribute is an abstract class')
 
@@ -36,13 +35,15 @@ class BaseAttribute(QtCore.QObject):
 
     @property
     def widget(self):
+        """
+        :return: BaseWidget
+        """
         if not self._widget:
-            raise NotImplementedError("No Widget Assigned")
+            self._create_widget()
         return self._widget
 
-    @widget.setter
-    def widget(self, value):
-        self._widget = value
+    def _create_widget(self):
+        raise NotImplementedError()
 
     @property
     def name(self):

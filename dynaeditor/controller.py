@@ -10,7 +10,7 @@ from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
-from dynaeditor.widgets.view import EditorView
+from dynaeditor.widgets.window_widget import EditorWidget
 
 
 
@@ -25,7 +25,7 @@ class Editor(QtCore.QObject):
         self._job_manager.create_job(event=["SelectionChanged", lambda:self.selection_change()])
 
         self.check_for_existing_window()
-        self.view = EditorView()
+        self.view = EditorWidget()
         self._connect_signals()
 
         self._attributes = []
@@ -38,8 +38,8 @@ class Editor(QtCore.QObject):
 
     @staticmethod
     def check_for_existing_window():
-        if cmds.window(EditorView.OBJ_NAME, exists=True):
-            cmds.deleteUI(EditorView.OBJ_NAME, wnd=True)
+        if cmds.window(EditorWidget.OBJ_NAME, exists=True):
+            cmds.deleteUI(EditorWidget.OBJ_NAME, wnd=True)
 
     def selection_change(self):
         if self._lock_type:
