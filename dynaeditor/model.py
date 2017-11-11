@@ -4,15 +4,15 @@ from dynaeditor.attributes.attribute import Attribute
 
 class DisplayModelDelegate(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
-    def __init__(self):
-        super(DisplayModelDelegate, self).__init__()
+    def __init__(self, parent=None):
+        super(DisplayModelDelegate, self).__init__(parent)
         self._items = []
         self._parent_model = None #  type:EditorModel
 
     def set_parent_model(self, model):
         self._parent_model = model
 
-    def rowCount(self):
+    def rowCount(self, parent=QtCore.QModelIndex()):
         return self._parent_model.row_count_visible()
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
@@ -20,7 +20,7 @@ class DisplayModelDelegate(QtCore.QAbstractListModel):
         if role == self.WIDGET_ROLE:
             widget = visible[index.row()].widget
             # connect the signal
-            visible[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
+            # visible[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
             return widget
         elif role == QtCore.Qt.StatusTipRole:
             return str(visible[index.row()])
@@ -33,19 +33,33 @@ class DisplayModelDelegate(QtCore.QAbstractListModel):
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable
 
+    def rowsAboutToBeInserted(self, parent, first, last):
+        super(DisplayModelDelegate, self).rowsAboutToBeInserted(parent, first, last)
+
+    def emit_update(self):
+        self.rowsInserted.emit(None, 0, self.rowCount())
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
     DISPLAY_ROLE = 21
     signal_apply_attr = QtCore.Signal(str, str, str)
+    _display_delegate = None
 
     def __init__(self):
         super(EditorModel, self).__init__()
         self._items = []
-        self._display_delegate = DisplayModelDelegate()
 
-    def get_display_delegate(self):
+    def get_model_delegate(self):
+        if not self._display_delegate:
+            self._display_delegate = DisplayModelDelegate()
+            self._display_delegate.set_parent_model(self)
+            # connect signals from parent to child
         return self._display_delegate
+
+    def _update_delegate(self):
+        if not self._display_delegate:
+            return
+        self._display_delegate.emit_update()
 
     def set_to_node(self, node):
         self.clear()
@@ -58,8 +72,9 @@ class EditorModel(QtCore.QAbstractListModel):
             except TypeError as e:
                 continue
             self.add_item(attribute)
+        self._update_delegate()
 
-    def rowCount(self, parent=QtCore.QModelIndex(), visible=True):
+    def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._items)
 
     def row_count_visible(self):
@@ -82,12 +97,16 @@ class EditorModel(QtCore.QAbstractListModel):
             return str(self._items[index.row()])
         elif role == QtCore.Qt.SizeHintRole:
             return self._items[index.row()].widget.sizeHint()
+        elif role == QtCore.Qt.DisplayRole:
+            return str(self._items[index.row()])
         return None
 
     def add_item(self, item):
         self.beginInsertRows(QtCore.QModelIndex(), len(self._items), len(self._items))
         self._items.append(item)
         self.endInsertRows()
+
+
 
     def add_items(self, item_list):
         for item in item_list:

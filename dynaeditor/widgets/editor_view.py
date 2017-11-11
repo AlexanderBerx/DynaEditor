@@ -33,8 +33,11 @@ class EditorView(QtWidgets.QListView):
 
     def rowsInserted(self, parent, start, end):
         super(EditorView, self).rowsInserted(parent, start, end)
-
         # make sure new items also have there widget
         if start == end:
             end += 1
         self._set_items_widget(start, end)
+
+    def update(self, index):
+        print("view update")
+        super(EditorView, self).update(index)

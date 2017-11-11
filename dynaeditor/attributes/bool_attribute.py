@@ -9,6 +9,7 @@ class BoolAttribute(BaseAttribute):
         # store arguments for widget creation
         self._nice_name = nice_name
         self._default_value = default_value
+        self.visible = False
         super(BoolAttribute, self).__init__(_type, attr)
 
     @staticmethod
