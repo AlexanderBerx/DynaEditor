@@ -9,6 +9,9 @@ class EditorModel(QtCore.QAbstractListModel):
         super(EditorModel, self).__init__()
         self._items = []
 
+    def set_to_node(self, node):
+        self.clear()
+
     def add_from_mappings(self, attr_mappings):
         for mapping in attr_mappings:
             try:
@@ -47,6 +50,9 @@ class EditorModel(QtCore.QAbstractListModel):
             count -= 1
 
         self.endRemoveRows()
+
+    def clear(self):
+        self.removeRows(0, self.rowCount())
 
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable

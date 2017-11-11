@@ -10,14 +10,14 @@ from dynaeditor.controller import Editor
 from dynaeditor.utils import general_utils
 
 
-def load_test_data(editor):
+def test_data():
     logger = logging.getLogger(__name__)
     logger.debug("Loading Test data")
     with open(r"C:\Workspace\DynaEditor\rsc\test_data.json", "r") as file_in:
         test_data = json.load(file_in)
     mapped_data = [general_utils.key_map_config(data) for data in test_data]
 
-    editor.set_editor_options(mapped_data)
+    return mapped_data
 
 
 def load_resources():
@@ -48,6 +48,7 @@ def main():
 
     editor = Editor()
     editor.view.show()
+    editor.model.add_from_mappings(test_data())
 
     if general_utils.in_maya_standalone():
         logger.info("Executing QApplication")

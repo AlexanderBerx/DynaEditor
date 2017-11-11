@@ -23,6 +23,7 @@ class Editor(QtCore.QObject):
         self.check_for_existing_window()
         self.view = EditorWidget()
         self.model = EditorModel()
+        self.view.set_attr_model(self.model)
         self._connect_signals()
         self._lock_type = False
 
