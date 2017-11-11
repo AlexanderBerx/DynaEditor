@@ -6,6 +6,7 @@ from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets.window_widget import EditorWidget
+from dynaeditor.widgets.editor_display_view import EditorDisplayView
 from dynaeditor.model import EditorModel
 
 
@@ -72,7 +73,10 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot()
     def display_prefs(self):
-        print "display"
+        self.prefs_view = EditorDisplayView()
+        self.prefs_view.setModel(self.model)
+        self.prefs_view.show()
+
 
 
 def main():

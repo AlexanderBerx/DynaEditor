@@ -2,13 +2,50 @@ from PySide2 import QtCore
 from dynaeditor.attributes.attribute import Attribute
 
 
+class DisplayModelDelegate(QtCore.QAbstractListModel):
+    WIDGET_ROLE = 20
+    def __init__(self):
+        super(DisplayModelDelegate, self).__init__()
+        self._items = []
+        self._parent_model = None #  type:EditorModel
+
+    def set_parent_model(self, model):
+        self._parent_model = model
+
+    def rowCount(self):
+        return self._parent_model.row_count_visible()
+
+    def data(self, index, role=QtCore.Qt.DisplayRole):
+        visible = self._parent_model.get_visible()
+        if role == self.WIDGET_ROLE:
+            widget = visible[index.row()].widget
+            # connect the signal
+            visible[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
+            return widget
+        elif role == QtCore.Qt.StatusTipRole:
+            return str(visible[index.row()])
+        elif role == QtCore.Qt.WhatsThisRole:
+            return str(visible[index.row()])
+        elif role == QtCore.Qt.SizeHintRole:
+            return visible[index.row()].widget.sizeHint()
+        return None
+
+    def flags(self, index):
+        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable
+
+
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
+    DISPLAY_ROLE = 21
     signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self):
         super(EditorModel, self).__init__()
         self._items = []
+        self._display_delegate = DisplayModelDelegate()
+
+    def get_display_delegate(self):
+        return self._display_delegate
 
     def set_to_node(self, node):
         self.clear()
@@ -22,8 +59,14 @@ class EditorModel(QtCore.QAbstractListModel):
                 continue
             self.add_item(attribute)
 
-    def rowCount(self, parent=QtCore.QModelIndex()):
+    def rowCount(self, parent=QtCore.QModelIndex(), visible=True):
         return len(self._items)
+
+    def row_count_visible(self):
+        return len(self.get_visible())
+
+    def get_visible(self):
+        return [i for i in self._items if i.visible == True]
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == self.WIDGET_ROLE:
@@ -31,8 +74,12 @@ class EditorModel(QtCore.QAbstractListModel):
             # connect the signal
             self._items[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
             return widget
-        elif role == QtCore.Qt.DisplayRole:
-            return self._items[index.row()]
+        elif role == self.DISPLAY_ROLE:
+            return self._items[index.row()].visible
+        elif role == QtCore.Qt.StatusTipRole:
+            return str(self._items[index.row()])
+        elif role == QtCore.Qt.WhatsThisRole:
+            return str(self._items[index.row()])
         elif role == QtCore.Qt.SizeHintRole:
             return self._items[index.row()].widget.sizeHint()
         return None

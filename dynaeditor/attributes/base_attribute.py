@@ -1,5 +1,5 @@
 try:
-    from PySide2 import QtCore
+    from PySide2 import QtCore, QtWidgets, QtGui
 except ImportError:
     from Qt import QtCore
 from dynaeditor.widgets.base_widget import BaseWidget
@@ -24,6 +24,12 @@ class BaseAttribute(QtCore.QObject):
         if type(self) == BaseAttribute:
             raise NotImplementedError('BaseAttribute is an abstract class')
 
+    def __repr__(self):
+        return self.name
+
+    def __str__(self):
+        return self.name
+
     @property
     def type_(self):
         if not self._type:
@@ -42,7 +48,7 @@ class BaseAttribute(QtCore.QObject):
         if not self._widget:
             self._widget = self._create_widget()
             self.connect_signals()
-            
+
         return self._widget
 
     def _create_widget(self):

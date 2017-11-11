@@ -1,9 +1,8 @@
-from PySide2 import QtWidgets, QtCore
+from PySide2 import QtWidgets
 from dynaeditor.model import EditorModel
 
 
 class EditorView(QtWidgets.QListView):
-
     def __init__(self):
         super(EditorView, self).__init__()
         self.setAlternatingRowColors(True)
