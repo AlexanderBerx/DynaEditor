@@ -17,7 +17,6 @@ class EditorView(QtWidgets.QListView):
             end = self.model().rowCount()
         items = range(start, end)
 
-
         for index in items:
             # get the index to the model
             index = model.index(index)
