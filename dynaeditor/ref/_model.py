@@ -17,21 +17,32 @@ class EditorModel(QtCore.QAbstractListModel):
                 continue
             self._attr_items.append(attribute)
 
-    def rowCount(self, parent):
+    def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._attr_items)
 
-    def data(self, index, role):
+    def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == QtCore.Qt.DisplayRole:
             return self._attr_items[index.row()].widget
         elif role == QtCore.Qt.SizeHintRole:
             return self._attr_items[index.row()].widget.sizeHint()
         else:
-            pass
+            return self._attr_items[index.row()]
 
 
 class ListView(QtWidgets.QListView):
     def __init__(self):
         super(ListView, self).__init__()
+
+    def dataChanged(self, *args, **kwargs):
+        super(ListView, self).dataChanged(*args, **kwargs)
+        print("changed")
+
+    def setModel(self, *args, **kwargs):
+        super(ListView, self).setModel(*args, **kwargs)
+        # set widgets for all the items
+        for index in range(self.model().rowCount()):
+            pass
+            #self.setIndexWidget(index, )
 
     def setIndexWidget(self, *args, **kwargs):
         print("setting widget")
