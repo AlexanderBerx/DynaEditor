@@ -12,6 +12,7 @@ class BaseAttribute(QtCore.QObject):
     _type = None
     _widget = None
     _name = None
+    _visible = True
     signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self, _type, attr):
@@ -40,11 +41,20 @@ class BaseAttribute(QtCore.QObject):
         """
         if not self._widget:
             self._widget = self._create_widget()
-
+            self.connect_signals()
+            
         return self._widget
 
     def _create_widget(self):
         raise NotImplementedError()
+
+    @property
+    def visible(self):
+        return self._visible
+
+    @visible.setter
+    def visible(self, value):
+        self._visible = bool(value)
 
     @property
     def name(self):

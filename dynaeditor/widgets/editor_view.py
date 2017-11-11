@@ -1,7 +1,9 @@
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
+from dynaeditor.model import EditorModel
 
 
 class EditorView(QtWidgets.QListView):
+
     def __init__(self):
         super(EditorView, self).__init__()
         self.setAlternatingRowColors(True)
@@ -23,7 +25,7 @@ class EditorView(QtWidgets.QListView):
             # if the item has already an widget assigned to it, skip it
             if self.indexWidget(index):
                 continue
-            widget = model.data(index, 20)
+            widget = model.data(index, EditorModel.WIDGET_ROLE)
             self.setIndexWidget(index, widget)
 
     def setModel(self, model):

@@ -4,6 +4,7 @@ from dynaeditor.attributes.attribute import Attribute
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
+    signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self):
         super(EditorModel, self).__init__()
@@ -26,9 +27,14 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == self.WIDGET_ROLE:
-            return self._items[index.row()].widget
+            widget = self._items[index.row()].widget
+            # connect the signal
+            self._items[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
+            return widget
         elif role == QtCore.Qt.DisplayRole:
             return self._items[index.row()]
+        elif role == QtCore.Qt.SizeHintRole:
+            return self._items[index.row()].widget.sizeHint()
         return None
 
     def add_item(self, item):
@@ -56,3 +62,7 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable
+
+    @QtCore.Slot(str, str, str)
+    def apply_attr(self, name, type_, value):
+        self.signal_apply_attr.emit(name, type_, value)

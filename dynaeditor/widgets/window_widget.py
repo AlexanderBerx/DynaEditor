@@ -68,7 +68,7 @@ class EditorWidget(QtWidgets.QWidget):
         prefs_menu = QtWidgets.QMenu("Preferences")
         self._menu_bar.addMenu(prefs_menu)
 
-        prefs_menu.addAction("dispaly prefs", self.signal_display_prefs.emit)
+        prefs_menu.addAction("Display", self.signal_display_prefs.emit)
         self._menu_bar.addMenu("Help")
         return self._menu_bar
 
