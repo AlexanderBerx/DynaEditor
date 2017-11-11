@@ -39,7 +39,8 @@ class BaseAttribute(QtCore.QObject):
         :return: BaseWidget
         """
         if not self._widget:
-            self._create_widget()
+            self._widget = self._create_widget()
+
         return self._widget
 
     def _create_widget(self):

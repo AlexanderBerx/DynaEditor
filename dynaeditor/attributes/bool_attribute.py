@@ -18,4 +18,4 @@ class BoolAttribute(BaseAttribute):
         return True
 
     def _create_widget(self):
-        self._widget = BoolWidget(self._nice_name, self._default_value)
+        return BoolWidget(self._nice_name, self._default_value)
