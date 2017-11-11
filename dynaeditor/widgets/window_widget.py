@@ -2,8 +2,10 @@ try:
     from PySide2 import QtCore, QtWidgets, QtGui
 except ImportError:
     from Qt import QtCore, QtWidgets, QtGui
+from dynaeditor.widgets.editor_view import EditorView
 from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
+
 
 class EditorWidget(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
@@ -87,15 +89,11 @@ class EditorWidget(QtWidgets.QWidget):
         return widget_header
 
     def _create_editor_widget(self):
-        self.editor = QtWidgets.QListWidget()
-        self.editor.setAlternatingRowColors(True)
+        self.editor = EditorView()
         return self.editor
 
     def set_display_type(self, _type):
         self._lbl_display_type.setText("<b>{}</b>".format(_type))
-
-    def clear_editor(self):
-        self.editor.clear()
 
     def add_attr_widget(self, widget):
         """
@@ -106,11 +104,11 @@ class EditorWidget(QtWidgets.QWidget):
         item.setSizeHint(widget.sizeHint())
         self.editor.setItemWidget(item, widget)
 
-    def get_attr_model(self):
+    def set_attr_model(self, model):
         """
         :return: QtCore.QAbstractListModel
         """
-        return self.editor.model()
+        self.editor.setModel(model)
 
     def lock_type(self, lock=True):
         if lock:

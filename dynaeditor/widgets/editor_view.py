@@ -31,12 +31,6 @@ class EditorView(QtWidgets.QListView):
         super(EditorView, self).setModel(model)
         self._set_items_widget()
 
-    def update(self, index):
-        super(EditorView, self).update(index)
-
-    def edit(self, index):
-        super(EditorView, self).edit(index)
-
     def rowsInserted(self, parent, start, end):
         super(EditorView, self).rowsInserted(parent, start, end)
 
