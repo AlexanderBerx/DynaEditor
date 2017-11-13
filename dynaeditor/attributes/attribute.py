@@ -1,7 +1,7 @@
 from dynaeditor import const
-from dynaeditor.attributes.bool_attribute import BoolAttribute
-from dynaeditor.attributes.enum_attribute import EnumAttribute
-from dynaeditor.attributes.float3_attribute import Float3Attribute
+from dynaeditor.attributes.attribute_types import BoolAttribute
+from dynaeditor.attributes.attribute_types import EnumAttribute
+from dynaeditor.attributes.attribute_types import Float3Attribute
 
 
 class Attribute(object):
