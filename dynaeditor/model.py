@@ -41,7 +41,7 @@ class DisplayModelDelegate(QtCore.QAbstractListModel):
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
-    DISPLAY_ROLE = 21
+    VISIBILITY_ROLE = 21
     signal_apply_attr = QtCore.Signal(str, str, str)
     _display_delegate = None
 
@@ -89,7 +89,9 @@ class EditorModel(QtCore.QAbstractListModel):
             # connect the signal
             self._items[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
             return widget
-        elif role == self.DISPLAY_ROLE:
+        elif role == QtCore.Qt.CheckStateRole:
+            return self._items[index.row()].visible
+        elif role == self.VISIBILITY_ROLE:
             return self._items[index.row()].visible
         elif role == QtCore.Qt.StatusTipRole:
             return str(self._items[index.row()])
@@ -105,8 +107,6 @@ class EditorModel(QtCore.QAbstractListModel):
         self.beginInsertRows(QtCore.QModelIndex(), len(self._items), len(self._items))
         self._items.append(item)
         self.endInsertRows()
-
-
 
     def add_items(self, item_list):
         for item in item_list:
