@@ -71,6 +71,8 @@ class EditorModel(QtCore.QAbstractListModel):
             # skip not implemented types
             except TypeError as e:
                 continue
+            attribute.setCheckable(True)
+            attribute.flags()
             self.add_item(attribute)
         self._update_delegate()
 
@@ -103,6 +105,14 @@ class EditorModel(QtCore.QAbstractListModel):
             return str(self._items[index.row()])
         return None
 
+    def setData(self, index, value, role=QtCore.Qt.EditRole):
+        if role == QtCore.Qt.CheckStateRole:
+            self._items[index.row()].visible = not self._items[index.row()].visible
+            # self._update_delegate()
+            return True
+        return False
+
+
     def add_item(self, item):
         self.beginInsertRows(QtCore.QModelIndex(), len(self._items), len(self._items))
         self._items.append(item)
@@ -127,7 +137,7 @@ class EditorModel(QtCore.QAbstractListModel):
         self.removeRows(0, self.rowCount())
 
     def flags(self, index):
-        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable
+        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
 
     @QtCore.Slot(str, str, str)
     def apply_attr(self, name, type_, value):
