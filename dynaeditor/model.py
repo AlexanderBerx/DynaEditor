@@ -2,10 +2,10 @@ from PySide2 import QtCore
 from dynaeditor.attributes.attribute import Attribute
 
 
-class DisplayModelDelegate(QtCore.QAbstractListModel):
+class ModelProxy(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
     def __init__(self, parent=None):
-        super(DisplayModelDelegate, self).__init__(parent)
+        super(ModelProxy, self).__init__(parent)
         self._items = []
         self._parent_model = None #  type:EditorModel
 
@@ -31,35 +31,52 @@ class DisplayModelDelegate(QtCore.QAbstractListModel):
         return None
 
     def flags(self, index):
-        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsEditable | QtCore.Qt.ItemIsSelectable
+        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
 
-    def rowsAboutToBeInserted(self, parent, first, last):
-        super(DisplayModelDelegate, self).rowsAboutToBeInserted(parent, first, last)
-
-    def emit_update(self):
-        self.rowsInserted.emit(None, 0, self.rowCount())
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
     VISIBILITY_ROLE = 21
     signal_apply_attr = QtCore.Signal(str, str, str)
-    _display_delegate = None
+    _proxy = None
 
     def __init__(self):
         super(EditorModel, self).__init__()
         self._items = []
 
-    def get_model_delegate(self):
-        if not self._display_delegate:
-            self._display_delegate = DisplayModelDelegate()
-            self._display_delegate.set_parent_model(self)
-            # connect signals from parent to child
-        return self._display_delegate
+    def get_model_proxy(self):
+        if not self._proxy:
+            self._proxy = ModelProxy()
+            self._proxy.set_parent_model(self)
+            # connect signals from current to the delegate
 
-    def _update_delegate(self):
-        if not self._display_delegate:
+        return self._proxy
+
+    def _update_proxy(self, index=None):
+        # if no index is being passed on updated the whole proxy
+        if not index:
+            self._proxy.insertRow(0)
+            self._proxy.beginInsertRows(self._proxy.index(0), 0, self.row_count_visible())
+            self._proxy.endInsertRows()
             return
-        self._display_delegate.emit_update()
+
+        item = self._items[index.row()]
+        # update the proxy based on the visibility value of the item
+        if item.visible == True:
+            # note: an item being made visible translates as an row adding in the proxy model
+            print("show")
+            item_index = self.get_visible().index(item)
+            print item_index
+            self._proxy.insertRow(item_index+1)
+            self._proxy.beginInsertRows(self._proxy.index(item_index), item_index, item_index + 1)
+            #self._proxy.endInsertRows()
+
+        else:
+            # note: an item being hidden translates as an row being removed in the proxy model
+
+            # item_index = self.get_visible().index(item)
+            # self._proxy.rowsAboutToBeRemoved.emit(None, item_index, item_index)
+            print("hidden")
 
     def set_to_node(self, node):
         self.clear()
@@ -71,10 +88,8 @@ class EditorModel(QtCore.QAbstractListModel):
             # skip not implemented types
             except TypeError as e:
                 continue
-            attribute.setCheckable(True)
-            attribute.flags()
             self.add_item(attribute)
-        self._update_delegate()
+        self._update_proxy()
 
     def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._items)
@@ -108,10 +123,9 @@ class EditorModel(QtCore.QAbstractListModel):
     def setData(self, index, value, role=QtCore.Qt.EditRole):
         if role == QtCore.Qt.CheckStateRole:
             self._items[index.row()].visible = not self._items[index.row()].visible
-            # self._update_delegate()
+            self._update_proxy(index)
             return True
         return False
-
 
     def add_item(self, item):
         self.beginInsertRows(QtCore.QModelIndex(), len(self._items), len(self._items))
