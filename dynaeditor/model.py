@@ -9,9 +9,6 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
-    VISIBILITY_ROLE = 21
-    signal_apply_attr = QtCore.Signal(str, str, str)
-    _proxy = None
 
     def __init__(self):
         super(EditorModel, self).__init__()
@@ -43,8 +40,6 @@ class EditorModel(QtCore.QAbstractListModel):
             return self._items[index.row()].widget
         elif role == QtCore.Qt.CheckStateRole:
             return self._items[index.row()].visible
-        elif role == self.VISIBILITY_ROLE:
-            return self._items[index.row()].visible
         elif role == QtCore.Qt.StatusTipRole:
             return str(self._items[index.row()])
         elif role == QtCore.Qt.WhatsThisRole:
@@ -58,7 +53,6 @@ class EditorModel(QtCore.QAbstractListModel):
     def setData(self, index, value, role=QtCore.Qt.EditRole):
         if role == QtCore.Qt.CheckStateRole:
             self._items[index.row()].visible = not self._items[index.row()].visible
-            self._update_proxy(index)
             return True
         return False
 
