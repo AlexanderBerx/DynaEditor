@@ -7,7 +7,7 @@ from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets.window_widget import EditorWidget
 from dynaeditor.widgets.editor_display_view import EditorDisplayView
-from dynaeditor.model import EditorModel
+from dynaeditor.model import EditorModel, EditorProxyModel
 
 
 class Editor(QtCore.QObject):
@@ -24,7 +24,9 @@ class Editor(QtCore.QObject):
         self.check_for_existing_window()
         self.view = EditorWidget()
         self.model = EditorModel()
-        self.view.set_attr_model(self.model.get_model_proxy())
+        self.proxy_model = EditorProxyModel()
+        self.proxy_model.setSourceModel(self.model)
+        self.view.set_attr_model(self.proxy_model)
         self._connect_signals()
         self._lock_type = False
 

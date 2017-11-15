@@ -1,37 +1,10 @@
-from PySide2 import QtCore
+from PySide2 import QtCore, QtGui
 from dynaeditor.attributes.attribute import Attribute
 
 
-class ModelProxy(QtCore.QAbstractListModel):
-    WIDGET_ROLE = 20
-    def __init__(self, parent=None):
-        super(ModelProxy, self).__init__(parent)
-        self._items = []
-        self._parent_model = None #  type:EditorModel
-
-    def set_parent_model(self, model):
-        self._parent_model = model
-
-    def rowCount(self, parent=QtCore.QModelIndex()):
-        return self._parent_model.row_count_visible()
-
-    def data(self, index, role=QtCore.Qt.DisplayRole):
-        visible = self._parent_model.get_visible()
-        if role == self.WIDGET_ROLE:
-            widget = visible[index.row()].widget
-            # connect the signal
-            # visible[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
-            return widget
-        elif role == QtCore.Qt.StatusTipRole:
-            return str(visible[index.row()])
-        elif role == QtCore.Qt.WhatsThisRole:
-            return str(visible[index.row()])
-        elif role == QtCore.Qt.SizeHintRole:
-            return visible[index.row()].widget.sizeHint()
-        return None
-
-    def flags(self, index):
-        return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable
+class EditorProxyModel(QtCore.QSortFilterProxyModel):
+    def __init__(self):
+        super(EditorProxyModel, self).__init__()
 
 
 class EditorModel(QtCore.QAbstractListModel):
@@ -44,40 +17,6 @@ class EditorModel(QtCore.QAbstractListModel):
         super(EditorModel, self).__init__()
         self._items = []
 
-    def get_model_proxy(self):
-        if not self._proxy:
-            self._proxy = ModelProxy()
-            self._proxy.set_parent_model(self)
-            # connect signals from current to the delegate
-
-        return self._proxy
-
-    def _update_proxy(self, index=None):
-        # if no index is being passed on updated the whole proxy
-        if not index:
-            self._proxy.insertRow(0)
-            self._proxy.beginInsertRows(self._proxy.index(0), 0, self.row_count_visible())
-            self._proxy.endInsertRows()
-            return
-
-        item = self._items[index.row()]
-        # update the proxy based on the visibility value of the item
-        if item.visible == True:
-            # note: an item being made visible translates as an row adding in the proxy model
-            print("show")
-            item_index = self.get_visible().index(item)
-            print item_index
-            self._proxy.insertRow(item_index+1)
-            self._proxy.beginInsertRows(self._proxy.index(item_index), item_index, item_index + 1)
-            #self._proxy.endInsertRows()
-
-        else:
-            # note: an item being hidden translates as an row being removed in the proxy model
-
-            # item_index = self.get_visible().index(item)
-            # self._proxy.rowsAboutToBeRemoved.emit(None, item_index, item_index)
-            print("hidden")
-
     def set_to_node(self, node):
         self.clear()
 
@@ -89,7 +28,6 @@ class EditorModel(QtCore.QAbstractListModel):
             except TypeError as e:
                 continue
             self.add_item(attribute)
-        self._update_proxy()
 
     def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._items)
@@ -102,10 +40,7 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == self.WIDGET_ROLE:
-            widget = self._items[index.row()].widget
-            # connect the signal
-            self._items[index.row()].signal_apply_attr[str, str, str].connect(self.apply_attr)
-            return widget
+            return self._items[index.row()].widget
         elif role == QtCore.Qt.CheckStateRole:
             return self._items[index.row()].visible
         elif role == self.VISIBILITY_ROLE:
@@ -152,7 +87,3 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
-
-    @QtCore.Slot(str, str, str)
-    def apply_attr(self, name, type_, value):
-        self.signal_apply_attr.emit(name, type_, value)
