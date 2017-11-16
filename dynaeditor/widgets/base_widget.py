@@ -10,7 +10,7 @@ class BaseWidget(QtWidgets.QWidget):
     Abstract widget class, serves as a base for all attribute widget classes
     child classes need to overwrite all abstract methods
     """
-    signal_apply_attr = QtCore.Signal(str)
+    signal_apply_attr = QtCore.Signal(str, str, str)
     SET_BTN_WIDTH = 40
     SPACER_WIDTH = 10
 
@@ -77,9 +77,9 @@ class BaseWidget(QtWidgets.QWidget):
         emits the current value of the widget as a string
         :return: None
         """
-        value = self.get_value()
-        value = json.dumps(value)
-        self.signal_apply_attr.emit(value)
+        attr_value = self.get_value()
+        attr_value = json.dumps(attr_value)
+        self.signal_apply_attr.emit(self._attr_name, attr_value, self._type)
 
     def connect_signals(self):
         """

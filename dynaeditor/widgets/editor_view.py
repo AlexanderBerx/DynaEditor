@@ -1,8 +1,9 @@
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
 from dynaeditor.model import EditorModel
 
 
 class EditorView(QtWidgets.QListView):
+    signal_apply_attr = QtCore.Signal(str, str, str)
     def __init__(self):
         super(EditorView, self).__init__()
         self.setAlternatingRowColors(True)
@@ -25,6 +26,7 @@ class EditorView(QtWidgets.QListView):
             if self.indexWidget(index):
                 continue
             widget = model.data(index, EditorModel.WIDGET_ROLE)
+            widget.signal_apply_attr[str, str, str].connect(self._emit_apply_attr)
             self.setIndexWidget(index, widget)
 
     def setModel(self, model):
@@ -38,6 +40,6 @@ class EditorView(QtWidgets.QListView):
             end += 1
         self._set_items_widget(start, end)
 
-    def update(self, index):
-        print("view update")
-        super(EditorView, self).update(index)
+    @QtCore.Slot(str, str, str)
+    def _emit_apply_attr(self, attr_name, attr_value, attr_type):
+        self.signal_apply_attr.emit(attr_name, attr_value, attr_type)

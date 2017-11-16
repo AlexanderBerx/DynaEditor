@@ -1,7 +1,4 @@
-try:
-    from PySide2 import QtCore, QtWidgets, QtGui
-except ImportError:
-    from Qt import QtCore, QtWidgets, QtGui
+from PySide2 import QtCore, QtWidgets, QtGui
 from dynaeditor.widgets.editor_view import EditorView
 from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
@@ -12,6 +9,7 @@ class EditorWidget(QtWidgets.QWidget):
     OBJ_NAME = "dynaAttrEditor"
     signal_lock_type = QtCore.Signal()
     signal_display_prefs  = QtCore.Signal()
+    signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self, parent=None):
         if not parent:
@@ -46,13 +44,14 @@ class EditorWidget(QtWidgets.QWidget):
         self._lock_icon = QtGui.QIcon(":/icon_lock.png")
         self._unlock_icon = QtGui.QIcon(":/icon_unlock.png")
 
-
         layout_main = QtWidgets.QVBoxLayout()
         layout_main.setMargin(0)
         self.setLayout(layout_main)
+
         layout_main.addWidget(self._create_menu_bar())
         layout_main.addWidget(self._create_header_widget())
         layout_main.addWidget(self._create_editor_widget())
+        layout_main.addWidget(self._create_status_bar_widget())
 
     def center_to_parent(self):
         if self.parent():
@@ -90,25 +89,25 @@ class EditorWidget(QtWidgets.QWidget):
 
     def _create_editor_widget(self):
         self.editor = EditorView()
+        self.editor.signal_apply_attr[str, str, str].connect(self._emit_apply_attr)
         return self.editor
+
+    def _create_status_bar_widget(self):
+        self._status_bar = QtWidgets.QStatusBar()
+        return self._status_bar
 
     def set_display_type(self, _type):
         self._lbl_display_type.setText("<b>{}</b>".format(_type))
-
-    def add_attr_widget(self, widget):
-        """
-        :param QtWidgets.QWidget widget:
-        :return:
-        """
-        item = QtWidgets.QListWidgetItem(self.editor)
-        item.setSizeHint(widget.sizeHint())
-        self.editor.setItemWidget(item, widget)
 
     def set_attr_model(self, model):
         """
         :return: QtCore.QAbstractListModel
         """
         self.editor.setModel(model)
+
+    @QtCore.Slot(str, str, str)
+    def _emit_apply_attr(self, attr_name, attr_value, attr_type):
+        self.signal_apply_attr.emit(attr_name, attr_value, attr_type)
 
     def lock_type(self, lock=True):
         if lock:

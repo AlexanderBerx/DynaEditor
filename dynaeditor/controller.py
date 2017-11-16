@@ -34,6 +34,7 @@ class Editor(QtCore.QObject):
     def _connect_signals(self):
         self.view.signal_lock_type.connect(self.toggle_type_lock)
         self.view.signal_display_prefs.connect(self.display_prefs)
+        self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
 
     @staticmethod
     def check_for_existing_window():
@@ -59,7 +60,7 @@ class Editor(QtCore.QObject):
         pass
 
     @QtCore.Slot(str, str, str)
-    def apply_attr_to_selection(self, name, _type, value):
+    def apply_attr_to_selection(self, name, value, _type):
         logger = logging.getLogger(__name__)
         logger.info("Applying attr: {}".format(name))
         logger.info("_type: {}".format(_type))
