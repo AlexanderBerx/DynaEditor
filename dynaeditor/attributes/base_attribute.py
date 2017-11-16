@@ -16,10 +16,6 @@ class BaseAttribute(object):
         self.type_ = _type
         self.name = attr
 
-        # ensure abstraction
-        if type(self) == BaseAttribute:
-            raise NotImplementedError('BaseAttribute is an abstract class')
-
     def __repr__(self):
         return self.name
 

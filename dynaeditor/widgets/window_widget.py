@@ -105,6 +105,9 @@ class EditorWidget(QtWidgets.QWidget):
         """
         self.editor.setModel(model)
 
+    def set_status_text(self, text, time_out=0):
+        self._status_bar.showMessage(str(text), time_out)
+
     @QtCore.Slot(str, str, str)
     def _emit_apply_attr(self, attr_name, attr_value, attr_type):
         self.signal_apply_attr.emit(attr_name, attr_value, attr_type)

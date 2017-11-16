@@ -6,6 +6,8 @@ from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets.window_widget import EditorWidget
+from dynaeditor import model
+reload(model)
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
@@ -51,13 +53,10 @@ class Editor(QtCore.QObject):
         if not node:
             self.view.set_display_type("----")
             return
-
         # display the selected tye
         self.view.set_display_type(cmds.objectType(node))
-        self._update_model_to_node(node)
-
-    def _update_model_to_node(self, node):
-        pass
+        self.view.set_status_text("Updating to type: {}".format(cmds.objectType(node)), 1000)
+        self.model.set_to_node(node)
 
     @QtCore.Slot(str, str, str)
     def apply_attr_to_selection(self, name, value, _type):
@@ -66,7 +65,7 @@ class Editor(QtCore.QObject):
         logger.info("_type: {}".format(_type))
         logger.info("value: {}".format(value))
         value = json.loads(value)
-        print value
+        self.view.set_status_text(name, 2000)
 
     @QtCore.Slot()
     def toggle_type_lock(self):

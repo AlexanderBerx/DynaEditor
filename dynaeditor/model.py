@@ -1,4 +1,5 @@
-from PySide2 import QtCore, QtGui
+from PySide2 import QtCore
+from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
 
 
@@ -29,13 +30,17 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def set_to_node(self, node):
         self.clear()
+        self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
-    def add_from_mappings(self, attr_mappings):
+    def add_from_mappings(self, attr_mappings, mapped=True):
         for mapping in attr_mappings:
             try:
-                attribute = Attribute(**mapping)
+                if mapped:
+                    attribute = Attribute(**mapping)
+                else:
+                    attribute = Attribute(*mapping)
             # skip not implemented types
-            except TypeError as e:
+            except TypeError:
                 continue
             self.add_item(attribute)
 
@@ -59,11 +64,9 @@ class EditorModel(QtCore.QAbstractListModel):
             return str(self._items[index.row()])
         elif role == QtCore.Qt.WhatsThisRole:
             return str(self._items[index.row()])
-
         #elif role == QtCore.Qt.SizeHintRole:
         #    if self._items[index.row()].widget:
         #        return self._items[index.row()].widget.sizeHint()
-
         elif role == QtCore.Qt.DisplayRole:
             return str(self._items[index.row()])
         return None
