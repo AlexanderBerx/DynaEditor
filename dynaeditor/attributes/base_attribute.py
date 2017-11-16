@@ -4,7 +4,7 @@ except ImportError:
     from Qt import QtCore
 
 
-class BaseAttribute(QtCore.QObject):
+class BaseAttribute(object):
     """
     BaseAttribute, abstract class where all attribute classes need to inherit from
     """
@@ -13,7 +13,6 @@ class BaseAttribute(QtCore.QObject):
     _visible = True
 
     def __init__(self, _type, attr):
-        super(BaseAttribute, self).__init__()
         self.type_ = _type
         self.name = attr
 
@@ -64,7 +63,3 @@ class BaseAttribute(QtCore.QObject):
     @name.setter
     def name(self, value):
         self._name = value
-
-    @staticmethod
-    def validate_args():
-        raise NotImplementedError

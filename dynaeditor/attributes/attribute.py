@@ -45,16 +45,3 @@ class Attribute(object):
         if type_ in Attribute.TYPE_MAPPING.keys():
             return True
         return False
-
-    @staticmethod
-    def validate_attr_args(type_, *args, **kwargs):
-        """
-        validates the arguments for the class of the given type.
-        If the given type can't be found an TypeError will be raised.
-        :param str type_: name of the class type
-        :param args:
-        :param kwargs:
-        :return: bool
-        """
-        attr_class = Attribute.get_class_for_type(type_)
-        return attr_class.validate_args(*args, **kwargs)
