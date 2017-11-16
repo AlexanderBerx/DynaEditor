@@ -2,7 +2,6 @@ try:
     from PySide2 import QtCore, QtWidgets, QtGui
 except ImportError:
     from Qt import QtCore
-from dynaeditor.widgets.base_widget import BaseWidget
 
 
 class BaseAttribute(QtCore.QObject):
@@ -10,10 +9,8 @@ class BaseAttribute(QtCore.QObject):
     BaseAttribute, abstract class where all attribute classes need to inherit from
     """
     _type = None
-    _widget = None
     _name = None
     _visible = True
-    signal_apply_attr = QtCore.Signal(str, str, str)
 
     def __init__(self, _type, attr):
         super(BaseAttribute, self).__init__()
@@ -45,11 +42,7 @@ class BaseAttribute(QtCore.QObject):
         """
         :return: BaseWidget
         """
-        if not self._widget:
-            self._widget = self._create_widget()
-            self.connect_signals()
-
-        return self._widget
+        return self._create_widget()
 
     def _create_widget(self):
         raise NotImplementedError()
@@ -71,13 +64,6 @@ class BaseAttribute(QtCore.QObject):
     @name.setter
     def name(self, value):
         self._name = value
-
-    def connect_signals(self):
-        self.widget.signal_apply_attr[str].connect(self._emit_attr)
-
-    @QtCore.Slot(str)
-    def _emit_attr(self, value):
-        self.signal_apply_attr.emit(self.name, self.type_, value)
 
     @staticmethod
     def validate_args():
