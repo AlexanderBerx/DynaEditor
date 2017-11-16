@@ -12,49 +12,49 @@ class Attribute(object):
                     const.ATYPE_BOOL: BoolAttribute,
                     const.ATYPE_FLOAT3: Float3Attribute}
 
-    def __new__(cls, _type, *args, **kwargs):
+    def __new__(cls, type_, *args, **kwargs):
         """
         creates and attribute of the given _type with the given options
         if the given type is not supported a TypeError will be raised
-        :param str _type: name of the wanted type
+        :param str type_: name of the wanted type
         :return: Attribute
         """
-        _class = Attribute.get_class_for_type(_type)
+        _class = Attribute.get_class_for_type(type_)
         return _class(*args, **kwargs)
 
     @staticmethod
-    def get_class_for_type(_type):
+    def get_class_for_type(type_):
         """
         staticmethod, returns the class of the given _type,
         if the given type can't be found an TypeError will be raised
-        :param str _type: type name of the attribute
+        :param str type_: type name of the attribute
         :return: cls
         """
         for keys, _class in Attribute.TYPE_MAPPING.items():
-            if _type == keys:
+            if type_ == keys:
                 return _class
-        raise TypeError("Not Implemented type: {}".format(_type))
+        raise TypeError("Not Implemented type: {}".format(type_))
 
     @staticmethod
-    def is_type_supported(_type):
+    def is_type_supported(type_):
         """
         static method which checks if the given attribute type is supported or not
-        :param _type: 
+        :param type_: 
         :return: bool
         """
-        if _type in Attribute.TYPE_MAPPING.keys():
+        if type_ in Attribute.TYPE_MAPPING.keys():
             return True
         return False
 
     @staticmethod
-    def validate_attr_args(_type, *args, **kwargs):
+    def validate_attr_args(type_, *args, **kwargs):
         """
         validates the arguments for the class of the given type.
         If the given type can't be found an TypeError will be raised.
-        :param str _type: name of the class type
+        :param str type_: name of the class type
         :param args:
         :param kwargs:
         :return: bool
         """
-        attr_class = Attribute.get_class_for_type(_type)
+        attr_class = Attribute.get_class_for_type(type_)
         return attr_class.validate_args(*args, **kwargs)

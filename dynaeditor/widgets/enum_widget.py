@@ -10,7 +10,7 @@ class EnumWidget(BaseWidget):
     """
     EnumWidget class, inherits from BaseWidget for displaying enum attributes
     """
-    def __init__(self, nice_name, default_value, options):
+    def __init__(self, type_, attr, default_value, options, nice_name=None):
         """
         initialise the widget
         :param str nice_name: nice name of the widget to be displayed
@@ -18,7 +18,7 @@ class EnumWidget(BaseWidget):
         :param list options: str list of the options of the widget
         """
         self._cbo_enum = None  # type: QtWidgets.QComboBox
-        super(EnumWidget, self).__init__(nice_name, default_value)
+        super(EnumWidget, self).__init__(type_, attr, default_value, nice_name)
         self.set_options(options)
         self.set_default_value(default_value)
 

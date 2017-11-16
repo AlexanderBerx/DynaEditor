@@ -10,14 +10,14 @@ class BoolWidget(BaseWidget):
     """
     BoolWidget class, inherits from BaseWidget, widget for displaying bool attributes
     """
-    def __init__(self, nice_name, default_value):
+    def __init__(self, type_, attr, default_value, nice_name=None):
         """
         initialise the widget
         :param str nice_name: nice name of the widget to be displayed
         :param bool default_value: default value of the widget
         """
         self._chb_bool = None
-        super(BoolWidget, self).__init__(nice_name, default_value)
+        super(BoolWidget, self).__init__(type_, attr, default_value, nice_name)
 
     def create_type_widget(self):
         """

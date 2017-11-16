@@ -14,10 +14,18 @@ class BaseWidget(QtWidgets.QWidget):
     SET_BTN_WIDTH = 40
     SPACER_WIDTH = 10
 
-    def __init__(self, nice_name, default_value):
+    def __init__(self, type_, attr, default_value, nice_name=None):
         super(BaseWidget, self).__init__()
+        if not nice_name:
+            nice_name = attr
+
         self._create_ui(nice_name)
         self.set_default_value(default_value)
+
+        self._type = type_
+        self._attr_name = attr
+        self._default_value = default_value
+
         self.connect_signals()
 
     def _create_ui(self, nice_name):

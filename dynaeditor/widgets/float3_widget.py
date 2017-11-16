@@ -11,7 +11,7 @@ class Float3Widget(BaseWidget):
     """
     Float3Widget for displaying float3 attributes, inherits from BaseWidget
     """
-    def __init__(self, nice_name, default_value, _min, _max):
+    def __init__(self, type_, attr, default_value, _min, _max, nice_name=None):
         """
         initialises the widget
         :param str nice_name: name of the widget to be displayed
@@ -19,7 +19,7 @@ class Float3Widget(BaseWidget):
         :param list _min: min value of the widget, float list of length 3
         :param list _max: max value of the widget, float list of length 3
         """
-        super(Float3Widget, self).__init__(nice_name, default_value)
+        super(Float3Widget, self).__init__(type_, attr, default_value, nice_name)
         self.set_min(_min)
         self.set_max(_max)
 
