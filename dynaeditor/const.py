@@ -12,7 +12,6 @@ ATTR_ARG_DEFAULT_VALUE = "default_value"
 ATTR_ARG_OPTIONS = "options"
 ATTR_ARG_FILE_PATH = "file_path"
 ATTR_ARG_COLOR = "color"
-ATTR_ARG_CATEGORIES = "categories"
 
 ARG_KEYS = [ATTR_ARG_TYPE,
             ATTR_ARG_ATTR,
@@ -22,8 +21,7 @@ ARG_KEYS = [ATTR_ARG_TYPE,
             ATTR_ARG_DEFAULT_VALUE,
             ATTR_ARG_OPTIONS,
             ATTR_ARG_FILE_PATH,
-            ATTR_ARG_COLOR,
-            ATTR_ARG_CATEGORIES]
+            ATTR_ARG_COLOR]
 
 # maya argument keys, only needed for unit testing
 M_ATTR_ARG_TYPE = "attributeType"
@@ -35,7 +33,6 @@ M_ATTR_ARG_DEFAULT_VALUE = "defaultValue"
 M_ATTR_ARG_OPTIONS = "enumName"
 M_ATTR_ARG_FILE_PATH = "usedAsFilename"
 M_ATTR_ARG_COLOR = "usedAsColor"
-M_ATTR_ARG_CATEGORIES = "category"
 
 M_ARG_KEYS = [M_ATTR_ARG_TYPE,
               M_ATTR_ARG_ATTR,
@@ -45,8 +42,7 @@ M_ARG_KEYS = [M_ATTR_ARG_TYPE,
               M_ATTR_ARG_DEFAULT_VALUE,
               M_ATTR_ARG_OPTIONS,
               M_ATTR_ARG_FILE_PATH,
-              M_ATTR_ARG_COLOR,
-              M_ATTR_ARG_CATEGORIES]
+              M_ATTR_ARG_COLOR]
 
 # attribute types
 ATYPE_BOOL = "bool"

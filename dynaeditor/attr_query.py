@@ -126,9 +126,8 @@ def iter_obj_attrs(obj):
         options = get_attr_enum(obj, attr)
         file_path = cmds.attributeQuery(attr, node=obj, usedAsFilename=True)
         color = cmds.attributeQuery(attr, node=obj, usedAsColor=True)
-        categories = cmds.attributeQuery(attr, node=obj, categories=True)
 
-        yield _type, attr, nice_name, _min, _max, default_value, options, file_path, color, categories
+        yield _type, attr, nice_name, _min, _max, default_value, options, file_path, color
 
 
 def iter_obj_attrs_mapped(obj):

@@ -59,9 +59,11 @@ class EditorModel(QtCore.QAbstractListModel):
             return str(self._items[index.row()])
         elif role == QtCore.Qt.WhatsThisRole:
             return str(self._items[index.row()])
-        elif role == QtCore.Qt.SizeHintRole:
-            if self._items[index.row()].widget:
-                return self._items[index.row()].widget.sizeHint()
+
+        #elif role == QtCore.Qt.SizeHintRole:
+        #    if self._items[index.row()].widget:
+        #        return self._items[index.row()].widget.sizeHint()
+
         elif role == QtCore.Qt.DisplayRole:
             return str(self._items[index.row()])
         return None
