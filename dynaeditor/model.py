@@ -6,9 +6,22 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
     def __init__(self):
         super(EditorProxyModel, self).__init__()
 
+    def data(self, index, role=QtCore.Qt.DisplayRole):
+        if role == QtCore.Qt.CheckStateRole:
+            return None
+        if role == QtCore.Qt.DisplayRole:
+            return None
+        else:
+            return super(EditorProxyModel, self).data(index, role)
+
+    def filterAcceptsRow(self, source_row, source_parent):
+        source_index = self.sourceModel().index(source_row)
+        return self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE)
+
 
 class EditorModel(QtCore.QAbstractListModel):
     WIDGET_ROLE = 20
+    DISPLAY_ROLE = 21
 
     def __init__(self):
         super(EditorModel, self).__init__()
@@ -38,6 +51,8 @@ class EditorModel(QtCore.QAbstractListModel):
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == self.WIDGET_ROLE:
             return self._items[index.row()].widget
+        elif role == self.DISPLAY_ROLE:
+            return self._items[index.row()].visible
         elif role == QtCore.Qt.CheckStateRole:
             return self._items[index.row()].visible
         elif role == QtCore.Qt.StatusTipRole:
@@ -53,6 +68,7 @@ class EditorModel(QtCore.QAbstractListModel):
     def setData(self, index, value, role=QtCore.Qt.EditRole):
         if role == QtCore.Qt.CheckStateRole:
             self._items[index.row()].visible = not self._items[index.row()].visible
+            self.dataChanged.emit(index, index, 1)
             return True
         return False
 

@@ -20,7 +20,7 @@ class EditorView(QtWidgets.QListView):
 
         for index in items:
             # get the index to the model
-            index = model.index(index)
+            index = model.index(index, 0)
             # if the item has already an widget assigned to it, skip it
             if self.indexWidget(index):
                 continue
