@@ -7,9 +7,10 @@ from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets import window_widget
 reload(window_widget)
-from dynaeditor.widgets.window_widget import EditorWidget
 from dynaeditor import model
 reload(model)
+
+from dynaeditor.widgets.window_widget import EditorWidget
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
@@ -23,6 +24,7 @@ class Editor(QtCore.QObject):
         self._job_manager = JobManager()
         self._job_manager.clean_up_jobs()
         self._job_manager.create_job(event=["SelectionChanged", lambda:self.selection_change()])
+        self._prefs_view = None
 
         self.check_for_existing_window()
         self.view = EditorWidget()
@@ -80,11 +82,11 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot()
     def display_prefs(self):
-        self.prefs_view = QtWidgets.QListView(self.view)
-        self.prefs_view.setWindowTitle("Item Display")
-        self.prefs_view.setWindowFlags(QtCore.Qt.Window)
-        self.prefs_view.setModel(self.model)
-        self.prefs_view.show()
+        self._prefs_view = QtWidgets.QListView(self.view)
+        self._prefs_view.setWindowTitle("Item Display")
+        self._prefs_view.setWindowFlags(QtCore.Qt.Window)
+        self._prefs_view.setModel(self.model)
+        self._prefs_view.show()
 
     @QtCore.Slot(bool)
     def restrict_to_type(self, restrict):
@@ -100,8 +102,11 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot()
     def window_close(self):
-        if self.prefs_view:
-            self.prefs_view.close()
+        if self._prefs_view:
+            self._prefs_view.close()
+
+        self._job_manager.clean_up_jobs()
+
 
 
 def main():

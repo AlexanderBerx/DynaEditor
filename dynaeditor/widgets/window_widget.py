@@ -27,10 +27,10 @@ class EditorWidget(QtWidgets.QWidget):
         self.center_to_parent()
         self.load_prefs()
 
-    def closeEvent(self, *args, **kwargs):
+    def closeEvent(self, event):
         self.save_prefs()
         self.signal_window_close.emit()
-        super(EditorWidget, self).closeEvent(*args, **kwargs)
+        self.deleteLater()
 
     def save_prefs(self):
         prefs_manager = PrefsManager()

@@ -28,18 +28,18 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def __init__(self):
         super(EditorModel, self).__init__()
-        self._type = None
+        self._node_type = None
         self._restrict_to_type = True
         self._affect_children = True
         self._items = []
 
     @property
-    def type(self):
-        return self._type
+    def node_type(self):
+        return self._node_type
 
-    @type.setter
-    def type(self, value):
-        self._type = value
+    @node_type.setter
+    def node_type(self, value):
+        self._node_type = value
         self.signal_type_changed.emit(value)
 
     @property
@@ -59,8 +59,11 @@ class EditorModel(QtCore.QAbstractListModel):
         self._affect_children = bool(value)
 
     def set_to_node(self, node):
+        node_type = cmds.objectType(node)
+        if node_type == self.node_type:
+            return
+        self.node_type = node_type
         self.clear()
-        self.type = cmds.objectType(node)
         self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
     def add_from_mappings(self, attr_mappings, mapped=True):
