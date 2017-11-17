@@ -42,6 +42,7 @@ class Editor(QtCore.QObject):
         self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
         self.view.signal_restrict_to_type[bool].connect(self.restrict_to_type)
         self.view.signal_affect_children[bool].connect(self.affect_children)
+        self.view.signal_window_close.connect(self.window_close)
         # from model
         self.model.signal_type_changed[str].connect(self.type_change)
 
@@ -79,21 +80,29 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot()
     def display_prefs(self):
-        self.prefs_view = QtWidgets.QListView()
+        self.prefs_view = QtWidgets.QListView(self.view)
+        self.prefs_view.setWindowTitle("Item Display")
+        self.prefs_view.setWindowFlags(QtCore.Qt.Window)
         self.prefs_view.setModel(self.model)
         self.prefs_view.show()
 
     @QtCore.Slot(bool)
     def restrict_to_type(self, restrict):
-        print restrict
+        self.model.restrict_to_type = restrict
 
     @QtCore.Slot(bool)
     def affect_children(self, affect):
-        print affect
+        self.model.affect_children = affect
 
     @QtCore.Slot(str)
     def type_change(self, type_):
         self.view.set_display_type(type_)
+
+    @QtCore.Slot()
+    def window_close(self):
+        if self.prefs_view:
+            self.prefs_view.close()
+
 
 def main():
     app = None

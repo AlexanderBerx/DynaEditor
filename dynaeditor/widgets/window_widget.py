@@ -12,6 +12,7 @@ class EditorWidget(QtWidgets.QWidget):
     signal_apply_attr = QtCore.Signal(str, str, str)
     signal_restrict_to_type = QtCore.Signal(bool)
     signal_affect_children = QtCore.Signal(bool)
+    signal_window_close = QtCore.Signal()
 
     def __init__(self, parent=None):
         if not parent:
@@ -28,6 +29,7 @@ class EditorWidget(QtWidgets.QWidget):
 
     def closeEvent(self, *args, **kwargs):
         self.save_prefs()
+        self.signal_window_close.emit()
         super(EditorWidget, self).closeEvent(*args, **kwargs)
 
     def save_prefs(self):
