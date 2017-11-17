@@ -5,6 +5,8 @@ from maya import cmds
 from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
+from dynaeditor.widgets import window_widget
+reload(window_widget)
 from dynaeditor.widgets.window_widget import EditorWidget
 from dynaeditor import model
 reload(model)
@@ -37,6 +39,8 @@ class Editor(QtCore.QObject):
         self.view.signal_lock_type.connect(self.toggle_type_lock)
         self.view.signal_display_prefs.connect(self.display_prefs)
         self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
+        self.view.signal_restrict_to_type[bool].connect(self.restrict_to_type)
+        self.view.signal_affect_children[bool].connect(self.affect_children)
 
     @staticmethod
     def check_for_existing_window():
@@ -78,6 +82,13 @@ class Editor(QtCore.QObject):
         self.prefs_view.setModel(self.model)
         self.prefs_view.show()
 
+    @QtCore.Slot(bool)
+    def restrict_to_type(self, restrict):
+        print restrict
+
+    @QtCore.Slot(bool)
+    def affect_children(self, affect):
+        print affect
 
 
 def main():

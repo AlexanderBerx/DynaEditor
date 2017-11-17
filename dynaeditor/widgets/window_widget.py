@@ -10,6 +10,8 @@ class EditorWidget(QtWidgets.QWidget):
     signal_lock_type = QtCore.Signal()
     signal_display_prefs  = QtCore.Signal()
     signal_apply_attr = QtCore.Signal(str, str, str)
+    signal_restrict_to_type = QtCore.Signal(bool)
+    signal_affect_children = QtCore.Signal(bool)
 
     def __init__(self, parent=None):
         if not parent:
@@ -65,9 +67,28 @@ class EditorWidget(QtWidgets.QWidget):
     def _create_menu_bar(self):
         self._menu_bar = QtWidgets.QMenuBar()
         prefs_menu = QtWidgets.QMenu("Preferences")
+        prefs_menu.setToolTipsVisible(True)
         self._menu_bar.addMenu(prefs_menu)
 
-        prefs_menu.addAction("Display", self.signal_display_prefs.emit)
+        display_action = QtWidgets.QAction("Item Display", prefs_menu)
+        display_action.setToolTip("Attribute item visibility preference's")
+        display_action.triggered.connect(self.signal_display_prefs.emit)
+        prefs_menu.addAction(display_action)
+
+        restrict_action = QtWidgets.QAction("Restrict to current type", prefs_menu, checkable=True)
+        restrict_action.setToolTip("Restrict the editor to only apply attributes\n"
+                                   "to objects of the same type as currently set")
+        restrict_action.setChecked(True)
+        restrict_action.triggered.connect(lambda : self.signal_restrict_to_type.emit(restrict_action.isChecked()))
+        prefs_menu.addAction(restrict_action)
+
+        affect_children_action = QtWidgets.QAction("Affect children", prefs_menu, checkable=True)
+        affect_children_action.setToolTip("applies the attribute to all children of"
+                                         "the current selection")
+        affect_children_action.setChecked(True)
+        affect_children_action.triggered.connect(lambda : self.signal_affect_children.emit(affect_children_action.isChecked()))
+        prefs_menu.addAction(affect_children_action)
+
         self._menu_bar.addMenu("Help")
         return self._menu_bar
 
