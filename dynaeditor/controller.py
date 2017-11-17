@@ -36,11 +36,14 @@ class Editor(QtCore.QObject):
         logger.debug("Created Editor instance")
 
     def _connect_signals(self):
+        # from view
         self.view.signal_lock_type.connect(self.toggle_type_lock)
         self.view.signal_display_prefs.connect(self.display_prefs)
         self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
         self.view.signal_restrict_to_type[bool].connect(self.restrict_to_type)
         self.view.signal_affect_children[bool].connect(self.affect_children)
+        # from model
+        self.model.signal_type_changed[str].connect(self.type_change)
 
     @staticmethod
     def check_for_existing_window():
@@ -53,12 +56,10 @@ class Editor(QtCore.QObject):
         self.update_to_selection()
 
     def update_to_selection(self):
-        node = maya_utils.get_first_selected_shape()
+        node = maya_utils.get_first_selected_node()
         if not node:
-            self.view.set_display_type("----")
             return
-        # display the selected tye
-        self.view.set_display_type(cmds.objectType(node))
+
         self.view.set_status_text("Updating to type: {}".format(cmds.objectType(node)), 1000)
         self.model.set_to_node(node)
 
@@ -90,6 +91,9 @@ class Editor(QtCore.QObject):
     def affect_children(self, affect):
         print affect
 
+    @QtCore.Slot(str)
+    def type_change(self, type_):
+        self.view.set_display_type(type_)
 
 def main():
     app = None

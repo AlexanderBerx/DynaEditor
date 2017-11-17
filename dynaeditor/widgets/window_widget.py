@@ -117,8 +117,8 @@ class EditorWidget(QtWidgets.QWidget):
         self._status_bar = QtWidgets.QStatusBar()
         return self._status_bar
 
-    def set_display_type(self, _type):
-        self._lbl_display_type.setText("<b>{}</b>".format(_type))
+    def set_display_type(self, type_):
+        self._lbl_display_type.setText("<b>{}</b>".format(type_))
 
     def set_attr_model(self, model):
         """

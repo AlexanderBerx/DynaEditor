@@ -1,3 +1,4 @@
+from maya import cmds
 from PySide2 import QtCore
 from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
@@ -21,15 +22,45 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
 
 class EditorModel(QtCore.QAbstractListModel):
+    signal_type_changed = QtCore.Signal(str)
     WIDGET_ROLE = 20
     DISPLAY_ROLE = 21
 
     def __init__(self):
         super(EditorModel, self).__init__()
+        self._type = None
+        self._restrict_to_type = True
+        self._affect_children = True
         self._items = []
+
+    @property
+    def type(self):
+        return self._type
+
+    @type.setter
+    def type(self, value):
+        self._type = value
+        self.signal_type_changed.emit(value)
+
+    @property
+    def restrict_to_type(self):
+        return self._restrict_to_type
+
+    @restrict_to_type.setter
+    def restrict_to_type(self, value):
+        self._restrict_to_type = bool(value)
+
+    @property
+    def affect_children(self):
+        return self._affect_children
+
+    @affect_children.setter
+    def affect_children(self, value):
+        self._affect_children = bool(value)
 
     def set_to_node(self, node):
         self.clear()
+        self.type = cmds.objectType(node)
         self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
     def add_from_mappings(self, attr_mappings, mapped=True):
@@ -64,9 +95,9 @@ class EditorModel(QtCore.QAbstractListModel):
             return str(self._items[index.row()])
         elif role == QtCore.Qt.WhatsThisRole:
             return str(self._items[index.row()])
-        #elif role == QtCore.Qt.SizeHintRole:
-        #    if self._items[index.row()].widget:
-        #        return self._items[index.row()].widget.sizeHint()
+        elif role == QtCore.Qt.SizeHintRole:
+            # hardcoded value due to usage of widgets
+            return QtCore.QSize(100, 20)
         elif role == QtCore.Qt.DisplayRole:
             return str(self._items[index.row()])
         return None

@@ -1,7 +1,7 @@
 from maya import cmds
 
 
-def get_first_selected_shape():
+def get_first_selected_node():
     """
     returns the first selected shape node, if transform nodes are selected
     the children of the transform node will be checked first for shape nodes
