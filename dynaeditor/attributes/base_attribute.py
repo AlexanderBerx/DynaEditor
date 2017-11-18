@@ -24,8 +24,6 @@ class BaseAttribute(object):
 
     @property
     def type_(self):
-        if not self._type:
-            raise NotImplementedError("No type set")
         return self._type
 
     @type_.setter

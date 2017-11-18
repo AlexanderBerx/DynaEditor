@@ -9,6 +9,7 @@ from dynaeditor.widgets import window_widget
 reload(window_widget)
 from dynaeditor import model
 reload(model)
+reload(maya_utils)
 
 from dynaeditor.widgets.window_widget import EditorWidget
 from dynaeditor.model import EditorModel, EditorProxyModel
@@ -67,12 +68,14 @@ class Editor(QtCore.QObject):
         self.model.set_to_node(node)
 
     @QtCore.Slot(str, str, str)
-    def apply_attr_to_selection(self, name, value, _type):
+    def apply_attr_to_selection(self, name, value, type_):
         logger = logging.getLogger(__name__)
         logger.info("Applying attr: {}".format(name))
-        logger.info("_type: {}".format(_type))
+        logger.info("_type: {}".format(type_))
         logger.info("value: {}".format(value))
         value = json.loads(value)
+        maya_utils.apply_attr(name, value, self.model.node_type, type_,
+                              self.model.affect_children, self.model.restrict_to_type)
         self.view.set_status_text(name, 2000)
 
     @QtCore.Slot()

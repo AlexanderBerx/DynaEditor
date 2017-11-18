@@ -9,6 +9,7 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 class BoolAttribute(BaseAttribute):
     def __init__(self, attr, nice_name, default_value=True, min_=0, max_=1):
         type_ = const.ATYPE_BOOL
+        type_ = ""
         # store arguments for widget creation
         self._nice_name = nice_name
         self._default_value = default_value
