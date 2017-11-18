@@ -95,6 +95,7 @@ class EditorModel(QtCore.QAbstractListModel):
         self.node_type = node_type
         # store the visibility preferences before clearing, so if the new node has similar attributes
         # they as well would be hidden
+        self._save_visibility_prefs()
         self.clear()
         self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
@@ -117,7 +118,7 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def _set_prefs_on_attribute_list(self, attribute_list):
         vis_prefs = self._prefs_manager.item_visibility_prefs
-        for pref, setting in vis_prefs:
+        for pref, setting in vis_prefs.items():
             if pref in attribute_list:
                 attribute_list[attribute_list.index(pref)].visible = setting
 
@@ -184,8 +185,11 @@ class EditorModel(QtCore.QAbstractListModel):
     def load_prefs(self):
         print("need to implement prefs loading")
 
+    def _save_visibility_prefs(self):
+        prefs_mapping = {str(item):item.visible for item in self._items}
+        self._prefs_manager.item_visibility_prefs = prefs_mapping
+
     def save_prefs(self):
         # save the item visibility prefs
-        prefs_mapping = [(str(item), item.visible) for item in self._items]
-        self._prefs_manager.item_visibility_prefs = prefs_mapping
+        self._save_visibility_prefs()
         print("need to save other prefs to")

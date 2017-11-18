@@ -37,26 +37,30 @@ class PrefsManager(object):
     def item_visibility_prefs(self):
         settings = QtCore.QSettings()
         size = settings.beginReadArray("visibility")
-        visibility_prefs = []
+        visibility_prefs = {}
         for index in range(size):
             settings.setArrayIndex(index)
             index_key = settings.childKeys()[0]
             value = settings.value(index_key)
             value = json.loads(value)
-            visibility_prefs.append((index_key, value))
+            visibility_prefs.update({index_key: value})
         settings.endArray()
         return visibility_prefs
 
     @item_visibility_prefs.setter
     def item_visibility_prefs(self, value):
         """
-        :param list value:
+        :param dict value:
         :return:
         """
+        prefs = self.item_visibility_prefs
+        prefs.update(value)
+
         settings = QtCore.QSettings()
+        settings.remove("visibility")
         settings.beginWriteArray("visibility")
-        for index, value in enumerate(value):
-            name, visibility = value
+        for index, item in enumerate(prefs.items()):
+            name, visibility = item
             settings.setArrayIndex(index)
             settings.setValue(name, visibility)
 
