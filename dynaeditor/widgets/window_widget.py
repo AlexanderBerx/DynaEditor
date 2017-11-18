@@ -4,7 +4,7 @@ from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
 
 
-class EditorWidget(QtWidgets.QWidget):
+class EditorWindowWidget(QtWidgets.QWidget):
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
     signal_lock_type = QtCore.Signal()
@@ -19,7 +19,7 @@ class EditorWidget(QtWidgets.QWidget):
         if not parent:
             parent = general_utils.get_maya_main_window()
 
-        super(EditorWidget, self).__init__(parent=parent)
+        super(EditorWindowWidget, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)
         self.setObjectName(self.OBJ_NAME)
         self.setWindowFlags(QtCore.Qt.Window)
@@ -158,7 +158,7 @@ class EditorWidget(QtWidgets.QWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    view = EditorWidget()
+    view = EditorWindowWidget()
     view.show()
     app.exec_()
 

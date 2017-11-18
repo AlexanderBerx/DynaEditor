@@ -8,5 +8,5 @@ from dynaeditor.widgets.enum_widget import EnumWidget
 from dynaeditor.widgets.float3_color_widget import Float3ColorWidget
 from dynaeditor.widgets.float3_widget import Float3Widget
 from dynaeditor.widgets.float_field_widget import FloatField
-from dynaeditor.widgets.window_widget import EditorWidget
+from dynaeditor.widgets.window_widget import EditorWindowWidget
 from dynaeditor.widgets.editor_view import EditorView

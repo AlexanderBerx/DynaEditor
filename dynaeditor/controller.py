@@ -11,7 +11,7 @@ from dynaeditor import model
 reload(model)
 reload(maya_utils)
 
-from dynaeditor.widgets.window_widget import EditorWidget
+from dynaeditor.widgets.window_widget import EditorWindowWidget
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
@@ -28,14 +28,14 @@ class Editor(QtCore.QObject):
         self._prefs_view = None
 
         self.check_for_existing_window()
-        self.view = EditorWidget()
+        self.view = EditorWindowWidget()
         self.model = EditorModel()
         self.proxy_model = EditorProxyModel()
         self.proxy_model.setSourceModel(self.model)
         self.view.set_attr_model(self.proxy_model)
         self._connect_signals()
         self._lock_type = False
-
+        self.update_to_selection()
         logger.debug("Created Editor instance")
 
     def _connect_signals(self):
@@ -52,8 +52,8 @@ class Editor(QtCore.QObject):
 
     @staticmethod
     def check_for_existing_window():
-        if cmds.window(EditorWidget.OBJ_NAME, exists=True):
-            cmds.deleteUI(EditorWidget.OBJ_NAME, wnd=True)
+        if cmds.window(EditorWindowWidget.OBJ_NAME, exists=True):
+            cmds.deleteUI(EditorWindowWidget.OBJ_NAME, wnd=True)
 
     def selection_change(self):
         if self._lock_type:
@@ -63,6 +63,9 @@ class Editor(QtCore.QObject):
     def update_to_selection(self):
         node = maya_utils.get_first_selected_node()
         if not node:
+            return
+
+        if cmds.objectType(node) == self.model.node_type:
             return
 
         self.view.set_status_text("Updating to type: {}".format(cmds.objectType(node)), 1000)
@@ -113,7 +116,7 @@ class Editor(QtCore.QObject):
 
     @QtCore.Slot(str)
     def search(self, text):
-        self.proxy_model.setFilterRegExp(QtCore.QRegExp(text))
+        self.proxy_model.setFilterRegExp(QtCore.QRegExp(text, QtCore.Qt.CaseInsensitive))
         # note items have to be updated due to otherwise qt might delete items
         # which will result in empty rows
         self.view.editor.set_items_widget()

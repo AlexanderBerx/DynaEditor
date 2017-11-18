@@ -5,19 +5,38 @@ from dynaeditor.attributes.attribute import Attribute
 
 
 class EditorProxyModel(QtCore.QSortFilterProxyModel):
+    """
+    EditorProxyModel class, inherits from QtCore.QSortFilterProxyModel,
+    filters out non visible items based on the DISPLAY_ROLE of the item,
+    the CheckStateRole and DisplayRole of the items are being ignored
+    """
     def __init__(self):
         super(EditorProxyModel, self).__init__()
         self.setDynamicSortFilter(True)
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
+        """
+        returns the data for the desired role of the given index,
+        the CheckStateRole and DisplayRole of the items are being ignored
+        and return None when queried
+        :param index: QIndex
+        :param int role: id of the role
+        :return: object
+        """
         if role == QtCore.Qt.CheckStateRole:
             return None
-        if role == QtCore.Qt.DisplayRole:
+        elif role == QtCore.Qt.DisplayRole:
             return None
-        else:
-            return super(EditorProxyModel, self).data(index, role)
+        return super(EditorProxyModel, self).data(index, role)
 
     def filterAcceptsRow(self, source_row, source_parent):
+        """
+        filters the given row, filters first based on the visibility of the item,
+        next on all other filters
+        :param source_row:
+        :param source_parent:
+        :return: object
+        """
         source_index = self.sourceModel().index(source_row)
         if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE) == False:
             return False
@@ -26,6 +45,9 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
 
 class EditorModel(QtCore.QAbstractListModel):
+    """
+    EditorModel class, inherits from QtCore.QAbstractListModel
+    """
     signal_type_changed = QtCore.Signal(str)
     WIDGET_ROLE = 20
     DISPLAY_ROLE = 21
