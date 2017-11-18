@@ -2,6 +2,7 @@ from maya import cmds
 from PySide2 import QtCore
 from dynaeditor import attr_query
 from dynaeditor.attributes.attribute import Attribute
+from dynaeditor.prefs_manager import PrefsManager
 
 
 class EditorProxyModel(QtCore.QSortFilterProxyModel):
@@ -16,6 +17,7 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
         """
+        overwritten method from QtCore.QSortFilterProxyModel,
         returns the data for the desired role of the given index,
         the CheckStateRole and DisplayRole of the items are being ignored
         and return None when queried
@@ -54,6 +56,7 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def __init__(self):
         super(EditorModel, self).__init__()
+        self._prefs_manager = PrefsManager()
         self._node_type = None
         self._restrict_to_type = True
         self._affect_children = True
@@ -93,6 +96,7 @@ class EditorModel(QtCore.QAbstractListModel):
         self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
     def add_from_mappings(self, attr_mappings, mapped=True):
+        attribute_list = []
         for mapping in attr_mappings:
             try:
                 if mapped:
@@ -102,7 +106,17 @@ class EditorModel(QtCore.QAbstractListModel):
             # skip not implemented types
             except TypeError:
                 continue
-            self.add_item(attribute)
+
+            attribute_list.append(attribute)
+
+        self._set_prefs_on_attribute_list(attribute_list)
+        self.add_items(attribute_list)
+
+    def _set_prefs_on_attribute_list(self, attribute_list):
+        print("applying prefs")
+        print self._prefs_manager.item_visibility_prefs
+        for attribute in attribute_list:
+            pass
 
     def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._items)
@@ -163,3 +177,8 @@ class EditorModel(QtCore.QAbstractListModel):
 
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
+
+    def save_prefs(self):
+        # save the item visibility prefs
+        prefs_mapping = [(str(item), item.visible) for item in self._items]
+        self._prefs_manager.item_visibility_prefs = prefs_mapping

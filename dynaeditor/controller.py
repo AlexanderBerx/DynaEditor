@@ -35,7 +35,7 @@ class Editor(QtCore.QObject):
         self.view.set_attr_model(self.proxy_model)
         self._connect_signals()
         self._lock_type = False
-        self.update_to_selection()
+        #self.update_to_selection()
         logger.debug("Created Editor instance")
 
     def _connect_signals(self):
@@ -78,9 +78,9 @@ class Editor(QtCore.QObject):
         logger.info("_type: {}".format(type_))
         logger.info("value: {}".format(value))
         value = json.loads(value)
-        maya_utils.apply_attr(name, value, self.model.node_type, type_,
+        amount = maya_utils.apply_attr(name, value, self.model.node_type, type_,
                               self.model.affect_children, self.model.restrict_to_type)
-        self.view.set_status_text(name, 2000)
+        self.view.set_status_text("Setted {0} to {1} on {2} objects".format(name, value, amount), 2000)
 
     @QtCore.Slot()
     def toggle_type_lock(self):
@@ -112,6 +112,7 @@ class Editor(QtCore.QObject):
         if self._prefs_view:
             self._prefs_view.close()
 
+        self.model.save_prefs()
         self._job_manager.clean_up_jobs()
 
     @QtCore.Slot(str)

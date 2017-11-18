@@ -43,6 +43,21 @@ def _get_selection_shapes(node_type, get_children=True, same_type=False):
 
     return set(item_list)
 
+def _apply_attr_to_node(node, attr_name, attr_value, attr_type=None):
+    if attr_type:
+        if isinstance(attr_value, list):
+            cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value, type=attr_type)
+            return True
+        else:
+            cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value, type=attr_type)
+            return True
+    else:
+        if isinstance(attr_value, list):
+            cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value)
+            return True
+        else:
+            cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value)
+            return True
 
 def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children=True, same_type=False):
     """
@@ -53,12 +68,11 @@ def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children
     :param attr_type:
     :param affect_children:
     :param same_type:
-    :return:
+    :return: int
     """
-    if attr_type:
-        for shape in _get_selection_shapes(node_type, affect_children, same_type):
-            if isinstance(attr_value, list):
-                cmds.setAttr("{0}.{1}".format(shape, attr_name), *attr_value, type=attr_type)
-    else:
-        for shape in _get_selection_shapes(node_type, affect_children, same_type):
-            cmds.setAttr("{0}.{1}".format(shape, attr_name), attr_value)
+    applied_items = 0
+    for node in _get_selection_shapes(node_type, affect_children, same_type):
+        if _apply_attr_to_node(node, attr_name, attr_value, attr_type):
+            applied_items += 1
+
+    return applied_items

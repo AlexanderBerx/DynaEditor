@@ -35,6 +35,33 @@ class PrefsManager(object):
         settings = QtCore.QSettings()
         settings.setValue("main_window/size", value)
 
+    @property
+    def item_visibility_prefs(self):
+        settings = QtCore.QSettings()
+        size = settings.beginReadArray("visibility")
+        visibility_prefs = []
+        for index in range(size):
+            settings.setArrayIndex(index)
+            index_key = settings.childKeys()[0]
+            visibility_prefs.append((index_key, settings.value(index_key)))
+        settings.endArray()
+        return visibility_prefs
+
+    @item_visibility_prefs.setter
+    def item_visibility_prefs(self, value):
+        """
+        :param list value:
+        :return:
+        """
+        settings = QtCore.QSettings()
+        settings.beginWriteArray("visibility")
+        for index, value in enumerate(value):
+            name, visibility = value
+            settings.setArrayIndex(index)
+            settings.setValue(name, visibility)
+
+        settings.endArray()
+
 
 
 def main():

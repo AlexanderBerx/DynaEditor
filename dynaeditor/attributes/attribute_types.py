@@ -7,7 +7,7 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 
 
 class BoolAttribute(BaseAttribute):
-    def __init__(self, attr, nice_name, default_value=True, min_=0, max_=1):
+    def __init__(self, attr, nice_name, default_value=True, min_=None, max_=None):
         data_type = ""
         # store arguments for widget creation
         self._nice_name = nice_name
@@ -21,7 +21,7 @@ class BoolAttribute(BaseAttribute):
 
 class EnumAttribute(BaseAttribute):
     def __init__(self, attr, nice_name, default_value, options, min_=None, max_=None):
-        data_type = const.ATYPE_ENUM
+        data_type = ""
         self._nice_name = nice_name
         self._default_value = default_value
         self._options = options
@@ -32,17 +32,21 @@ class EnumAttribute(BaseAttribute):
 
 
 class Float3Attribute(BaseAttribute):
+    DEFAULT_MIN = [0, 0, 0]
+    DEFAULT_MAX = [100, 100, 100]
+
     def __init__(self, attr, nice_name, default_value, color=False, min_=None, max_=None):
         type_ = const.ATYPE_FLOAT3
 
         if not min_:
-            self._min = [0, 0, 0]
+            self._min = self.DEFAULT_MIN
         else:
             self._min = min_
         if not max_:
-            self._max = [100, 100, 100]
+            self._max = self.DEFAULT_MAX
         else:
             self._max = max_
+
         self._nice_name = nice_name
         self._default_value = default_value
         self._color = color
