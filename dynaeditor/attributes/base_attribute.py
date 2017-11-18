@@ -22,6 +22,9 @@ class BaseAttribute(object):
     def __str__(self):
         return self.name
 
+    def __eq__(self, other):
+        return self._name == other
+
     @property
     def data_type(self):
         return self._data_type

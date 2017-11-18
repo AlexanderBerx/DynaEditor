@@ -61,6 +61,7 @@ class EditorModel(QtCore.QAbstractListModel):
         self._restrict_to_type = True
         self._affect_children = True
         self._items = []
+        self.load_prefs()
 
     @property
     def node_type(self):
@@ -92,6 +93,8 @@ class EditorModel(QtCore.QAbstractListModel):
         if node_type == self.node_type:
             return
         self.node_type = node_type
+        # store the visibility preferences before clearing, so if the new node has similar attributes
+        # they as well would be hidden
         self.clear()
         self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
@@ -113,10 +116,10 @@ class EditorModel(QtCore.QAbstractListModel):
         self.add_items(attribute_list)
 
     def _set_prefs_on_attribute_list(self, attribute_list):
-        print("applying prefs")
-        print self._prefs_manager.item_visibility_prefs
-        for attribute in attribute_list:
-            pass
+        vis_prefs = self._prefs_manager.item_visibility_prefs
+        for pref, setting in vis_prefs:
+            if pref in attribute_list:
+                attribute_list[attribute_list.index(pref)].visible = setting
 
     def rowCount(self, parent=QtCore.QModelIndex()):
         return len(self._items)
@@ -178,7 +181,11 @@ class EditorModel(QtCore.QAbstractListModel):
     def flags(self, index):
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
 
+    def load_prefs(self):
+        print("need to implement prefs loading")
+
     def save_prefs(self):
         # save the item visibility prefs
         prefs_mapping = [(str(item), item.visible) for item in self._items]
         self._prefs_manager.item_visibility_prefs = prefs_mapping
+        print("need to save other prefs to")

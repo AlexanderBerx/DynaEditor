@@ -1,7 +1,5 @@
-try:
-    from PySide2 import QtCore
-except ImportError:
-    from Qt import QtCore
+import json
+from PySide2 import QtCore
 from dynaeditor import const
 
 
@@ -43,7 +41,9 @@ class PrefsManager(object):
         for index in range(size):
             settings.setArrayIndex(index)
             index_key = settings.childKeys()[0]
-            visibility_prefs.append((index_key, settings.value(index_key)))
+            value = settings.value(index_key)
+            value = json.loads(value)
+            visibility_prefs.append((index_key, value))
         settings.endArray()
         return visibility_prefs
 
