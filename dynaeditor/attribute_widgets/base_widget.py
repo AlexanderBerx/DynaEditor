@@ -1,8 +1,5 @@
 import json
-try:
-    from PySide2 import QtCore, QtWidgets
-except ImportError:
-    from Qt import QtCore, QtWidgets
+from PySide2 import QtCore, QtWidgets
 
 
 class BaseWidget(QtWidgets.QWidget):

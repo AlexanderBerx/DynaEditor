@@ -1,8 +1,5 @@
 import sys
-try:
-    from PySide2 import QtWidgets
-except ImportError:
-    from Qt import QtWidgets
+from PySide2 import QtWidgets
 from dynaeditor.attribute_widgets.base_widget import BaseWidget
 from dynaeditor.widgets.float_field_widget import FloatField
 
