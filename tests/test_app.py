@@ -16,4 +16,4 @@ def test_app():
     with open(test_data, 'r') as file_in:
         data = json.load(file_in)
     mapped_data = [general_utils.key_map_config(item) for item in data]
-    editor.set_editor_options(mapped_data)
+    editor.model.add_from_mappings(mapped_data)

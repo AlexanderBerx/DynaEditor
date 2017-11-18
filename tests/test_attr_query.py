@@ -2,9 +2,9 @@ from dynaeditor import attr_query
 from dynaeditor.utils import general_utils
 from maya import cmds
 
-TEST_ATTRS = [('bool', 'test_bool', 'tests bool', 0.0, 1.0, 0.0, None, False, False, ["tests"]),
+TEST_ATTRS = [('bool', 'test_bool', 'tests bool', 0.0, 1.0, 0.0, None, False, False),
               ('enum', 'test_enum', 'tests enum', 0.0, 3.0, 0.0,
-               ['test1', 'test2', 'test3', 'test4'], False, False, ["tests"])]
+               ['test1', 'test2', 'test3', 'test4'], False, False)]
 
 
 def _add_test_attrs_to_node(node):
