@@ -1,3 +1,4 @@
+import logging
 from maya import cmds
 
 
@@ -7,23 +8,35 @@ def get_first_selected_node():
     the children of the transform node will be checked first for shape nodes
     :return: str
     """
+    logger = logging.getLogger(__name__)
+    logger.debug("Getting first selected shape")
     for obj in cmds.ls(selection=True, long=True):
-        obj_type = cmds.objectType(obj)
-        if not obj_type == "transform":
+        if not cmds.objectType(obj) == "transform":
             return obj
-        child_shapes = cmds.listRelatives(obj, shapes=True, fullPath=True)
+
+        logger.debug("checking children of: {}".format(obj))
+        child_shapes = cmds.listRelatives(obj, fullPath=True, ad=True) or []
+        child_shapes = cmds.ls(child_shapes, long=True, shapes=True)
         if child_shapes:
             return child_shapes[0]
+    logger.debug("No non transform nodes selected")
 
 
 def _get_selection_shapes(node_type, get_children=True, same_type=False):
+    """
+    returns all the selected shape nodes according to the given parameters
+    :param str node_type: type of the desired node
+    :param bool get_children: get the children of the selection
+    :param bool same_type: returns only shape nodes of the same type as the node_type
+    :return: list
+    """
     item_list = cmds.ls(selection=True, long=True)
-    if get_children == True:
+    if get_children:
         item_list.extend((cmds.listRelatives(item_list, ad=True, f=True) or []))
     else:
         item_list.extend((cmds.listRelatives(item_list, c=True, f=True) or []))
 
-    if same_type == True:
+    if same_type:
         item_list = cmds.ls(item_list, type=node_type, long=True)
     else:
         item_list = cmds.ls(item_list, shapes=True, long=True)
@@ -32,6 +45,16 @@ def _get_selection_shapes(node_type, get_children=True, same_type=False):
 
 
 def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children=True, same_type=False):
+    """
+    applies the give attribute to all the selected nodes according to the parameters
+    :param attr_name:
+    :param attr_value:
+    :param node_type:
+    :param attr_type:
+    :param affect_children:
+    :param same_type:
+    :return:
+    """
     if attr_type:
         for shape in _get_selection_shapes(node_type, affect_children, same_type):
             if isinstance(attr_value, list):
@@ -39,4 +62,3 @@ def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children
     else:
         for shape in _get_selection_shapes(node_type, affect_children, same_type):
             cmds.setAttr("{0}.{1}".format(shape, attr_name), attr_value)
-
