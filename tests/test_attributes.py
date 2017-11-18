@@ -67,4 +67,3 @@ def test_float3_attribute():
     assert enum_attr.data_type == float3_type
     # check if the name was set correctly
     assert enum_attr.name == attr
-
