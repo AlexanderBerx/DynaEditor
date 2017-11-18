@@ -12,6 +12,7 @@ class EditorWidget(QtWidgets.QWidget):
     signal_apply_attr = QtCore.Signal(str, str, str)
     signal_restrict_to_type = QtCore.Signal(bool)
     signal_affect_children = QtCore.Signal(bool)
+    signal_search = QtCore.Signal(str)
     signal_window_close = QtCore.Signal()
 
     def __init__(self, parent=None):
@@ -96,18 +97,29 @@ class EditorWidget(QtWidgets.QWidget):
 
     def _create_header_widget(self):
         widget_header = QtWidgets.QWidget()
-        layout_header = QtWidgets.QHBoxLayout()
+        layout_header = QtWidgets.QVBoxLayout()
+        layout_header.setMargin(0)
         widget_header.setLayout(layout_header)
-        layout_header.addWidget(QtWidgets.QLabel("Type:"))
+
+        layout_type = QtWidgets.QHBoxLayout()
+        layout_type.addSpacerItem(QtWidgets.QSpacerItem(10, 10))
+        layout_header.addLayout(layout_type)
+        layout_type.addWidget(QtWidgets.QLabel("Type:"))
         self._lbl_display_type = QtWidgets.QLabel("<b>----</b>")
-        layout_header.addWidget(self._lbl_display_type)
+        layout_type.addWidget(self._lbl_display_type)
 
         self._btn_lock_type = QtWidgets.QPushButton()
         self._btn_lock_type.setIcon(self._lock_icon)
         self._btn_lock_type.setFixedSize(self._btn_lock_type.iconSize()*1.8)
         self._btn_lock_type.clicked.connect(self.signal_lock_type)
 
-        layout_header.addWidget(self._btn_lock_type)
+        layout_type.addWidget(self._btn_lock_type)
+        layout_type.addSpacerItem(QtWidgets.QSpacerItem(10, 10))
+
+        self._txt_search = QtWidgets.QLineEdit()
+        self._txt_search.setPlaceholderText("Search")
+        self._txt_search.textChanged[str].connect(self.signal_search)
+        layout_header.addWidget(self._txt_search)
         return widget_header
 
     def _create_editor_widget(self):

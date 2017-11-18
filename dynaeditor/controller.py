@@ -41,6 +41,7 @@ class Editor(QtCore.QObject):
     def _connect_signals(self):
         # from view
         self.view.signal_lock_type.connect(self.toggle_type_lock)
+        self.view.signal_search[str].connect(self.search)
         self.view.signal_display_prefs.connect(self.display_prefs)
         self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
         self.view.signal_restrict_to_type[bool].connect(self.restrict_to_type)
@@ -110,6 +111,12 @@ class Editor(QtCore.QObject):
 
         self._job_manager.clean_up_jobs()
 
+    @QtCore.Slot(str)
+    def search(self, text):
+        self.proxy_model.setFilterRegExp(QtCore.QRegExp(text))
+        # note items have to be updated due to otherwise qt might delete items
+        # which will result in empty rows
+        self.view.editor.set_items_widget()
 
 
 def main():

@@ -7,6 +7,7 @@ from dynaeditor.attributes.attribute import Attribute
 class EditorProxyModel(QtCore.QSortFilterProxyModel):
     def __init__(self):
         super(EditorProxyModel, self).__init__()
+        self.setDynamicSortFilter(True)
 
     def data(self, index, role=QtCore.Qt.DisplayRole):
         if role == QtCore.Qt.CheckStateRole:
@@ -18,7 +19,10 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
     def filterAcceptsRow(self, source_row, source_parent):
         source_index = self.sourceModel().index(source_row)
-        return self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE)
+        if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE) == False:
+            return False
+
+        return super(EditorProxyModel, self).filterAcceptsRow(source_row, source_parent)
 
 
 class EditorModel(QtCore.QAbstractListModel):

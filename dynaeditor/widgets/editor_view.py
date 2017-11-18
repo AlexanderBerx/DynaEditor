@@ -8,7 +8,7 @@ class EditorView(QtWidgets.QListView):
         super(EditorView, self).__init__()
         self.setAlternatingRowColors(True)
 
-    def _set_items_widget(self, start=None, end=None):
+    def set_items_widget(self, start=None, end=None):
         model = self.model()
         if not model:
             return
@@ -31,14 +31,14 @@ class EditorView(QtWidgets.QListView):
 
     def setModel(self, model):
         super(EditorView, self).setModel(model)
-        self._set_items_widget()
+        self.set_items_widget()
 
     def rowsInserted(self, parent, start, end):
         super(EditorView, self).rowsInserted(parent, start, end)
         # make sure new items also have there widget
         if start == end:
             end += 1
-        self._set_items_widget(start, end)
+        self.set_items_widget(start, end)
 
     @QtCore.Slot(str, str, str)
     def _emit_apply_attr(self, attr_name, attr_value, attr_type):
