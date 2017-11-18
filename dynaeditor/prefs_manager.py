@@ -40,8 +40,7 @@ class PrefsManager(object):
         for index in range(size):
             settings.setArrayIndex(index)
             index_key = settings.childKeys()[0]
-            value = settings.value(index_key)
-            visibility_prefs.update({index_key: bool(value)})
+            visibility_prefs.update({index_key: int(settings.value(index_key))})
         settings.endArray()
         return visibility_prefs
 
