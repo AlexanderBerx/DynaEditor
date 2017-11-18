@@ -8,28 +8,27 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 
 class BoolAttribute(BaseAttribute):
     def __init__(self, attr, nice_name, default_value=True, min_=0, max_=1):
-        type_ = const.ATYPE_BOOL
-        type_ = ""
+        data_type = ""
         # store arguments for widget creation
         self._nice_name = nice_name
         self._default_value = default_value
         self.visible = True
-        super(BoolAttribute, self).__init__(type_, attr)
+        super(BoolAttribute, self).__init__(data_type, attr)
 
     def _create_widget(self):
-        return BoolWidget(self.type_, self.name, self._default_value, self._nice_name)
+        return BoolWidget(self.data_type, self.name, self._default_value, self._nice_name)
 
 
 class EnumAttribute(BaseAttribute):
     def __init__(self, attr, nice_name, default_value, options, min_=None, max_=None):
-        type_ = const.ATYPE_ENUM
+        data_type = const.ATYPE_ENUM
         self._nice_name = nice_name
         self._default_value = default_value
         self._options = options
-        super(EnumAttribute, self).__init__(type_, attr)
+        super(EnumAttribute, self).__init__(data_type, attr)
 
     def _create_widget(self):
-        return EnumWidget(self.type_, self.name, self._default_value, self._options, self._nice_name)
+        return EnumWidget(self.data_type, self.name, self._default_value, self._options, self._nice_name)
 
 
 class Float3Attribute(BaseAttribute):
@@ -52,6 +51,6 @@ class Float3Attribute(BaseAttribute):
 
     def _create_widget(self):
         if self._color:
-            return Float3ColorWidget(self.type_, self.name, self._default_value, self._nice_name)
+            return Float3ColorWidget(self.data_type, self.name, self._default_value, self._nice_name)
         else:
-            return Float3Widget(self.type_, self.name, self._default_value, self._min, self._max, self._nice_name)
+            return Float3Widget(self.data_type, self.name, self._default_value, self._min, self._max, self._nice_name)

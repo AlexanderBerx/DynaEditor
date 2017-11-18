@@ -14,7 +14,7 @@ class BaseWidget(QtWidgets.QWidget):
     SET_BTN_WIDTH = 40
     SPACER_WIDTH = 10
 
-    def __init__(self, type_, attr, default_value, nice_name=None):
+    def __init__(self, data_type, attr, default_value, nice_name=None):
         super(BaseWidget, self).__init__()
         if not nice_name:
             nice_name = attr
@@ -22,7 +22,7 @@ class BaseWidget(QtWidgets.QWidget):
         self._create_ui(nice_name)
         self.set_default_value(default_value)
 
-        self._type = type_
+        self._data_type = data_type
         self._attr_name = attr
         self._default_value = default_value
 
@@ -79,7 +79,7 @@ class BaseWidget(QtWidgets.QWidget):
         """
         attr_value = self.get_value()
         attr_value = json.dumps(attr_value)
-        self.signal_apply_attr.emit(self._attr_name, attr_value, self._type)
+        self.signal_apply_attr.emit(self._attr_name, attr_value, self._data_type)
 
     def connect_signals(self):
         """

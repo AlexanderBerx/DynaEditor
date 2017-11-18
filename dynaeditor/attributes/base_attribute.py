@@ -8,12 +8,12 @@ class BaseAttribute(object):
     """
     BaseAttribute, abstract class where all attribute classes need to inherit from
     """
-    _type = None
+    _data_type = None
     _name = None
     _visible = True
 
     def __init__(self, _type, attr):
-        self.type_ = _type
+        self.data_type = _type
         self.name = attr
 
     def __repr__(self):
@@ -23,12 +23,12 @@ class BaseAttribute(object):
         return self.name
 
     @property
-    def type_(self):
-        return self._type
+    def data_type(self):
+        return self._data_type
 
-    @type_.setter
-    def type_(self, value):
-        self._type = value
+    @data_type.setter
+    def data_type(self, value):
+        self._data_type = value
 
     @property
     def widget(self):

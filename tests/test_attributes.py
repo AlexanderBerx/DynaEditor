@@ -43,7 +43,7 @@ def test_bool_attribute():
     # check if the widget type is correct
     assert type(bool_attr.widget) == widgets.BoolWidget
     # check the type
-    assert bool_attr.type_ == bool_type
+    assert bool_attr.data_type == bool_type
     # check if the name was set correctly
     assert bool_attr.name == attr
     # test signals
@@ -80,7 +80,7 @@ def test_enum_attribute():
     # check if the widget type is correct
     assert type(enum_attr.widget) == widgets.EnumWidget
     # check the type
-    assert enum_attr.type_ == enum_type
+    assert enum_attr.data_type == enum_type
     # check if the name was set correctly
     assert enum_attr.name == attr
     # test signals
@@ -118,7 +118,7 @@ def test_float3_attribute():
     # check if the widget type is correct
     assert type(enum_attr.widget) == widgets.Float3Widget
     # check the type
-    assert enum_attr.type_ == float3_type
+    assert enum_attr.data_type == float3_type
     # check if the name was set correctly
     assert enum_attr.name == attr
     # test signals

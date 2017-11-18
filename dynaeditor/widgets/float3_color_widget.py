@@ -11,14 +11,14 @@ class Float3ColorWidget(BaseWidget):
     """
     Float3Widget for displaying float3 attributes, inherits from BaseWidget
     """
-    def __init__(self, type_, attr, default_value, nice_name=None):
+    def __init__(self, data_type, attr, default_value, nice_name=None):
         """
         initialises the widget
         :param str nice_name: name of the widget to be displayed
         :param list default_value: default value of the widget, float list of length 3
         """
         self._color_picker = None
-        super(Float3ColorWidget, self).__init__(type_, attr, default_value, nice_name)
+        super(Float3ColorWidget, self).__init__(data_type, attr, default_value, nice_name)
 
     def create_type_widget(self):
         """
