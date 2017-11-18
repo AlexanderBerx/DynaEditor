@@ -1,4 +1,3 @@
-import json
 from PySide2 import QtCore
 from dynaeditor import const
 
@@ -42,8 +41,7 @@ class PrefsManager(object):
             settings.setArrayIndex(index)
             index_key = settings.childKeys()[0]
             value = settings.value(index_key)
-            value = json.loads(value)
-            visibility_prefs.update({index_key: value})
+            visibility_prefs.update({index_key: bool(value)})
         settings.endArray()
         return visibility_prefs
 
@@ -58,19 +56,19 @@ class PrefsManager(object):
 
         settings = QtCore.QSettings()
         settings.remove("visibility")
-        settings.beginWriteArray("visibility")
+        settings.beginWriteArray("visibility", len(prefs.keys()))
         for index, item in enumerate(prefs.items()):
             name, visibility = item
             settings.setArrayIndex(index)
-            settings.setValue(name, visibility)
+            settings.setValue(name, int(visibility))
 
         settings.endArray()
-
 
 
 def main():
     manager = PrefsManager()
     return manager
+
 
 if __name__ == '__main__':
     main()

@@ -6,6 +6,9 @@ from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
 from dynaeditor.widgets import window_widget
+
+from dynaeditor import prefs_manager
+reload(prefs_manager)
 reload(window_widget)
 from dynaeditor import model
 reload(model)
