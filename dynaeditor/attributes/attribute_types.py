@@ -1,8 +1,8 @@
 from dynaeditor import const
-from dynaeditor.widgets.bool_widget import BoolWidget
-from dynaeditor.widgets.enum_widget import EnumWidget
-from dynaeditor.widgets.float3_widget import Float3Widget
-from dynaeditor.widgets.float3_color_widget import Float3ColorWidget
+from dynaeditor.attribute_widgets.bool_widget import BoolWidget
+from dynaeditor.attribute_widgets.enum_widget import EnumWidget
+from dynaeditor.attribute_widgets.float3_widget import Float3Widget
+from dynaeditor.attribute_widgets.float3_color_widget import Float3ColorWidget
 from dynaeditor.attributes.base_attribute import BaseAttribute
 
 

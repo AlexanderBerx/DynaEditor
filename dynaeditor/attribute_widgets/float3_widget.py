@@ -3,7 +3,7 @@ try:
     from PySide2 import QtWidgets
 except ImportError:
     from Qt import QtWidgets
-from dynaeditor.widgets.base_widget import BaseWidget
+from dynaeditor.attribute_widgets.base_widget import BaseWidget
 from dynaeditor.widgets.float_field_widget import FloatField
 
 
