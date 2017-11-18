@@ -8,44 +8,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
-    ], 
-    [
-        "byte", 
-        "isHistoricallyInteresting", 
-        "Is Historically Interesting", 
-        0.0, 
-        255.0, 
-        2.0, 
-        null, 
-        false, 
-        false, 
-        []
-    ], 
-    [
-        "enum", 
-        "nodeState", 
-        "Node State", 
-        0.0, 
-        10.0, 
-        0.0, 
-        null, 
-        false, 
-        false, 
-        []
-    ], 
-    [
-        "typed", 
-        "binMembership", 
-        "Bin Membership", 
-        null, 
-        null, 
-        null, 
-        null, 
-        false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -56,8 +19,40 @@
         0.0, 
         null, 
         false, 
+        false
+    ], 
+    [
+        "byte", 
+        "isHistoricallyInteresting", 
+        "Is Historically Interesting", 
+        0.0, 
+        255.0, 
+        2.0, 
+        null, 
         false, 
-        []
+        false
+    ], 
+    [
+        "enum", 
+        "nodeState", 
+        "Node State", 
+        0.0, 
+        10.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "binMembership", 
+        "Bin Membership", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
     ], 
     [
         "message", 
@@ -68,8 +63,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -80,8 +74,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -92,8 +85,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -104,8 +96,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -116,8 +107,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -128,8 +118,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -140,8 +129,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -152,8 +140,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -164,8 +151,7 @@
         null, 
         null, 
         true, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -176,8 +162,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -188,8 +173,7 @@
         null, 
         null, 
         true, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -204,8 +188,7 @@
             "Group By Node"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -216,8 +199,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -228,8 +210,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -240,8 +221,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -252,8 +232,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -264,8 +243,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -276,8 +254,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -288,8 +265,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -300,8 +276,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -312,8 +287,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -324,8 +298,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -336,8 +309,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -352,8 +324,7 @@
         ], 
         null, 
         false, 
-        true, 
-        []
+        true
     ], 
     [
         "float3", 
@@ -368,8 +339,7 @@
         ], 
         null, 
         false, 
-        true, 
-        []
+        true
     ], 
     [
         "enum", 
@@ -384,8 +354,7 @@
             "RGB"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "short", 
@@ -396,8 +365,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -408,8 +376,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -420,8 +387,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -432,8 +398,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -448,8 +413,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -464,8 +428,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -482,8 +445,7 @@
             "Keyframes"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -498,8 +460,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -510,8 +471,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -522,8 +482,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -546,8 +505,7 @@
         ], 
         null, 
         false, 
-        true, 
-        []
+        true
     ], 
     [
         "float", 
@@ -558,8 +516,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -582,8 +539,7 @@
         ], 
         null, 
         false, 
-        true, 
-        []
+        true
     ], 
     [
         "time", 
@@ -594,8 +550,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "time", 
@@ -606,8 +561,7 @@
         100.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -618,8 +572,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -630,8 +583,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -642,8 +594,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -658,8 +609,7 @@
         ], 
         null, 
         false, 
-        true, 
-        []
+        true
     ], 
     [
         "short", 
@@ -670,8 +620,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -682,8 +631,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -694,8 +642,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -706,8 +653,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -718,8 +664,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -730,8 +675,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -742,8 +686,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -754,8 +697,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -766,8 +708,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -778,8 +719,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -790,8 +730,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -802,8 +741,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -814,8 +752,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -826,8 +763,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -838,8 +774,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -850,8 +785,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -862,8 +796,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -874,8 +807,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -886,8 +818,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -898,8 +829,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -910,8 +840,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -922,8 +851,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -934,8 +862,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -946,8 +873,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -958,8 +884,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -970,8 +895,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -982,8 +906,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double3", 
@@ -998,8 +921,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double", 
@@ -1010,8 +932,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1022,8 +943,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -1034,8 +954,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double2", 
@@ -1049,8 +968,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1061,8 +979,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1073,8 +990,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1085,8 +1001,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1097,8 +1012,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1109,8 +1023,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1121,8 +1034,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1133,8 +1045,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1145,8 +1056,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1157,8 +1067,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1169,8 +1078,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1181,8 +1089,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1193,8 +1100,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -1213,8 +1119,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1225,8 +1130,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1237,8 +1141,7 @@
         6.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1249,8 +1152,7 @@
         5.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1261,8 +1163,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1273,8 +1174,7 @@
         30.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1285,8 +1185,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1301,8 +1200,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1317,8 +1215,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1333,8 +1230,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -1349,8 +1245,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1361,8 +1256,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1373,8 +1267,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "message", 
@@ -1385,8 +1278,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1397,8 +1289,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1409,8 +1300,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -1421,8 +1311,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1433,8 +1322,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "short", 
@@ -1445,8 +1333,7 @@
         2.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1457,8 +1344,7 @@
         2.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1469,8 +1355,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1481,8 +1366,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1496,8 +1380,7 @@
             "Vector (global space)"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1508,8 +1391,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1517,11 +1399,10 @@
         "Enable Open CL", 
         0.0, 
         1.0, 
-        0.0, 
+        1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "short", 
@@ -1532,8 +1413,7 @@
         7.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1544,8 +1424,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1556,8 +1435,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1571,8 +1449,7 @@
             "Sharp edges"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1588,8 +1465,7 @@
             "Maya Catmull-Clark"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1600,8 +1476,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1612,8 +1487,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1627,8 +1501,7 @@
             "Chaikin"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1639,8 +1512,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1651,8 +1523,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1663,8 +1534,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1675,8 +1545,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1691,8 +1560,7 @@
             "Crease Edges"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1703,8 +1571,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1715,8 +1582,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -1731,8 +1597,7 @@
             "All"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -1747,8 +1612,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1759,8 +1623,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1771,8 +1634,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "short", 
@@ -1783,8 +1645,7 @@
         2.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1795,8 +1656,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1807,8 +1667,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1819,8 +1678,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1831,8 +1689,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1843,8 +1700,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -1855,8 +1711,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1867,8 +1722,7 @@
         100.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1879,8 +1733,7 @@
         0.10000000149011612, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1891,8 +1744,7 @@
         0.009999999776482582, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1903,8 +1755,7 @@
         5.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1915,8 +1766,7 @@
         0.5, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -1927,8 +1777,7 @@
         14.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -1939,8 +1788,7 @@
         60000.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -1955,8 +1803,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -1971,8 +1818,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long3", 
@@ -1987,8 +1833,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float2", 
@@ -2002,8 +1847,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -2019,8 +1863,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float3", 
@@ -2035,8 +1878,7 @@
         ], 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "polyFaces", 
@@ -2047,8 +1889,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2059,8 +1900,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2071,8 +1911,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2083,8 +1922,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2095,8 +1933,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -2107,8 +1944,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "compound", 
@@ -2119,8 +1955,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2131,8 +1966,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2143,8 +1977,18 @@
         0.0, 
         null, 
         false, 
+        false
+    ], 
+    [
+        "bool", 
+        "displayMapBorders", 
+        "Display Map Borders", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
         false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2160,8 +2004,7 @@
             "Hard"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -2172,8 +2015,7 @@
         -2.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2184,8 +2026,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2196,8 +2037,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2208,8 +2048,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -2220,8 +2059,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2232,8 +2070,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2249,8 +2086,7 @@
             "full"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2261,8 +2097,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double", 
@@ -2273,8 +2108,7 @@
         3.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double", 
@@ -2285,8 +2119,7 @@
         4.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double", 
@@ -2297,8 +2130,7 @@
         2.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "double", 
@@ -2309,8 +2141,7 @@
         0.4, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2325,8 +2156,7 @@
             "vtxface"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2337,8 +2167,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2349,8 +2178,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2366,8 +2194,7 @@
             "leftHanded"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "doubleAngle", 
@@ -2378,8 +2205,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "doubleAngle", 
@@ -2390,8 +2216,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2402,8 +2227,7 @@
         1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2422,8 +2246,7 @@
             "modulate2x"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2434,8 +2257,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2446,8 +2268,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2466,8 +2287,7 @@
             "6 (Finest)"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2478,8 +2298,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2490,8 +2309,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2502,8 +2320,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2518,8 +2335,7 @@
             "Smooth Mesh Only"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2534,8 +2350,7 @@
             "Base and Projected Cage"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2546,8 +2361,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2558,8 +2372,18 @@
         0.0, 
         null, 
         false, 
+        false
+    ], 
+    [
+        "bool", 
+        "alwaysDrawOnTop", 
+        "Always Draw On Top", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
         false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2570,8 +2394,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2586,8 +2409,7 @@
             "Best Shape"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2603,8 +2425,7 @@
             "Angle And Area Weighted"
         ], 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -2615,8 +2436,7 @@
         -1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "long", 
@@ -2627,8 +2447,7 @@
         -1.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2639,8 +2458,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2651,8 +2469,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2663,8 +2480,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2675,8 +2491,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "bool", 
@@ -2687,8 +2502,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "float", 
@@ -2699,8 +2513,7 @@
         0.0, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "typed", 
@@ -2711,8 +2524,7 @@
         null, 
         null, 
         false, 
-        false, 
-        []
+        false
     ], 
     [
         "enum", 
@@ -2727,7 +2539,649 @@
             "Influence Colors"
         ], 
         false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiUserOptions", 
+        "Ai User Options", 
+        null, 
+        null, 
+        null, 
+        null, 
         false, 
-        []
+        false
+    ], 
+    [
+        "bool", 
+        "aiSelfShadows", 
+        "Ai Self Shadows", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiOpaque", 
+        "Ai Opaque", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiMatte", 
+        "Ai Matte", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiTraceSets", 
+        "Ai Trace Sets", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiSssSetname", 
+        "Ai Sss Setname", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiVisibleInDiffuseReflection", 
+        "Ai Visible In Diffuse Reflection", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiVisibleInSpecularReflection", 
+        "Ai Visible In Specular Reflection", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiVisibleInDiffuseTransmission", 
+        "Ai Visible In Diffuse Transmission", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiVisibleInSpecularTransmission", 
+        "Ai Visible In Specular Transmission", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiVisibleInVolume", 
+        "Ai Visible In Volume", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "enum", 
+        "aiSubdivType", 
+        "Ai Subdiv Type", 
+        0.0, 
+        2.0, 
+        0.0, 
+        [
+            "none", 
+            "catclark", 
+            "linear"
+        ], 
+        false, 
+        false
+    ], 
+    [
+        "byte", 
+        "aiSubdivIterations", 
+        "Ai Subdiv Iterations", 
+        0.0, 
+        100.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "enum", 
+        "aiSubdivAdaptiveMetric", 
+        "Ai Subdiv Adaptive Metric", 
+        0.0, 
+        2.0, 
+        0.0, 
+        [
+            "auto", 
+            "edge_length", 
+            "flatness"
+        ], 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiSubdivPixelError", 
+        "Ai Subdiv Pixel Error", 
+        0.0, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "enum", 
+        "aiSubdivAdaptiveSpace", 
+        "Ai Subdiv Adaptive Space", 
+        0.0, 
+        1.0, 
+        0.0, 
+        [
+            "raster", 
+            "object"
+        ], 
+        false, 
+        false
+    ], 
+    [
+        "enum", 
+        "aiSubdivUvSmoothing", 
+        "Ai Subdiv Uv Smoothing", 
+        0.0, 
+        3.0, 
+        0.0, 
+        [
+            "pin_corners", 
+            "pin_borders", 
+            "linear", 
+            "smooth"
+        ], 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiSubdivSmoothDerivs", 
+        "Ai Subdiv Smooth Derivs", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiDispHeight", 
+        "Ai Disp Height", 
+        null, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiDispPadding", 
+        "Ai Disp Padding", 
+        null, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiDispZeroValue", 
+        "Ai Disp Zero Value", 
+        null, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiDispAutobump", 
+        "Ai Disp Autobump", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiExportTangents", 
+        "Ai Export Tangents", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiExportColors", 
+        "Ai Export Colors", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiExportRefPoints", 
+        "Ai Export Ref Points", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiExportRefNormals", 
+        "Ai Export Ref Normals", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiExportRefTangents", 
+        "Ai Export Ref Tangents", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiStepSize", 
+        "Ai Step Size", 
+        0.0, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiVolumePadding", 
+        "Ai Volume Padding", 
+        0.0, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiMotionVectorSource", 
+        "Ai Motion Vector Source", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "enum", 
+        "aiMotionVectorUnit", 
+        "Ai Motion Vector Unit", 
+        0.0, 
+        1.0, 
+        0.0, 
+        [
+            "Per Frame", 
+            "Per Second"
+        ], 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiMotionVectorScale", 
+        "Ai Motion Vector Scale", 
+        null, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "dso", 
+        "Dso", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "data", 
+        "Data", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiCastShadows", 
+        "Ai Cast Shadows", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiShadowDensity", 
+        "Ai Shadow Density", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiExposure", 
+        "Ai Exposure", 
+        null, 
+        null, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "long", 
+        "aiSamples", 
+        "Ai Samples", 
+        null, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiNormalize", 
+        "Ai Normalize", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "message", 
+        "aiFilters", 
+        "Ai Filters", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiDiffuse", 
+        "Ai Diffuse", 
+        0.0, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiSpecular", 
+        "Ai Specular", 
+        0.0, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiSss", 
+        "Ai Sss", 
+        0.0, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiIndirect", 
+        "Ai Indirect", 
+        0.0, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiVolume", 
+        "Ai Volume", 
+        0.0, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "long", 
+        "aiMaxBounces", 
+        "Ai Max Bounces", 
+        null, 
+        null, 
+        999.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "long", 
+        "aiVolumeSamples", 
+        "Ai Volume Samples", 
+        null, 
+        null, 
+        2.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiAov", 
+        "Ai Aov", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "aiUseColorTemperature", 
+        "Ai Use Color Temperature", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float", 
+        "aiColorTemperature", 
+        "Ai Color Temperature", 
+        0.0, 
+        null, 
+        6500.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float3", 
+        "aiShadowColor", 
+        "Ai Shadow Color", 
+        null, 
+        null, 
+        [
+            0.0, 
+            0.0, 
+            0.0
+        ], 
+        null, 
+        false, 
+        true
+    ], 
+    [
+        "bool", 
+        "aiCastVolumetricShadows", 
+        "Ai Cast Volumetric Shadows", 
+        0.0, 
+        1.0, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "float3", 
+        "color", 
+        "Color", 
+        null, 
+        null, 
+        [
+            1.0, 
+            1.0, 
+            1.0
+        ], 
+        null, 
+        false, 
+        true
+    ], 
+    [
+        "float", 
+        "intensity", 
+        "Intensity", 
+        null, 
+        null, 
+        1.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "bool", 
+        "lightVisible", 
+        "Light Visible", 
+        0.0, 
+        1.0, 
+        0.0, 
+        null, 
+        false, 
+        false
+    ], 
+    [
+        "typed", 
+        "aiTranslator", 
+        "Ai Translator", 
+        null, 
+        null, 
+        null, 
+        null, 
+        false, 
+        false
     ]
 ]
