@@ -4,6 +4,10 @@ from dynaeditor.attributes.attribute_types import EnumAttribute
 from dynaeditor.attributes.attribute_types import FloatAttribute
 from dynaeditor.attributes.attribute_types import Float2Attribute
 from dynaeditor.attributes.attribute_types import Float3Attribute
+from dynaeditor.attributes.attribute_types import DoubleAttribute
+from dynaeditor.attributes.attribute_types import Double2Attribute
+from dynaeditor.attributes.attribute_types import Double3Attribute
+from dynaeditor.attributes.attribute_types import LongAttribute
 
 
 class Attribute(object):
@@ -12,9 +16,13 @@ class Attribute(object):
     """
     TYPE_MAPPING = {const.ATYPE_ENUM: EnumAttribute,
                     const.ATYPE_BOOL: BoolAttribute,
-                    const.ATYPE_FLOAT3: Float3Attribute,
+                    const.ATYPE_FLOAT: FloatAttribute,
                     const.ATYPE_FLOAT2: Float2Attribute,
-                    const.ATYPE_FLOAT: FloatAttribute}
+                    const.ATYPE_FLOAT3: Float3Attribute,
+                    const.ATYPE_DOUBLE: DoubleAttribute,
+                    const.ATYPE_DOUBLE2: Double2Attribute,
+                    const.ATYPE_DOUBLE3: Double3Attribute,
+                    const.ATYPE_LONG: LongAttribute}
 
     def __new__(cls, type_, *args, **kwargs):
         """

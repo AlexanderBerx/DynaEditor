@@ -5,8 +5,10 @@ from dynaeditor.attribute_widgets.base_widget import BaseWidget
 
 
 class FloatWidget(BaseWidget):
-    def __init__(self, data_type, attr, default_value, nice_name=None):
+    def __init__(self, data_type, attr, default_value, min_=0.0, max_=10000.0, nice_name=None):
         super(FloatWidget, self).__init__(data_type, attr, default_value, nice_name)
+        self.set_min(min_)
+        self.set_max(max_)
 
     def create_type_widget(self):
         """
@@ -21,6 +23,12 @@ class FloatWidget(BaseWidget):
 
     def get_value(self):
         return float(self._float.text)
+
+    def set_min(self, value):
+        self._float.set_min(float(value))
+
+    def set_max(self, value):
+        self._float.set_max(float(value))
 
 
 def main():

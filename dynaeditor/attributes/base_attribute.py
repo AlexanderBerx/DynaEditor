@@ -14,7 +14,7 @@ class BaseAttribute(object):
     _nice_name = None
     _default_value = None
 
-    def __init__(self, type_, attr, nice_name, default_value):
+    def __init__(self, attr, nice_name, default_value, type_=''):
         self.data_type = type_
         self.name = attr
         self.nice_name = nice_name
