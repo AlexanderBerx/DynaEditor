@@ -1,6 +1,9 @@
 # Qt constants
 APP_NAME = "DynaEditor"
 ORGANISATION_NAME = "dynaeditor"
+PREF_WINDOW_POS = "main_window/pos"
+PREF_WINDOW_SIZE = "main_window/size"
+PREF_VISIBILITY = "visibility"
 
 # argument keys
 ATTR_ARG_TYPE = "type_"

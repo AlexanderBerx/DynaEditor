@@ -33,6 +33,7 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
 
     def filterAcceptsRow(self, source_row, source_parent):
         """
+        overwritten method from QtCore.QSortFilterProxyModel,
         filters the given row, filters first based on the visibility of the item,
         next on all other filters
         :param source_row:
@@ -65,30 +66,64 @@ class EditorModel(QtCore.QAbstractListModel):
 
     @property
     def node_type(self):
+        """
+        the type of the maya node from which the current items have been derived
+        :return: str
+        """
         return self._node_type
 
     @node_type.setter
     def node_type(self, value):
+        """
+        sets the current maya node type, emits signal_type_changed
+        :param str value: maya node type
+        :return: None
+        """
         self._node_type = value
         self.signal_type_changed.emit(value)
 
     @property
     def restrict_to_type(self):
+        """
+        holds whether or not attribute applying needs to be restricted to the same type
+        :return: bool
+        """
         return self._restrict_to_type
 
     @restrict_to_type.setter
     def restrict_to_type(self, value):
+        """
+        sets whether or not attribute applying needs to be restricted to the same type
+        :param bool value:
+        :return: None
+        """
         self._restrict_to_type = bool(value)
 
     @property
     def affect_children(self):
+        """
+        holds whether or not attribute applying needs to be applied to selection children
+        :return: bool
+        """
         return self._affect_children
 
     @affect_children.setter
     def affect_children(self, value):
+        """
+        sets whether or not attribute applying needs to be applied to selection children
+        :param bool value:
+        :return: None
+        """
         self._affect_children = bool(value)
 
     def set_to_node(self, node):
+        """
+        sets the model to the given may node, if the type of the node is the same as
+        currently set nothing will be done, when a new node is being set all current items
+        will first be removed and the current visibility preferences will be stored
+        :param str node: maya node
+        :return: None
+        """
         node_type = cmds.objectType(node)
         if node_type == self.node_type:
             return
@@ -97,9 +132,17 @@ class EditorModel(QtCore.QAbstractListModel):
         # they as well would be hidden
         self._save_visibility_prefs()
         self.clear()
-        self.add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
+        self._add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
 
-    def add_from_mappings(self, attr_mappings, mapped=True):
+    def _add_from_mappings(self, attr_mappings, mapped=True):
+        """
+        adds the given attribute mappings to the model in the form of Attribute objects,
+        if no attribute could be created for the given mapping that mapping will be skipped
+        if an item has a visibility preference stored this will be set on that item
+        :param iterable attr_mappings: list of dictionary with the item mappings
+        :param bool mapped:
+        :return: None
+        """
         attribute_list = []
         for mapping in attr_mappings:
             try:
@@ -117,21 +160,31 @@ class EditorModel(QtCore.QAbstractListModel):
         self.add_items(attribute_list)
 
     def _set_prefs_on_attribute_list(self, attribute_list):
+        """
+        sets the visibility preference on the items
+        :param list attribute_list: list of attribute objects
+        :return: None
+        """
         vis_prefs = self._prefs_manager.item_visibility_prefs
         for pref, setting in vis_prefs.items():
             if pref in attribute_list:
                 attribute_list[attribute_list.index(pref)].visible = setting
 
     def rowCount(self, parent=QtCore.QModelIndex()):
+        """
+        overwritten method from QtCore.QAbstractListModel
+        :param QtCore.QModelIndex parent:
+        :return: int
+        """
         return len(self._items)
 
-    def row_count_visible(self):
-        return len(self.get_visible())
-
-    def get_visible(self):
-        return [i for i in self._items if i.visible == True]
-
     def data(self, index, role=QtCore.Qt.DisplayRole):
+        """
+        overwritten method from QtCore.QAbstractListModel
+        :param index:
+        :param role:
+        :return:
+        """
         if role == self.WIDGET_ROLE:
             return self._items[index.row()].widget
         elif role == self.DISPLAY_ROLE:
@@ -150,6 +203,13 @@ class EditorModel(QtCore.QAbstractListModel):
         return None
 
     def setData(self, index, value, role=QtCore.Qt.EditRole):
+        """
+        overwritten method from QtCore.QAbstractListModel
+        :param index:
+        :param value:
+        :param role:
+        :return:
+        """
         if role == QtCore.Qt.CheckStateRole:
             self._items[index.row()].visible = not self._items[index.row()].visible
             self.dataChanged.emit(index, index, 1)
@@ -157,15 +217,33 @@ class EditorModel(QtCore.QAbstractListModel):
         return False
 
     def add_item(self, item):
+        """
+        adds the given item to the model
+        :param Attribute item: attribute item
+        :return: None
+        """
         self.beginInsertRows(QtCore.QModelIndex(), len(self._items), len(self._items))
         self._items.append(item)
         self.endInsertRows()
 
     def add_items(self, item_list):
+        """
+        adds a list of items to the model
+        :param list item_list:
+        :return: None
+        """
         for item in item_list:
             self.add_item(item)
 
     def removeRows(self, row, count, parent=QtCore.QModelIndex()):
+        """
+        overwritten method from QtCore.QAbstractListModel,
+        removes the given rows from the model
+        :param row:
+        :param count:
+        :param parent:
+        :return:
+        """
         if row < 0 or row > len(self._items):
             return
 
@@ -177,19 +255,37 @@ class EditorModel(QtCore.QAbstractListModel):
         self.endRemoveRows()
 
     def clear(self):
+        """
+        clears the model
+        :return: None
+        """
         self.removeRows(0, self.rowCount())
 
     def flags(self, index):
+        """
+        overwritten method from QtCore.QAbstractListModel,
+        always returns that the item is enabled, selectable and checkable
+        :param index:
+        :return:
+        """
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
 
     def load_prefs(self):
-        print("need to implement prefs loading")
+        # TODO: Implement preference loading
+        pass
 
     def _save_visibility_prefs(self):
+        """
+        saves the currently active visibility preferences
+        :return: None
+        """
         prefs_mapping = {str(item):item.visible for item in self._items}
         self._prefs_manager.item_visibility_prefs = prefs_mapping
 
     def save_prefs(self):
-        # save the item visibility prefs
+        """
+        saves the model preferences
+        :return: None
+        """
         self._save_visibility_prefs()
-        print("need to save other prefs to")
+        # TODO: Implement behaviour preferences

@@ -59,7 +59,10 @@ def _apply_attr_to_node(node, attr_name, attr_value, attr_type=None):
             else:
                 cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value)
                 return True
-    except (RuntimeError, ValueError):
+    except (RuntimeError, ValueError) as e:
+        logger = logging.getLogger(__name__)
+        logger.warning("Failed to apply attribute to: {}".format(node))
+        logger.warning("Error:".format(e))
         return False
 
 def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children=True, same_type=False):
@@ -73,9 +76,15 @@ def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children
     :param same_type:
     :return: int
     """
+    logger = logging.getLogger(__name__)
+    logger.info("Applying attr: {}".format(attr_name))
+    logger.info("Attr type: {}".format(attr_type))
+    logger.info("Attr value: {}".format(attr_value))
     applied_items = 0
     for node in _get_selection_shapes(node_type, affect_children, same_type):
         if _apply_attr_to_node(node, attr_name, attr_value, attr_type):
+            logger.info("Applied attr to: {}".format(node))
             applied_items += 1
 
+    logger.info("Applied attr to {} objects".format(applied_items))
     return applied_items

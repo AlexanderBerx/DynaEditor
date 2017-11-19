@@ -1,3 +1,6 @@
+"""
+main app module, run the main module for starting up the app, initializes logging as well
+"""
 import sys
 import logging
 from PySide2 import QtWidgets

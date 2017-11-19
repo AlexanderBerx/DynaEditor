@@ -153,17 +153,3 @@ def obj_attrs_to_file(obj, output):
     output = os.path.normpath(output)
     with open(output, 'w') as file_out:
         json.dump(list(iter_obj_attrs(obj)), file_out, indent=4)
-
-
-def main():
-    selection = cmds.ls(selection=True, shapes=True)
-    print selection
-    if not selection:
-        return
-    obj_attrs_to_file(selection[0], r'C:\Workspace\DynaEditor\rsc\test_data.json')
-    for attr in iter_obj_attrs(selection[0]):
-        print attr
-
-
-if __name__ == '__main__':
-    main()

@@ -3,39 +3,67 @@ from dynaeditor import const
 
 
 class PrefsManager(object):
+    """
+    PrefsManager class, for managing app preferences,
+    wraps around QtCore.QSettings
+    """
     def __init__(self):
         self.set_settings()
 
     def set_settings(self):
+        """
+        sets the current settings QSettings to those of editor
+        :return: None
+        """
         QtCore.QSettings().setDefaultFormat(QtCore.QSettings.IniFormat)
         QtCore.QCoreApplication.setOrganizationName(const.ORGANISATION_NAME)
         QtCore.QCoreApplication.setApplicationName(const.APP_NAME)
 
     @property
     def window_pos(self):
+        """
+        reads and returns the main window pos from the preferences
+        :return: QtCore.QPoint
+        """
         settings = QtCore.QSettings()
-        return settings.value("main_window/pos")
+        return settings.value(const.PREF_WINDOW_POS)
 
     @window_pos.setter
     def window_pos(self, value):
+        """
+        stores the main window pos to the preferences
+        :return: None
+        """
         settings = QtCore.QSettings()
-        settings.setValue("main_window/pos", value)
+        settings.setValue(const.PREF_WINDOW_POS, value)
         print settings.fileName()
 
     @property
     def window_size(self):
+        """
+        reads and returns the main window pos from the preferences
+        :return: QtCore.QSize
+        """
         settings = QtCore.QSettings()
-        return settings.value("main_window/size")
+        return settings.value(const.PREF_WINDOW_SIZE)
 
     @window_size.setter
     def window_size(self, value):
+        """
+        stores the main window size to the preferences
+        :return: None
+        """
         settings = QtCore.QSettings()
-        settings.setValue("main_window/size", value)
+        settings.setValue(const.PREF_WINDOW_SIZE, value)
 
     @property
     def item_visibility_prefs(self):
+        """
+        reads and returns the item visibility preferences
+        :return: dict
+        """
         settings = QtCore.QSettings()
-        size = settings.beginReadArray("visibility")
+        size = settings.beginReadArray(const.PREF_VISIBILITY)
         visibility_prefs = {}
         for index in range(size):
             settings.setArrayIndex(index)
@@ -47,15 +75,17 @@ class PrefsManager(object):
     @item_visibility_prefs.setter
     def item_visibility_prefs(self, value):
         """
+        stores the given visibility preferences, before storing given preferences
+        are merged with the old ones
         :param dict value:
-        :return:
+        :return: None
         """
         prefs = self.item_visibility_prefs
         prefs.update(value)
 
         settings = QtCore.QSettings()
-        settings.remove("visibility")
-        settings.beginWriteArray("visibility", len(prefs.keys()))
+        settings.remove(const.PREF_VISIBILITY)
+        settings.beginWriteArray(const.PREF_VISIBILITY, len(prefs.keys()))
         for index, item in enumerate(prefs.items()):
             name, visibility = item
             settings.setArrayIndex(index)
