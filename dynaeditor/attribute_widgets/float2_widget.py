@@ -43,10 +43,9 @@ class Float2Widget(BaseWidget):
     def set_default_value(self, default_value):
         """
         sets the default value of the widget
-        :param list default_value: default value of the widget, float list of length 3
+        :param list default_value: default value of the widget, float list of length 2
         :return: None
         """
-        print default_value
         self._ff_x.text = default_value[0]
         self._ff_y.text = default_value[1]
 
@@ -60,7 +59,7 @@ class Float2Widget(BaseWidget):
     def set_min(self, _min):
         """
         set the minimum value of th widget
-        :param list _min: min value of the widget, float list of length 3
+        :param list _min: min value of the widget, float list of length 2
         :return: list
         """
         self._ff_x.set_min(_min[0])
@@ -69,7 +68,7 @@ class Float2Widget(BaseWidget):
     def set_max(self, _max):
         """
         set the maximum value of th widget
-        :param list _max: min value of the widget, float list of length 3
+        :param list _max: min value of the widget, float list of length 2
         :return: list
         """
         self._ff_x.set_max(_max[0])

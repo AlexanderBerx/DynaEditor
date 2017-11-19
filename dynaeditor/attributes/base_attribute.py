@@ -11,10 +11,14 @@ class BaseAttribute(object):
     _data_type = None
     _name = None
     _visible = True
+    _nice_name = None
+    _default_value = None
 
-    def __init__(self, _type, attr):
-        self.data_type = _type
+    def __init__(self, type_, attr, nice_name, default_value):
+        self.data_type = type_
         self.name = attr
+        self.nice_name = nice_name
+        self.default_value = default_value
 
     def __repr__(self):
         return self.name
@@ -60,3 +64,19 @@ class BaseAttribute(object):
     @name.setter
     def name(self, value):
         self._name = value
+
+    @property
+    def nice_name(self):
+        return self._nice_name
+
+    @nice_name.setter
+    def nice_name(self, value):
+        self._nice_name = value
+
+    @property
+    def default_value(self):
+        return self._default_value
+
+    @default_value.setter
+    def default_value(self, value):
+        self._default_value = value
