@@ -5,15 +5,6 @@ from maya import cmds
 from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
-from dynaeditor.widgets import main_window
-
-from dynaeditor import prefs_manager
-reload(prefs_manager)
-reload(main_window)
-from dynaeditor import model
-reload(model)
-reload(maya_utils)
-
 from dynaeditor.widgets.main_window import EditorWindow
 from dynaeditor.model import EditorModel, EditorProxyModel
 

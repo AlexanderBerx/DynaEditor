@@ -1,3 +1,6 @@
+"""
+attribute type classes all inherit from BaseAttribute
+"""
 from dynaeditor import const
 from dynaeditor.attribute_widgets.bool_widget import BoolWidget
 from dynaeditor.attribute_widgets.enum_widget import EnumWidget
@@ -9,6 +12,9 @@ from dynaeditor.attributes.base_attribute import BaseAttribute
 
 
 class BoolAttribute(BaseAttribute):
+    """
+    BoolAttribute, inherits from BaseAttribute, for maya bool attributes
+    """
     def __init__(self, attr, nice_name, default_value=True, min_=None, max_=None):
         # note: bool attributes don't need a min & max but since querying it will always
         # return it the params are there
@@ -19,6 +25,9 @@ class BoolAttribute(BaseAttribute):
 
 
 class EnumAttribute(BaseAttribute):
+    """
+    EnumAttribute, inherits from BaseAttribute, for maya enum attributes
+    """
     def __init__(self, attr, nice_name, default_value, options, min_=None, max_=None):
         self._options = options
         super(EnumAttribute, self).__init__(attr, nice_name, default_value)
@@ -28,6 +37,9 @@ class EnumAttribute(BaseAttribute):
 
 
 class FloatAttribute(BaseAttribute):
+    """
+    FloatAttribute, inherits from BaseAttribute, for maya float attributes
+    """
     DEFAULT_MIN = -15000.0
     DEFAULT_MAX = 15000.0
 
@@ -49,6 +61,9 @@ class FloatAttribute(BaseAttribute):
 
 
 class Float2Attribute(BaseAttribute):
+    """
+    Float2Attribute, inherits from BaseAttribute, for maya float2 attributes
+    """
     def __init__(self, attr, nice_name, default_value):
         super(Float2Attribute, self).__init__(attr, nice_name, default_value, const.ATYPE_FLOAT2)
 
@@ -57,6 +72,9 @@ class Float2Attribute(BaseAttribute):
 
 
 class Float3Attribute(BaseAttribute):
+    """
+    Float3Attribute, inherits from BaseAttribute, for maya float3 attributes
+    """
     DEFAULT_MIN = [0.0, 0.0, 0.0]
     DEFAULT_MAX = [100.0, 100.0, 100.0]
 
@@ -81,6 +99,9 @@ class Float3Attribute(BaseAttribute):
 
 
 class DoubleAttribute(BaseAttribute):
+    """
+    DoubleAttribute, inherits from BaseAttribute, for maya double attributes
+    """
     def __init__(self, attr, nice_name, default_value):
         super(DoubleAttribute, self).__init__(attr, nice_name, default_value, const.ATYPE_DOUBLE)
 
@@ -89,6 +110,9 @@ class DoubleAttribute(BaseAttribute):
 
 
 class Double2Attribute(BaseAttribute):
+    """
+    Double2Attribute, inherits from BaseAttribute, for maya double2 attributes
+    """
     def __init__(self, attr, nice_name, default_value):
         super(Double2Attribute, self).__init__(attr, nice_name, default_value, const.ATYPE_DOUBLE2)
 
@@ -97,6 +121,9 @@ class Double2Attribute(BaseAttribute):
 
 
 class Double3Attribute(BaseAttribute):
+    """
+    Double3Attribute, inherits from BaseAttribute, for maya double3 attributes
+    """
     DEFAULT_MIN = [0.0, 0.0, 0.0]
     DEFAULT_MAX = [100.0, 100.0, 100.0]
 
@@ -117,6 +144,9 @@ class Double3Attribute(BaseAttribute):
 
 
 class LongAttribute(BaseAttribute):
+    """
+    LongAttribute, inherits from BaseAttribute, for maya long attributes
+    """
     DEFAULT_MIN = 0.0
     DEFAULT_MAX = 100.0
 
@@ -138,6 +168,9 @@ class LongAttribute(BaseAttribute):
 
 
 class Long2Attribute(BaseAttribute):
+    """
+    Long2Attribute, inherits from BaseAttribute, for maya long2 attributes
+    """
     def __init__(self, attr, nice_name, default_value):
         super(Long2Attribute, self).__init__(attr, nice_name, default_value, const.ATYPE_LONG2)
 
@@ -146,6 +179,9 @@ class Long2Attribute(BaseAttribute):
 
 
 class Long3Attribute(BaseAttribute):
+    """
+    Long3Attribute, inherits from BaseAttribute, for maya long3 attributes
+    """
     DEFAULT_MIN = [0.0, 0.0, 0.0]
     DEFAULT_MAX = [100.0, 100.0, 100.0]
 
@@ -166,6 +202,9 @@ class Long3Attribute(BaseAttribute):
 
 
 class ByteAttribute(BaseAttribute):
+    """
+    ByteAttribute, inherits from BaseAttribute, for maya byte attributes
+    """
     DEFAULT_MIN = 0.0
     DEFAULT_MAX = 100.0
 

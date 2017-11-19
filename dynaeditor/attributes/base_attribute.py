@@ -1,9 +1,3 @@
-try:
-    from PySide2 import QtCore, QtWidgets, QtGui
-except ImportError:
-    from Qt import QtCore
-
-
 class BaseAttribute(object):
     """
     BaseAttribute, abstract class where all attribute classes need to inherit from
