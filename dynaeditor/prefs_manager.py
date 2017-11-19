@@ -63,6 +63,9 @@ class PrefsManager(object):
         :return: dict
         """
         settings = QtCore.QSettings()
+        if settings.value(const.PREF_VISIBILITY):
+            return const.DEFAULT_HIDDEN_ITEMS
+
         size = settings.beginReadArray(const.PREF_VISIBILITY)
         visibility_prefs = {}
         for index in range(size):

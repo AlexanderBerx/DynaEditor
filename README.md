@@ -1,6 +1,6 @@
 # DynaEditor
 Dynamic attribute editor for maya 2017 and up
-### About
+### Description
 Artist often need to change attributes on multiple Maya objects at the same
 and to avoid them having to do it one by one (which is tedious and time consuming)
 i've created this tool. The editor is being filled dynamically when active in Maya
@@ -30,9 +30,10 @@ based on the current selection of the user.
 * attribute hiding
 * attribute searching
 * stores attribute display preferences
-### easy install
+### Easy install
 To easy install the tool without using pip, please do the following steps:
 * download the repository
+* unzip the download
 * copy the dynaeditor and bin directory over to your maya scripts directory
 * start the tool with the following snippet
 ```python
@@ -41,5 +42,5 @@ app = main.main()
 ```
 ### Notes
 * only usable in Autodesk Maya 2017 and up due to usage of PySide2
-* reburies PyTest to run unit tests
+* requires PyTest to run unit tests
 * if you run into any bugs feel always feel free to create an issue or shoot me an email at: alexanderberx@gmail.com
