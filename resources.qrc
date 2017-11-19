@@ -1,0 +1,6 @@
+<RCC>
+  <qresource>
+    <file alias="icon_lock.png">rsc/icon_lock.png</file>
+    <file alias="icon_unlock.png">rsc/icon_unlock.png</file>
+  </qresource>
+</RCC>
