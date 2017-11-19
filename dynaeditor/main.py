@@ -1,11 +1,24 @@
 """
-main app module, run the main module for starting up the app, initializes logging as well
+main app module, run the main module for starting up the app,
+initializes logging and loads the necessary resources
 """
+import os
 import sys
 import logging
-from PySide2 import QtWidgets
+from PySide2 import QtWidgets, QtCore
 from dynaeditor.controller import Editor
 from dynaeditor.utils import general_utils
+
+
+def load_resources():
+    rsc_file = os.path.split(__file__)[0]
+    rsc_file = os.path.join(rsc_file, "../bin/resources.rcc")
+    rsc_file = os.path.abspath(rsc_file)
+    if not os.path.isfile(rsc_file):
+        return
+    resources = QtCore.QResource()
+    if resources.registerResource(rsc_file) == False:
+        raise RuntimeError("Failed to register resources")
 
 
 def init_logging():
@@ -15,6 +28,7 @@ def init_logging():
 
 
 def main():
+    load_resources()
     init_logging()
     logger = logging.getLogger(__name__)
     logger.info("Starting up Dynamic Attribute Editor")

@@ -4,11 +4,15 @@ from dynaeditor.utils import general_utils
 from dynaeditor.prefs_manager import PrefsManager
 
 
-class EditorWindowWidget(QtWidgets.QWidget):
+class EditorWindow(QtWidgets.QWidget):
+    """
+    EditorWindow class, inherits from QtWidgets.QWidget
+    main window of the app
+    """
     TITLE = "Dynamic Attribute Editor"
     OBJ_NAME = "dynaAttrEditor"
     signal_lock_type = QtCore.Signal()
-    signal_display_prefs  = QtCore.Signal()
+    signal_display_prefs = QtCore.Signal()
     signal_apply_attr = QtCore.Signal(str, str, str)
     signal_restrict_to_type = QtCore.Signal(bool)
     signal_affect_children = QtCore.Signal(bool)
@@ -19,7 +23,7 @@ class EditorWindowWidget(QtWidgets.QWidget):
         if not parent:
             parent = general_utils.get_maya_main_window()
 
-        super(EditorWindowWidget, self).__init__(parent=parent)
+        super(EditorWindow, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)
         self.setObjectName(self.OBJ_NAME)
         self.setWindowFlags(QtCore.Qt.Window)
@@ -29,16 +33,30 @@ class EditorWindowWidget(QtWidgets.QWidget):
         self.load_prefs()
 
     def closeEvent(self, event):
+        """
+        overwritten method from QtWidgets.QWidget
+        saves the prefs on window close and emits signal_window_close
+        :param event:
+        :return: None
+        """
         self.save_prefs()
         self.signal_window_close.emit()
         self.deleteLater()
 
     def save_prefs(self):
+        """
+        saves the window preferences
+        :return: None
+        """
         prefs_manager = PrefsManager()
         prefs_manager.window_pos = self.pos()
         prefs_manager.window_size = self.size()
 
     def load_prefs(self):
+        """
+        loads the window preferences
+        :return: None
+        """
         prefs_manager = PrefsManager()
         if prefs_manager.window_pos:
             self.move(prefs_manager.window_pos)
@@ -46,6 +64,10 @@ class EditorWindowWidget(QtWidgets.QWidget):
             self.resize(prefs_manager.window_size)
 
     def _init_ui(self):
+        """
+        initialises the ui
+        :return: None
+        """
         self._lock_icon = QtGui.QIcon(":/icon_lock.png")
         self._unlock_icon = QtGui.QIcon(":/icon_unlock.png")
 
@@ -59,6 +81,10 @@ class EditorWindowWidget(QtWidgets.QWidget):
         layout_main.addWidget(self._create_status_bar_widget())
 
     def center_to_parent(self):
+        """
+        centers the window to it's parent
+        :return: None
+        """
         if self.parent():
             parent_pos = self.parent().pos()
             parent_width = self.parent().width()
@@ -68,6 +94,10 @@ class EditorWindowWidget(QtWidgets.QWidget):
             self.move(QtCore.QPoint(parent_center[0] - self.width() / 2, parent_center[1] - self.height() / 2))
 
     def _create_menu_bar(self):
+        """
+        creates the menu bar
+        :return: QtWidgets.QMenuBar
+        """
         self._menu_bar = QtWidgets.QMenuBar()
         prefs_menu = QtWidgets.QMenu("Preferences")
         prefs_menu.setToolTipsVisible(True)
@@ -92,10 +122,15 @@ class EditorWindowWidget(QtWidgets.QWidget):
         affect_children_action.triggered.connect(lambda : self.signal_affect_children.emit(affect_children_action.isChecked()))
         prefs_menu.addAction(affect_children_action)
 
-        self._menu_bar.addMenu("Help")
+        # TODO: Implement help menu
+        # self._menu_bar.addMenu("Help")
         return self._menu_bar
 
     def _create_header_widget(self):
+        """
+        creates the header widget
+        :return: QtWidgets.QWidget
+        """
         widget_header = QtWidgets.QWidget()
         layout_header = QtWidgets.QVBoxLayout()
         layout_header.setMargin(0)
@@ -123,31 +158,65 @@ class EditorWindowWidget(QtWidgets.QWidget):
         return widget_header
 
     def _create_editor_widget(self):
+        """
+        creates the editor widget
+        :return: QtWidgets.QWidget
+        """
         self.editor = EditorView()
         self.editor.signal_apply_attr[str, str, str].connect(self._emit_apply_attr)
         return self.editor
 
     def _create_status_bar_widget(self):
+        """
+        creates the status bar widget
+        :return: QtWidgets.QWidget
+        """
         self._status_bar = QtWidgets.QStatusBar()
         return self._status_bar
 
-    def set_display_type(self, type_):
-        self._lbl_display_type.setText("<b>{}</b>".format(type_))
+    def set_display_type(self, text):
+        """
+        sets the display text in the header widget
+        :param str text:
+        :return: None
+        """
+        self._lbl_display_type.setText("<b>{}</b>".format(text))
 
     def set_attr_model(self, model):
         """
-        :return: QtCore.QAbstractListModel
+        sets the editor model
+        :param QtCore.QAbstractListModel model:
+        :return:
         """
         self.editor.setModel(model)
 
     def set_status_text(self, text, time_out=0):
+        """
+        sets the status text to be displayed
+        :param str text: text to be displayed
+        :param int time_out: time out of the display text
+        :return: None
+        """
         self._status_bar.showMessage(str(text), time_out)
 
     @QtCore.Slot(str, str, str)
     def _emit_apply_attr(self, attr_name, attr_value, attr_type):
+        """
+        slot to further emit when an attribute is being applied,
+        emits signal_apply_attr
+        :param str attr_name:
+        :param str attr_value:
+        :param str attr_type:
+        :return: None
+        """
         self.signal_apply_attr.emit(attr_name, attr_value, attr_type)
 
     def lock_type(self, lock=True):
+        """
+        sets the lock type
+        :param bool lock:
+        :return: None
+        """
         if lock:
             self._lbl_display_type.setEnabled(False)
             self._btn_lock_type.setIcon(self._unlock_icon)
@@ -158,7 +227,7 @@ class EditorWindowWidget(QtWidgets.QWidget):
 
 def main():
     app = QtWidgets.QApplication([])
-    view = EditorWindowWidget()
+    view = EditorWindow()
     view.show()
     app.exec_()
 

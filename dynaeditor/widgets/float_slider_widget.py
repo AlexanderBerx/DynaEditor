@@ -2,6 +2,9 @@ from PySide2 import QtWidgets, QtGui, QtCore
 
 
 class FloatSliderWidget(QtWidgets.QWidget):
+    """
+    FloatSliderWidget class inherits from QtWidgets.QWidget
+    """
     WIDTH = 50
     _slider = None
 

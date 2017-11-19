@@ -5,16 +5,16 @@ from maya import cmds
 from PySide2 import QtCore, QtWidgets
 from dynaeditor.job_manager import JobManager
 from dynaeditor.utils import general_utils, maya_utils
-from dynaeditor.widgets import window_widget
+from dynaeditor.widgets import main_window
 
 from dynaeditor import prefs_manager
 reload(prefs_manager)
-reload(window_widget)
+reload(main_window)
 from dynaeditor import model
 reload(model)
 reload(maya_utils)
 
-from dynaeditor.widgets.window_widget import EditorWindowWidget
+from dynaeditor.widgets.main_window import EditorWindow
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
@@ -31,7 +31,7 @@ class Editor(QtCore.QObject):
         self._prefs_view = None
 
         self.check_for_existing_window()
-        self.view = EditorWindowWidget()
+        self.view = EditorWindow()
         self.model = EditorModel()
         self.proxy_model = EditorProxyModel()
         self.proxy_model.setSourceModel(self.model)
@@ -64,8 +64,8 @@ class Editor(QtCore.QObject):
         if it does this will be deleted
         :return: None
         """
-        if cmds.window(EditorWindowWidget.OBJ_NAME, exists=True):
-            cmds.deleteUI(EditorWindowWidget.OBJ_NAME, wnd=True)
+        if cmds.window(EditorWindow.OBJ_NAME, exists=True):
+            cmds.deleteUI(EditorWindow.OBJ_NAME, wnd=True)
 
     def selection_change(self):
         """

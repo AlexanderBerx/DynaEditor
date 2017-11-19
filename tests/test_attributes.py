@@ -13,7 +13,7 @@ def test_base_attribute():
     :return: None
     """
     # test if abstraction is being enforced
-    attribute = attributes.BaseAttribute("test", "some_attr")
+    attribute = attributes.BaseAttribute("test", "some_attr", "")
     with pytest.raises(NotImplementedError):
         attribute._create_widget()
 

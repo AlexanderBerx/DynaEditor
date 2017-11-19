@@ -2,6 +2,9 @@ from PySide2 import QtCore, QtWidgets, QtGui
 
 
 class ColorPickerWidget(QtWidgets.QWidget):
+    """
+    ColorPickerWidget class inherits from QtWidgets.QWidget
+    """
     def __init__(self):
         super(ColorPickerWidget, self).__init__()
         self._color = QtGui.QColor()
