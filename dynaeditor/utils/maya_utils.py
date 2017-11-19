@@ -44,20 +44,23 @@ def _get_selection_shapes(node_type, get_children=True, same_type=False):
     return set(item_list)
 
 def _apply_attr_to_node(node, attr_name, attr_value, attr_type=None):
-    if attr_type:
-        if isinstance(attr_value, list):
-            cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value, type=attr_type)
-            return True
+    try:
+        if attr_type:
+            if isinstance(attr_value, list):
+                cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value, type=attr_type)
+                return True
+            else:
+                cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value, type=attr_type)
+                return True
         else:
-            cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value, type=attr_type)
-            return True
-    else:
-        if isinstance(attr_value, list):
-            cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value)
-            return True
-        else:
-            cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value)
-            return True
+            if isinstance(attr_value, list):
+                cmds.setAttr("{0}.{1}".format(node, attr_name), *attr_value)
+                return True
+            else:
+                cmds.setAttr("{0}.{1}".format(node, attr_name), attr_value)
+                return True
+    except (RuntimeError, ValueError):
+        return False
 
 def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children=True, same_type=False):
     """
