@@ -1,7 +1,7 @@
 import sys
 from PySide2 import QtWidgets
 from dynaeditor.attribute_widgets.base_widget import BaseWidget
-from dynaeditor.widgets.float_field_widget import FloatField
+from dynaeditor.widgets.float_slider_widget import FloatSliderWidget
 
 
 class Float3Widget(BaseWidget):
@@ -30,13 +30,13 @@ class Float3Widget(BaseWidget):
         layout_vector.setMargin(0)
         widget_vector.setLayout(layout_vector)
 
-        self._ff_x = FloatField()
+        self._ff_x = FloatSliderWidget(slider=False)
         layout_vector.addWidget(self._ff_x)
 
-        self._ff_y = FloatField()
+        self._ff_y = FloatSliderWidget(slider=False)
         layout_vector.addWidget(self._ff_y)
 
-        self._ff_z = FloatField()
+        self._ff_z = FloatSliderWidget(slider=False)
         layout_vector.addWidget(self._ff_z)
 
         return widget_vector
@@ -47,16 +47,16 @@ class Float3Widget(BaseWidget):
         :param list default_value: default value of the widget, float list of length 3
         :return: None
         """
-        self._ff_x.setText(str(default_value[0]))
-        self._ff_y.setText(str(default_value[1]))
-        self._ff_z.setText(str(default_value[2]))
+        self._ff_x.text = default_value[0]
+        self._ff_y.text = default_value[1]
+        self._ff_z.text = default_value[2]
 
     def get_value(self):
         """
         returns the current value of the widget
         :return: list
         """
-        return float(self._ff_x.text()), float(self._ff_y.text()), float(self._ff_z.text())
+        return float(self._ff_x.text), float(self._ff_y.text()), float(self._ff_z.text())
 
     def set_min(self, _min):
         """

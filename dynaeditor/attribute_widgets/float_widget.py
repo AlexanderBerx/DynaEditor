@@ -1,7 +1,8 @@
 import sys
 from PySide2 import QtWidgets
-from dynaeditor.widgets.float_field_widget import FloatField
+from dynaeditor.widgets.float_slider_widget import FloatSliderWidget
 from dynaeditor.attribute_widgets.base_widget import BaseWidget
+
 
 class FloatWidget(BaseWidget):
     def __init__(self, data_type, attr, default_value, nice_name=None):
@@ -9,24 +10,17 @@ class FloatWidget(BaseWidget):
 
     def create_type_widget(self):
         """
-        creates & returns the type widget of the EnumWidget
-        :return: QtWidgets.QComboBox
+        creates & returns the type widget of the FloatWidget
+        :return: FloatSliderWidget
         """
-        self._float_field = FloatField()
-        return self._float_field
+        self._float = FloatSliderWidget(slider=False)
+        return self._float
 
     def set_default_value(self, default_value):
-        """
-        set the default value of the combobox by index, if the given value
-        is higher then the item count nothing the index of the combobox won't
-        be change
-        :param int default_value: index of the default value
-        :return: None
-        """
-        self._float_field.setText(str(default_value))
+        self._float.text = default_value
 
     def get_value(self):
-        return float(self._float_field.text())
+        return float(self._float.text)
 
 
 def main():
