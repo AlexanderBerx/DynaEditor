@@ -1,10 +1,9 @@
-import sys
 from PySide2 import QtWidgets
 from dynaeditor.attribute_widgets.base_widget import BaseWidget
 from dynaeditor.widgets.float_slider_widget import FloatSliderWidget
 
 
-class Float3Widget(BaseWidget):
+class Float2Widget(BaseWidget):
     """
     Float3Widget for displaying float3 attributes, inherits from BaseWidget
     """
@@ -16,7 +15,7 @@ class Float3Widget(BaseWidget):
         :param list _min: min value of the widget, float list of length 3
         :param list _max: max value of the widget, float list of length 3
         """
-        super(Float3Widget, self).__init__(data_type, attr, default_value, nice_name)
+        super(Float2Widget, self).__init__(data_type, attr, default_value, nice_name)
         self.set_min(_min)
         self.set_max(_max)
 
@@ -36,9 +35,6 @@ class Float3Widget(BaseWidget):
         self._ff_y = FloatSliderWidget(slider=False)
         layout_vector.addWidget(self._ff_y)
 
-        self._ff_z = FloatSliderWidget(slider=False)
-        layout_vector.addWidget(self._ff_z)
-
         return widget_vector
 
     def set_default_value(self, default_value):
@@ -49,14 +45,13 @@ class Float3Widget(BaseWidget):
         """
         self._ff_x.text = default_value[0]
         self._ff_y.text = default_value[1]
-        self._ff_z.text = default_value[2]
 
     def get_value(self):
         """
         returns the current value of the widget
         :return: list
         """
-        return float(self._ff_x.text), float(self._ff_y.text), float(self._ff_z.text)
+        return float(self._ff_x.text), float(self._ff_y.text)
 
     def set_min(self, _min):
         """
@@ -66,7 +61,6 @@ class Float3Widget(BaseWidget):
         """
         self._ff_x.set_min(_min[0])
         self._ff_y.set_min(_min[1])
-        self._ff_z.set_min(_min[2])
 
     def set_max(self, _max):
         """
@@ -76,15 +70,3 @@ class Float3Widget(BaseWidget):
         """
         self._ff_x.set_max(_max[0])
         self._ff_y.set_max(_max[1])
-        self._ff_z.set_max(_max[2])
-
-
-def main():
-    app = QtWidgets.QApplication([])
-    widget = Float3Widget("tests", [1, 1, 1], [0, 0, 0], [1, 1, 1])
-    widget.show()
-    sys.exit(app.exec_())
-
-
-if __name__ == '__main__':
-    main()
