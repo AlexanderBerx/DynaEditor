@@ -28,8 +28,8 @@ class EnumAttribute(BaseAttribute):
 
 
 class FloatAttribute(BaseAttribute):
-    DEFAULT_MIN = -1000.0
-    DEFAULT_MAX = 1000.0
+    DEFAULT_MIN = -15000.0
+    DEFAULT_MAX = 15000.0
 
     def __init__(self, attr, nice_name, default_value, min_=None, max_=None):
         if not min_:
@@ -45,7 +45,7 @@ class FloatAttribute(BaseAttribute):
 
     def _create_widget(self):
         return FloatWidget(self.data_type, self.name, self.default_value, self._min,
-                           self._max, nice_name=self.nice_name)
+                           self._max, slider=True, nice_name=self.nice_name)
 
 
 class Float2Attribute(BaseAttribute):
@@ -85,7 +85,7 @@ class DoubleAttribute(BaseAttribute):
         super(DoubleAttribute, self).__init__(attr, nice_name, default_value, const.ATYPE_DOUBLE)
 
     def _create_widget(self):
-        return FloatWidget(self.data_type, self.name, self.default_value, nice_name=self.nice_name)
+        return FloatWidget(self.data_type, self.name, self.default_value, slider=True, nice_name=self.nice_name)
 
 
 class Double2Attribute(BaseAttribute):
@@ -133,5 +133,54 @@ class LongAttribute(BaseAttribute):
         super(LongAttribute, self).__init__(attr, nice_name, default_value)
 
     def _create_widget(self):
-        return FloatWidget(self.data_type, self.name, self.default_value, self._min, self._max, nice_name=self.nice_name)
+        return FloatWidget(self.data_type, self.name, self.default_value, self._min, self._max,
+                           slider=True, nice_name=self.nice_name)
 
+
+class Long2Attribute(BaseAttribute):
+    def __init__(self, attr, nice_name, default_value):
+        super(Long2Attribute, self).__init__(attr, nice_name, default_value, const.ATYPE_LONG2)
+
+    def _create_widget(self):
+        return Float2Widget(self.data_type, self.name, self.default_value, nice_name=self.nice_name)
+
+
+class Long3Attribute(BaseAttribute):
+    DEFAULT_MIN = [0.0, 0.0, 0.0]
+    DEFAULT_MAX = [100.0, 100.0, 100.0]
+
+    def __init__(self, attr, nice_name, default_value, min_=None, max_=None):
+        if not min_:
+            self._min = self.DEFAULT_MIN
+        else:
+            self._min = min_
+        if not max_:
+            self._max = self.DEFAULT_MAX
+        else:
+            self._max = max_
+
+        super(Long3Attribute, self).__init__(attr, nice_name, default_value, const.ATYPE_LONG3)
+
+    def _create_widget(self):
+        return Float3Widget(self.data_type, self.name, self.default_value, self._min, self._max, self.nice_name)
+
+
+class ByteAttribute(BaseAttribute):
+    DEFAULT_MIN = 0.0
+    DEFAULT_MAX = 100.0
+
+    def __init__(self, attr, nice_name, default_value, min_=None, max_=None):
+        if not min_:
+            self._min = self.DEFAULT_MIN
+        else:
+            self._min = min_
+        if not max_:
+            self._max = self.DEFAULT_MAX
+        else:
+            self._max = max_
+
+        super(ByteAttribute, self).__init__(attr, nice_name, default_value)
+
+    def _create_widget(self):
+        return FloatWidget(self.data_type, self.name, self.default_value, self._min, self._max,
+                           slider=True, nice_name=self.nice_name)

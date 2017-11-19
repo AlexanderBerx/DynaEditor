@@ -8,6 +8,9 @@ from dynaeditor.attributes.attribute_types import DoubleAttribute
 from dynaeditor.attributes.attribute_types import Double2Attribute
 from dynaeditor.attributes.attribute_types import Double3Attribute
 from dynaeditor.attributes.attribute_types import LongAttribute
+from dynaeditor.attributes.attribute_types import Long2Attribute
+from dynaeditor.attributes.attribute_types import Long3Attribute
+from dynaeditor.attributes.attribute_types import ByteAttribute
 
 
 class Attribute(object):
@@ -22,7 +25,11 @@ class Attribute(object):
                     const.ATYPE_DOUBLE: DoubleAttribute,
                     const.ATYPE_DOUBLE2: Double2Attribute,
                     const.ATYPE_DOUBLE3: Double3Attribute,
-                    const.ATYPE_LONG: LongAttribute}
+                    const.ATYPE_LONG: LongAttribute,
+                    const.ATYPE_LONG2: Long2Attribute,
+                    const.ATYPE_LONG3: Long3Attribute,
+                    const.ATYPE_BYTE: ByteAttribute,
+                    const.ATYPE_SHORT: ByteAttribute}
 
     def __new__(cls, type_, *args, **kwargs):
         """

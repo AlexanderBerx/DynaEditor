@@ -3,8 +3,9 @@ from PySide2 import QtWidgets, QtGui, QtCore
 
 class FloatSliderWidget(QtWidgets.QWidget):
     WIDTH = 50
+    _slider = None
 
-    def __init__(self,  min_=0.0, max_=100.0, decimals=5, slider=True):
+    def __init__(self,  min_=-25000.0, max_=25000.0, decimals=5, slider=True):
         super(FloatSliderWidget, self).__init__()
         self._create_ui(min_, max_, decimals, slider)
         self._connect_signals(slider)
@@ -37,7 +38,8 @@ class FloatSliderWidget(QtWidgets.QWidget):
         :return: None
         """
         self._validator.setBottom(float(min_))
-
+        if self._slider:
+            self._slider.setMinimum(float(min_))
 
     def set_max(self, max_):
         """
@@ -46,6 +48,8 @@ class FloatSliderWidget(QtWidgets.QWidget):
         :return: None
         """
         self._validator.setTop(float(max_))
+        if self._slider:
+            self._slider.setMaximum(float(max_))
 
     @property
     def text(self):
