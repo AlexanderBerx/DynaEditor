@@ -2,6 +2,7 @@ from dynaeditor import const
 from dynaeditor.attributes.attribute_types import BoolAttribute
 from dynaeditor.attributes.attribute_types import EnumAttribute
 from dynaeditor.attributes.attribute_types import FloatAttribute
+from dynaeditor.attributes.attribute_types import Float2Attribute
 from dynaeditor.attributes.attribute_types import Float3Attribute
 
 
@@ -12,6 +13,7 @@ class Attribute(object):
     TYPE_MAPPING = {const.ATYPE_ENUM: EnumAttribute,
                     const.ATYPE_BOOL: BoolAttribute,
                     const.ATYPE_FLOAT3: Float3Attribute,
+                    const.ATYPE_FLOAT2: Float2Attribute,
                     const.ATYPE_FLOAT: FloatAttribute}
 
     def __new__(cls, type_, *args, **kwargs):

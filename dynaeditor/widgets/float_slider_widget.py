@@ -30,21 +30,22 @@ class FloatSliderWidget(QtWidgets.QWidget):
         self._validator = QtGui.QDoubleValidator(min_, max_, decimals)
         self._txt_field.setValidator(self._validator)
 
-    def set_min(self, _min):
+    def set_min(self, min_):
         """
         sets the minimum value of the widget
-        :param float _min: minimum value of the widget
+        :param float min_: minimum value of the widget
         :return: None
         """
-        self._validator.setBottom(_min)
+        self._validator.setBottom(float(min_))
 
-    def set_max(self, _max):
+
+    def set_max(self, max_):
         """
         sets the maximum value of the widget
-        :param float _max: maximum value of the widget
+        :param float max_: maximum value of the widget
         :return: None
         """
-        self._validator.setTop(_max)
+        self._validator.setTop(float(max_))
 
     @property
     def text(self):

@@ -2,6 +2,7 @@ from dynaeditor import const
 from dynaeditor.attribute_widgets.bool_widget import BoolWidget
 from dynaeditor.attribute_widgets.enum_widget import EnumWidget
 from dynaeditor.attribute_widgets.float3_widget import Float3Widget
+from dynaeditor.attribute_widgets.float2_widget import Float2Widget
 from dynaeditor.attribute_widgets.float3_color_widget import Float3ColorWidget
 from dynaeditor.attribute_widgets.float_widget import FloatWidget
 from dynaeditor.attributes.base_attribute import BaseAttribute
@@ -69,3 +70,13 @@ class FloatAttribute(BaseAttribute):
 
     def _create_widget(self):
         return FloatWidget(self.data_type, self.name, self._default_value, self._nice_name)
+
+
+class Float2Attribute(BaseAttribute):
+    def __init__(self, attr, nice_name, default_value):
+        self._nice_name = nice_name
+        self._default_value = default_value
+        super(Float2Attribute, self).__init__('', attr)
+
+    def _create_widget(self):
+        return Float2Widget(self.data_type, self.name, self._default_value, nice_name=self._nice_name)
