@@ -14,8 +14,6 @@ class EditorWindow(QtWidgets.QWidget):
     signal_lock_type = QtCore.Signal()
     signal_display_prefs = QtCore.Signal()
     signal_apply_attr = QtCore.Signal(str, str, str)
-    signal_restrict_to_type = QtCore.Signal(bool)
-    signal_affect_children = QtCore.Signal(bool)
     signal_search = QtCore.Signal(str)
     signal_window_close = QtCore.Signal()
 
@@ -51,6 +49,8 @@ class EditorWindow(QtWidgets.QWidget):
         prefs_manager = PrefsManager()
         prefs_manager.window_pos = self.pos()
         prefs_manager.window_size = self.size()
+        prefs_manager.affect_children = self.affect_children()
+        prefs_manager.restrict_to_type = self.restrict_to_type()
 
     def load_prefs(self):
         """
@@ -62,6 +62,8 @@ class EditorWindow(QtWidgets.QWidget):
             self.move(prefs_manager.window_pos)
         if prefs_manager.window_size:
             self.resize(prefs_manager.window_size)
+        self._affect_children_action.setChecked(prefs_manager.affect_children)
+        self._restrict_action.setChecked(prefs_manager.restrict_to_type)
 
     def _init_ui(self):
         """
@@ -108,19 +110,17 @@ class EditorWindow(QtWidgets.QWidget):
         display_action.triggered.connect(self.signal_display_prefs.emit)
         prefs_menu.addAction(display_action)
 
-        restrict_action = QtWidgets.QAction("Restrict to current type", prefs_menu, checkable=True)
-        restrict_action.setToolTip("Restrict the editor to only apply attributes\n"
+        self._restrict_action = QtWidgets.QAction("Restrict to current type", prefs_menu, checkable=True)
+        self._restrict_action.setToolTip("Restrict the editor to only apply attributes\n"
                                    "to objects of the same type as currently set")
-        restrict_action.setChecked(True)
-        restrict_action.triggered.connect(lambda : self.signal_restrict_to_type.emit(restrict_action.isChecked()))
-        prefs_menu.addAction(restrict_action)
+        self._restrict_action.setChecked(True)
+        prefs_menu.addAction(self._restrict_action)
 
-        affect_children_action = QtWidgets.QAction("Affect children", prefs_menu, checkable=True)
-        affect_children_action.setToolTip("applies the attribute to all children of"
+        self._affect_children_action = QtWidgets.QAction("Affect children", prefs_menu, checkable=True)
+        self._affect_children_action.setToolTip("applies the attribute to all children of"
                                          "the current selection")
-        affect_children_action.setChecked(True)
-        affect_children_action.triggered.connect(lambda : self.signal_affect_children.emit(affect_children_action.isChecked()))
-        prefs_menu.addAction(affect_children_action)
+        self._affect_children_action.setChecked(True)
+        prefs_menu.addAction(self._affect_children_action)
 
         # TODO: Implement help menu
         # self._menu_bar.addMenu("Help")
@@ -223,6 +223,18 @@ class EditorWindow(QtWidgets.QWidget):
         else:
             self._lbl_display_type.setEnabled(True)
             self._btn_lock_type.setIcon(self._lock_icon)
+
+    def restrict_to_type(self):
+        """
+        :return: bool
+        """
+        return self._restrict_action.isChecked()
+
+    def affect_children(self):
+        """
+        :return: bool
+        """
+        return self._affect_children_action.isChecked()
 
 
 def main():

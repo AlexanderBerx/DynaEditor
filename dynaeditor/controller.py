@@ -42,8 +42,6 @@ class Editor(QtCore.QObject):
         self.view.signal_search[str].connect(self.search)
         self.view.signal_display_prefs.connect(self.display_prefs)
         self.view.signal_apply_attr[str, str, str].connect(self.apply_attr_to_selection)
-        self.view.signal_restrict_to_type[bool].connect(self.restrict_to_type)
-        self.view.signal_affect_children[bool].connect(self.affect_children)
         self.view.signal_window_close.connect(self.window_close)
         # from model
         self.model.signal_type_changed[str].connect(self.type_change)
@@ -94,7 +92,7 @@ class Editor(QtCore.QObject):
         """
         value = json.loads(value)
         amount = maya_utils.apply_attr(name, value, self.model.node_type, type_,
-                              self.model.affect_children, self.model.restrict_to_type)
+                              self.view.affect_children(), self.view.restrict_to_type())
         self.view.set_status_text("Setted {0} to {1} on {2} objects".format(name, value, amount), 2000)
 
     @QtCore.Slot()
@@ -162,7 +160,7 @@ class Editor(QtCore.QObject):
     def search(self, text):
         """
         Slot, to communicate to the model if the search text has changed
-        :param str text:
+        :param str text: text to search for
         :return: None
         """
         self.proxy_model.setFilterRegExp(QtCore.QRegExp(text, QtCore.Qt.CaseInsensitive))
