@@ -62,3 +62,20 @@ def test_model_proxy():
 
     # when all items are made 'invisible' the proxy model shouldn't return any data
     assert proxy.rowCount() == 0
+
+
+def test_model_proxy_data():
+    """
+    tests if the model proxy returns the expected data for the desired roles
+    :return: None
+    """
+    model, test_data = get_model()
+    proxy = EditorProxyModel()
+    proxy.setSourceModel(model)
+    # Note: it's intended behaviour for the proxy model to not return data for
+    # the checkstaterole and the display role, since the data will be shown
+    # through the widget
+    for index in range(proxy.rowCount()):
+        index = proxy.index(index, 1)
+        assert proxy.data(index, QtCore.Qt.CheckStateRole) is None
+        assert proxy.data(index, QtCore.Qt.DisplayRole) is None
