@@ -57,6 +57,28 @@ class PrefsManager(object):
         settings.setValue(const.PREF_WINDOW_SIZE, value)
 
     @property
+    def affect_children(self):
+        settings = QtCore.QSettings()
+        value = settings.value(const.PREF_AFFECT_CHILDREN, True)
+        return bool(int(value))
+
+    @affect_children.setter
+    def affect_children(self, value):
+        settings = QtCore.QSettings()
+        settings.setValue(const.PREF_AFFECT_CHILDREN, int(value))
+
+    @property
+    def restrict_to_type(self):
+        settings = QtCore.QSettings()
+        value  = settings.value(const.PREF_RESTRICT_TO_TYPE, True)
+        return bool(int(value))
+
+    @restrict_to_type.setter
+    def restrict_to_type(self, value):
+        settings = QtCore.QSettings()
+        settings.setValue(const.PREF_RESTRICT_TO_TYPE, int(value))
+
+    @property
     def item_visibility_prefs(self):
         """
         reads and returns the item visibility preferences

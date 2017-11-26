@@ -1,3 +1,4 @@
+import logging
 from maya import cmds
 from PySide2 import QtCore
 from dynaeditor import attr_query
@@ -62,7 +63,6 @@ class EditorModel(QtCore.QAbstractListModel):
         self._restrict_to_type = True
         self._affect_children = True
         self._items = []
-        self.load_prefs()
 
     @property
     def node_type(self):
@@ -82,40 +82,6 @@ class EditorModel(QtCore.QAbstractListModel):
         self._node_type = value
         self.signal_type_changed.emit(value)
 
-    @property
-    def restrict_to_type(self):
-        """
-        holds whether or not attribute applying needs to be restricted to the same type
-        :return: bool
-        """
-        return self._restrict_to_type
-
-    @restrict_to_type.setter
-    def restrict_to_type(self, value):
-        """
-        sets whether or not attribute applying needs to be restricted to the same type
-        :param bool value:
-        :return: None
-        """
-        self._restrict_to_type = bool(value)
-
-    @property
-    def affect_children(self):
-        """
-        holds whether or not attribute applying needs to be applied to selection children
-        :return: bool
-        """
-        return self._affect_children
-
-    @affect_children.setter
-    def affect_children(self, value):
-        """
-        sets whether or not attribute applying needs to be applied to selection children
-        :param bool value:
-        :return: None
-        """
-        self._affect_children = bool(value)
-
     def set_to_node(self, node):
         """
         sets the model to the given may node, if the type of the node is the same as
@@ -124,15 +90,17 @@ class EditorModel(QtCore.QAbstractListModel):
         :param str node: maya node
         :return: None
         """
+        logger = logging.getLogger(__name__)
+        logger.debug("Setting model to node: {}".format(node))
         node_type = cmds.objectType(node)
         if node_type == self.node_type:
+            logger.debug("Node type same as current node: {}".format(node))
             return
         self.node_type = node_type
-        # store the visibility preferences before clearing, so if the new node has similar attributes
-        # they as well would be hidden
-        self._save_visibility_prefs()
+        logger.debug("New node type: {}".format(node_type))
         self.clear()
         self._add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
+        logger.debug("Done setting model to node")
 
     def _add_from_mappings(self, attr_mappings, mapped=True):
         """
@@ -270,22 +238,10 @@ class EditorModel(QtCore.QAbstractListModel):
         """
         return QtCore.Qt.ItemIsEnabled | QtCore.Qt.ItemIsSelectable | QtCore.Qt.ItemIsUserCheckable
 
-    def load_prefs(self):
-        # TODO: Implement preference loading
-        pass
-
-    def _save_visibility_prefs(self):
-        """
-        saves the currently active visibility preferences
-        :return: None
-        """
-        prefs_mapping = {str(item):item.visible for item in self._items}
-        self._prefs_manager.item_visibility_prefs = prefs_mapping
-
     def save_prefs(self):
         """
         saves the model preferences
         :return: None
         """
-        self._save_visibility_prefs()
-        # TODO: Implement behaviour preferences
+        prefs_mapping = {str(item):item.visible for item in self._items}
+        self._prefs_manager.item_visibility_prefs = prefs_mapping
