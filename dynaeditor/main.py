@@ -17,7 +17,7 @@ def load_resources():
     if not os.path.isfile(rsc_file):
         return
     resources = QtCore.QResource()
-    if resources.registerResource(rsc_file) == False:
+    if resources.registerResource(rsc_file):
         raise RuntimeError("Failed to register resources")
 
 
@@ -37,14 +37,15 @@ def main():
         app = QtWidgets.QApplication([])
         logger.debug("created QApplication")
 
-    editor = Editor()
-    editor.view.show()
+    dyna_editor = Editor()
+    dyna_editor.view.show()
 
     if general.in_maya_standalone():
         logger.info("Executing QApplication")
         sys.exit(app.exec_())
 
-    return editor
+    return dyna_editor
+
 
 if __name__ == '__main__':
     editor = main()

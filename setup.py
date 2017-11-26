@@ -4,10 +4,11 @@ setup(
     name='DynaEditor',
     version='v0.1.0',
     packages=['dynaeditor', 'dynaeditor.utils', 'dynaeditor.widgets', 'dynaeditor.attributes',
-              'dynaeditor.attribute_widgets'],
+              'dynaeditor.attributewidgets'],
     url='',
     license='BSD3',
     author='Alexander Berx',
     author_email='alexanderberx@gmail.com',
-    description='dynamic attribute editor for Autodesk Maya 2017 and up'
+    description='dynamic attribute editor for Autodesk Maya 2017 and up',
+    requires=['maya', 'PySide2']
 )

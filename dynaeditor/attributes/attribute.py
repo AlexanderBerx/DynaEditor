@@ -58,7 +58,7 @@ class Attribute(object):
     def is_type_supported(type_):
         """
         static method which checks if the given attribute type is supported or not
-        :param type_: 
+        :param str type_: name of the maya attribute type
         :return: bool
         """
         if type_ in Attribute.TYPE_MAPPING.keys():

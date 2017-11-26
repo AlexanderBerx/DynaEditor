@@ -2,12 +2,12 @@
 attribute type classes all inherit from BaseAttribute
 """
 from dynaeditor import const
-from dynaeditor.attribute_widgets.bool_ import BoolWidget
-from dynaeditor.attribute_widgets.enum import EnumWidget
-from dynaeditor.attribute_widgets.float3 import Float3Widget
-from dynaeditor.attribute_widgets.float2 import Float2Widget
-from dynaeditor.attribute_widgets.float3color import Float3ColorWidget
-from dynaeditor.attribute_widgets.float_ import FloatWidget
+from dynaeditor.attributewidgets.bool_ import BoolWidget
+from dynaeditor.attributewidgets.enum import EnumWidget
+from dynaeditor.attributewidgets.float3 import Float3Widget
+from dynaeditor.attributewidgets.float2 import Float2Widget
+from dynaeditor.attributewidgets.float3color import Float3ColorWidget
+from dynaeditor.attributewidgets.float_ import FloatWidget
 from dynaeditor.attributes.baseattribute import BaseAttribute
 
 

@@ -10,6 +10,10 @@ from dynaeditor.model import EditorModel, EditorProxyModel
 
 
 class Editor(QtCore.QObject):
+    """
+    Editor class, inherits from QtCore.QObject,
+    Dynamic attribute editor controller
+    """
     def __init__(self):
         logger = logging.getLogger(__name__)
         logger.debug("Creating Editor Instance")
@@ -29,7 +33,6 @@ class Editor(QtCore.QObject):
         self.view.set_attr_model(self.proxy_model)
         self._connect_signals()
         self._lock_type = False
-        #self.update_to_selection()
         logger.debug("Created Editor instance")
 
     def _connect_signals(self):
@@ -46,8 +49,7 @@ class Editor(QtCore.QObject):
         # from model
         self.model.signal_type_changed[str].connect(self.type_change)
 
-    @staticmethod
-    def check_for_existing_window():
+    def check_for_existing_window(self):
         """
         checks if there is already a window existing of the editor based on the object name
         if it does this will be deleted

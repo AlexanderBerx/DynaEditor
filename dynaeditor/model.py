@@ -42,7 +42,7 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
         :return: object
         """
         source_index = self.sourceModel().index(source_row)
-        if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE) == False:
+        if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE):
             return False
 
         return super(EditorProxyModel, self).filterAcceptsRow(source_row, source_parent)
@@ -243,5 +243,5 @@ class EditorModel(QtCore.QAbstractListModel):
         saves the model preferences
         :return: None
         """
-        prefs_mapping = {str(item):item.visible for item in self._items}
+        prefs_mapping = {str(item): item.visible for item in self._items}
         self._prefs_manager.item_visibility_prefs = prefs_mapping

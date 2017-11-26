@@ -1,6 +1,6 @@
 import sys
 from PySide2 import QtWidgets
-from dynaeditor.attribute_widgets.base import BaseWidget
+from dynaeditor.attributewidgets.base import BaseWidget
 
 
 class EnumWidget(BaseWidget):

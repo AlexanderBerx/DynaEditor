@@ -7,13 +7,13 @@ from dynaeditor import const
 
 def key_map_config(config):
     args = zip(const.ARG_KEYS, config)
-    args = {key:value for key, value in args if value}
+    args = {key: value for key, value in args if value}
     return args
 
 
 def key_map_config_maya(config):
     args = zip(const.M_ARG_KEYS, config)
-    args = {key:value for key, value in args if value}
+    args = {key: value for key, value in args if value}
 
     # note: maya expect enum options in a csv formatting
     if args.get(const.M_ATTR_ARG_OPTIONS):

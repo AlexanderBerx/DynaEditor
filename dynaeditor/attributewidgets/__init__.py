@@ -1,0 +1,5 @@
+from dynaeditor.attributewidgets.base import BaseWidget
+from dynaeditor.attributewidgets.bool_ import BoolWidget
+from dynaeditor.attributewidgets.enum import EnumWidget
+from dynaeditor.attributewidgets.float3color import Float3ColorWidget
+from dynaeditor.attributewidgets.float3 import Float3Widget

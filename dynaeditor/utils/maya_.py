@@ -47,6 +47,7 @@ def _get_selection_shapes(node_type, get_children=True, same_type=False):
 
     return set(item_list)
 
+
 def _apply_attr_to_node(node, attr_name, attr_value, attr_type=None):
     try:
         if attr_type:
@@ -68,6 +69,7 @@ def _apply_attr_to_node(node, attr_name, attr_value, attr_type=None):
         logger.warning("Failed to apply attribute to: {}".format(node))
         logger.warning("Error:".format(e))
         return False
+
 
 def apply_attr(attr_name, attr_value, node_type, attr_type=None, affect_children=True, same_type=False):
     """

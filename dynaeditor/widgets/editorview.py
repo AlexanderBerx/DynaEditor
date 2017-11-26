@@ -11,6 +11,7 @@ class EditorView(QtWidgets.QListView):
     clicked.
     """
     signal_apply_attr = QtCore.Signal(str, str, str)
+
     def __init__(self):
         super(EditorView, self).__init__()
         self.setAlternatingRowColors(True)

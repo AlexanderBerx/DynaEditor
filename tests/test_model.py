@@ -1,7 +1,7 @@
 from PySide2 import QtCore
 from dynaeditor.utils import general
 from dynaeditor.model import EditorModel, EditorProxyModel
-from dynaeditor.attribute_widgets.base import BaseWidget
+from dynaeditor.attributewidgets.base import BaseWidget
 
 
 def get_model():
