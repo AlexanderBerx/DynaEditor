@@ -1,3 +1,4 @@
+import logging
 from maya import cmds
 from PySide2 import QtCore
 from dynaeditor import attr_query
@@ -89,15 +90,17 @@ class EditorModel(QtCore.QAbstractListModel):
         :param str node: maya node
         :return: None
         """
+        logger = logging.getLogger(__name__)
+        logger.debug("Setting model to node: {}".format(node))
         node_type = cmds.objectType(node)
         if node_type == self.node_type:
+            logger.debug("Node type same as current node: {}".format(node))
             return
         self.node_type = node_type
-        # store the visibility preferences before clearing, so if the new node has similar attributes
-        # they as well would be hidden
-        self._save_visibility_prefs()
+        logger.debug("New node type: {}".format(node_type))
         self.clear()
         self._add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
+        logger.debug("Done setting model to node")
 
     def _add_from_mappings(self, attr_mappings, mapped=True):
         """
