@@ -3,13 +3,17 @@ import json
 import logging
 from maya import cmds
 from PySide2 import QtCore, QtWidgets
-from dynaeditor.job_manager import JobManager
-from dynaeditor.utils import general_utils, maya_utils
-from dynaeditor.widgets.main_window import EditorWindow
+from dynaeditor.jobmanager import JobManager
+from dynaeditor.utils import general, maya_
+from dynaeditor.widgets.mainwindow import EditorWindow
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
 class Editor(QtCore.QObject):
+    """
+    Editor class, inherits from QtCore.QObject,
+    Dynamic attribute editor controller
+    """
     def __init__(self):
         logger = logging.getLogger(__name__)
         logger.debug("Creating Editor Instance")
@@ -29,7 +33,6 @@ class Editor(QtCore.QObject):
         self.view.set_attr_model(self.proxy_model)
         self._connect_signals()
         self._lock_type = False
-        #self.update_to_selection()
         logger.debug("Created Editor instance")
 
     def _connect_signals(self):
@@ -46,8 +49,7 @@ class Editor(QtCore.QObject):
         # from model
         self.model.signal_type_changed[str].connect(self.type_change)
 
-    @staticmethod
-    def check_for_existing_window():
+    def check_for_existing_window(self):
         """
         checks if there is already a window existing of the editor based on the object name
         if it does this will be deleted
@@ -71,7 +73,7 @@ class Editor(QtCore.QObject):
         updates the app the current selection
         :return: None
         """
-        node = maya_utils.get_first_selected_node()
+        node = maya_.get_first_selected_node()
         if not node:
             return
 
@@ -91,8 +93,8 @@ class Editor(QtCore.QObject):
         :return: None
         """
         value = json.loads(value)
-        amount = maya_utils.apply_attr(name, value, self.model.node_type, type_,
-                              self.view.affect_children(), self.view.restrict_to_type())
+        amount = maya_.apply_attr(name, value, self.model.node_type, type_,
+                                  self.view.affect_children(), self.view.restrict_to_type())
         self.view.set_status_text("Setted {0} to {1} on {2} objects".format(name, value, amount), 2000)
 
     @QtCore.Slot()
@@ -171,13 +173,13 @@ class Editor(QtCore.QObject):
 
 def main():
     app = None
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         app = QtWidgets.QApplication([])
 
     attr_editor = Editor()
     attr_editor.view.show()
 
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         sys.exit(app.exec_())
 
     return attr_editor

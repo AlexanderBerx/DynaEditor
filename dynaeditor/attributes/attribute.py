@@ -1,16 +1,16 @@
 from dynaeditor import const
-from dynaeditor.attributes.attribute_types import BoolAttribute
-from dynaeditor.attributes.attribute_types import EnumAttribute
-from dynaeditor.attributes.attribute_types import FloatAttribute
-from dynaeditor.attributes.attribute_types import Float2Attribute
-from dynaeditor.attributes.attribute_types import Float3Attribute
-from dynaeditor.attributes.attribute_types import DoubleAttribute
-from dynaeditor.attributes.attribute_types import Double2Attribute
-from dynaeditor.attributes.attribute_types import Double3Attribute
-from dynaeditor.attributes.attribute_types import LongAttribute
-from dynaeditor.attributes.attribute_types import Long2Attribute
-from dynaeditor.attributes.attribute_types import Long3Attribute
-from dynaeditor.attributes.attribute_types import ByteAttribute
+from dynaeditor.attributes.attributetypes import BoolAttribute
+from dynaeditor.attributes.attributetypes import EnumAttribute
+from dynaeditor.attributes.attributetypes import FloatAttribute
+from dynaeditor.attributes.attributetypes import Float2Attribute
+from dynaeditor.attributes.attributetypes import Float3Attribute
+from dynaeditor.attributes.attributetypes import DoubleAttribute
+from dynaeditor.attributes.attributetypes import Double2Attribute
+from dynaeditor.attributes.attributetypes import Double3Attribute
+from dynaeditor.attributes.attributetypes import LongAttribute
+from dynaeditor.attributes.attributetypes import Long2Attribute
+from dynaeditor.attributes.attributetypes import Long3Attribute
+from dynaeditor.attributes.attributetypes import ByteAttribute
 
 
 class Attribute(object):
@@ -58,7 +58,7 @@ class Attribute(object):
     def is_type_supported(type_):
         """
         static method which checks if the given attribute type is supported or not
-        :param type_: 
+        :param str type_: name of the maya attribute type
         :return: bool
         """
         if type_ in Attribute.TYPE_MAPPING.keys():

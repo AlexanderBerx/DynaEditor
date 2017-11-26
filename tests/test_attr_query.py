@@ -1,5 +1,5 @@
-from dynaeditor import attr_query
-from dynaeditor.utils import general_utils
+from dynaeditor import attrquery
+from dynaeditor.utils import general
 from maya import cmds
 
 TEST_ATTRS = [('bool', 'test_bool', 'tests bool', 0.0, 1.0, 0.0, None, False, False),
@@ -11,7 +11,7 @@ def _add_test_attrs_to_node(node):
     cmds.select(node)
     for attr_setup in TEST_ATTRS:
         # unpack setup values
-        creation_args = general_utils.key_map_config_maya(attr_setup)
+        creation_args = general.key_map_config_maya(attr_setup)
         cmds.addAttr(**creation_args)
 
 
@@ -28,7 +28,7 @@ def create_test_node():
 def test_query():
     test_node = create_test_node()
     # collect all the obj attrs
-    obj_attrs = list(attr_query.iter_obj_attrs(test_node))
+    obj_attrs = list(attrquery.iter_obj_attrs(test_node))
     # check if each tests attr occurs in the object attr's & matches
     for attr in TEST_ATTRS:
         if attr not in obj_attrs:

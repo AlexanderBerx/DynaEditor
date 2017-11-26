@@ -70,7 +70,7 @@ class PrefsManager(object):
     @property
     def restrict_to_type(self):
         settings = QtCore.QSettings()
-        value  = settings.value(const.PREF_RESTRICT_TO_TYPE, True)
+        value = settings.value(const.PREF_RESTRICT_TO_TYPE, True)
         return bool(int(value))
 
     @restrict_to_type.setter

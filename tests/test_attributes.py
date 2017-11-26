@@ -1,9 +1,5 @@
 import pytest
-try:
-    from PySide2 import QtCore
-except ImportError:
-    from Qt import QtCore
-from dynaeditor import attribute_widgets
+from dynaeditor import attributewidgets
 from dynaeditor import attributes
 
 
@@ -17,6 +13,7 @@ def test_base_attribute():
     with pytest.raises(NotImplementedError):
         attribute._create_widget()
 
+
 def test_attribute():
     # attribute class needs to raise an type error if an type is not known to it
     with pytest.raises(TypeError):
@@ -29,9 +26,8 @@ def test_bool_attribute():
     default_value = False
     bool_attr = attributes.BoolAttribute(attr, nice_name, default_value)
 
-
     # check if the widget type is correct
-    assert type(bool_attr.widget) == attribute_widgets.BoolWidget
+    assert type(bool_attr.widget) == attributewidgets.BoolWidget
     # check the type
     assert bool_attr.data_type == ""
     # check if the name was set correctly
@@ -47,7 +43,7 @@ def test_enum_attribute():
     enum_attr = attributes.EnumAttribute(attr, nice_name, default_value, test_options)
 
     # check if the widget type is correct
-    assert type(enum_attr.widget) == attribute_widgets.EnumWidget
+    assert type(enum_attr.widget) == attributewidgets.EnumWidget
     # check the type
     assert enum_attr.data_type == enum_type
     # check if the name was set correctly
@@ -62,7 +58,7 @@ def test_float3_attribute():
     enum_attr = attributes.Float3Attribute(attr, nice_name, default_value)
 
     # check if the widget type is correct
-    assert type(enum_attr.widget) == attribute_widgets.Float3Widget
+    assert type(enum_attr.widget) == attributewidgets.Float3Widget
     # check the type
     assert enum_attr.data_type == float3_type
     # check if the name was set correctly

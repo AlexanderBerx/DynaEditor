@@ -1,9 +1,9 @@
 import logging
 from maya import cmds
 from PySide2 import QtCore
-from dynaeditor import attr_query
+from dynaeditor import attrquery
 from dynaeditor.attributes.attribute import Attribute
-from dynaeditor.prefs_manager import PrefsManager
+from dynaeditor.prefsmanager import PrefsManager
 
 
 class EditorProxyModel(QtCore.QSortFilterProxyModel):
@@ -42,7 +42,7 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
         :return: object
         """
         source_index = self.sourceModel().index(source_row)
-        if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE) == False:
+        if not self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE):
             return False
 
         return super(EditorProxyModel, self).filterAcceptsRow(source_row, source_parent)
@@ -99,7 +99,7 @@ class EditorModel(QtCore.QAbstractListModel):
         self.node_type = node_type
         logger.debug("New node type: {}".format(node_type))
         self.clear()
-        self._add_from_mappings(attr_query.iter_obj_attrs_mapped(node))
+        self._add_from_mappings(attrquery.iter_obj_attrs_mapped(node))
         logger.debug("Done setting model to node")
 
     def _add_from_mappings(self, attr_mappings, mapped=True):
@@ -243,5 +243,5 @@ class EditorModel(QtCore.QAbstractListModel):
         saves the model preferences
         :return: None
         """
-        prefs_mapping = {str(item):item.visible for item in self._items}
+        prefs_mapping = {str(item): item.visible for item in self._items}
         self._prefs_manager.item_visibility_prefs = prefs_mapping

@@ -1,7 +1,7 @@
 from PySide2 import QtCore, QtWidgets, QtGui
-from dynaeditor.widgets.editor_view import EditorView
-from dynaeditor.utils import general_utils
-from dynaeditor.prefs_manager import PrefsManager
+from dynaeditor.widgets.editorview import EditorView
+from dynaeditor.utils import general
+from dynaeditor.prefsmanager import PrefsManager
 
 
 class EditorWindow(QtWidgets.QWidget):
@@ -19,7 +19,7 @@ class EditorWindow(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         if not parent:
-            parent = general_utils.get_maya_main_window()
+            parent = general.get_maya_main_window()
 
         super(EditorWindow, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)
@@ -112,13 +112,13 @@ class EditorWindow(QtWidgets.QWidget):
 
         self._restrict_action = QtWidgets.QAction("Restrict to current type", prefs_menu, checkable=True)
         self._restrict_action.setToolTip("Restrict the editor to only apply attributes\n"
-                                   "to objects of the same type as currently set")
+                                         "to objects of the same type as currently set")
         self._restrict_action.setChecked(True)
         prefs_menu.addAction(self._restrict_action)
 
         self._affect_children_action = QtWidgets.QAction("Affect children", prefs_menu, checkable=True)
         self._affect_children_action.setToolTip("applies the attribute to all children of"
-                                         "the current selection")
+                                                "the current selection")
         self._affect_children_action.setChecked(True)
         prefs_menu.addAction(self._affect_children_action)
 
@@ -145,7 +145,7 @@ class EditorWindow(QtWidgets.QWidget):
 
         self._btn_lock_type = QtWidgets.QPushButton()
         self._btn_lock_type.setIcon(self._lock_icon)
-        self._btn_lock_type.setFixedSize(self._btn_lock_type.iconSize()*1.8)
+        self._btn_lock_type.setFixedSize(self._btn_lock_type.iconSize() * 1.8)
         self._btn_lock_type.clicked.connect(self.signal_lock_type)
 
         layout_type.addWidget(self._btn_lock_type)
@@ -242,6 +242,7 @@ def main():
     view = EditorWindow()
     view.show()
     app.exec_()
+
 
 if __name__ == '__main__':
     main()

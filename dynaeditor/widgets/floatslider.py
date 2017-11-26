@@ -8,14 +8,14 @@ class FloatSliderWidget(QtWidgets.QWidget):
     WIDTH = 50
     _slider = None
 
-    def __init__(self,  min_=-25000.0, max_=25000.0, decimals=5, slider=True):
+    def __init__(self, min_=-25000.0, max_=25000.0, decimals=5, slider=True):
         super(FloatSliderWidget, self).__init__()
         self._create_ui(min_, max_, decimals, slider)
         self._connect_signals(slider)
 
         self.set_min(min_)
         self.set_max(max_)
-        self.text = (max_ - min_)/2.0
+        self.text = (max_ - min_) / 2.0
 
     def _create_ui(self, min_, max_, decimals, slider):
         layout = QtWidgets.QHBoxLayout()
