@@ -6,7 +6,7 @@ and to avoid them having to do it one by one (which is tedious and time consumin
 i've created this tool. The editor is being filled dynamically when active in Maya
 based on the current selection of the user. 
 <br><br>
-![example window](/rsc/example_window.png)
+![example window](/resources/example_window.png)
 ### Usage
 * Install the repository
 * start the tool by running the main module
