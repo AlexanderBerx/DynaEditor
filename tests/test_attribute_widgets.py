@@ -1,5 +1,4 @@
 import pytest
-from PySide2 import QtGui
 from dynaeditor import attributewidgets
 
 

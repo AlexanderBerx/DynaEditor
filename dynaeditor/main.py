@@ -17,7 +17,7 @@ def load_resources():
     if not os.path.isfile(rsc_file):
         return
     resources = QtCore.QResource()
-    if resources.registerResource(rsc_file):
+    if not resources.registerResource(rsc_file):
         raise RuntimeError("Failed to register resources")
 
 

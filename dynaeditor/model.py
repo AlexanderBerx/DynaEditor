@@ -42,7 +42,7 @@ class EditorProxyModel(QtCore.QSortFilterProxyModel):
         :return: object
         """
         source_index = self.sourceModel().index(source_row)
-        if self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE):
+        if not self.sourceModel().data(source_index, EditorModel.DISPLAY_ROLE):
             return False
 
         return super(EditorProxyModel, self).filterAcceptsRow(source_row, source_parent)

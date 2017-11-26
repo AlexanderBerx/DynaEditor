@@ -13,6 +13,7 @@ def test_base_attribute():
     with pytest.raises(NotImplementedError):
         attribute._create_widget()
 
+
 def test_attribute():
     # attribute class needs to raise an type error if an type is not known to it
     with pytest.raises(TypeError):
@@ -24,7 +25,6 @@ def test_bool_attribute():
     nice_name = "test bool"
     default_value = False
     bool_attr = attributes.BoolAttribute(attr, nice_name, default_value)
-
 
     # check if the widget type is correct
     assert type(bool_attr.widget) == attributewidgets.BoolWidget
