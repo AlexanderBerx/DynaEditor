@@ -7,7 +7,7 @@ import sys
 import logging
 from PySide2 import QtWidgets, QtCore
 from dynaeditor.controller import Editor
-from dynaeditor.utils import general_utils
+from dynaeditor.utils import general
 
 
 def load_resources():
@@ -33,14 +33,14 @@ def main():
     logger = logging.getLogger(__name__)
     logger.info("Starting up Dynamic Attribute Editor")
     app = None
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         app = QtWidgets.QApplication([])
         logger.debug("created QApplication")
 
     editor = Editor()
     editor.view.show()
 
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         logger.info("Executing QApplication")
         sys.exit(app.exec_())
 

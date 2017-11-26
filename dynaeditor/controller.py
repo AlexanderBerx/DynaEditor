@@ -3,9 +3,9 @@ import json
 import logging
 from maya import cmds
 from PySide2 import QtCore, QtWidgets
-from dynaeditor.job_manager import JobManager
-from dynaeditor.utils import general_utils, maya_utils
-from dynaeditor.widgets.main_window import EditorWindow
+from dynaeditor.jobmanager import JobManager
+from dynaeditor.utils import general, maya_
+from dynaeditor.widgets.mainwindow import EditorWindow
 from dynaeditor.model import EditorModel, EditorProxyModel
 
 
@@ -71,7 +71,7 @@ class Editor(QtCore.QObject):
         updates the app the current selection
         :return: None
         """
-        node = maya_utils.get_first_selected_node()
+        node = maya_.get_first_selected_node()
         if not node:
             return
 
@@ -91,8 +91,8 @@ class Editor(QtCore.QObject):
         :return: None
         """
         value = json.loads(value)
-        amount = maya_utils.apply_attr(name, value, self.model.node_type, type_,
-                              self.view.affect_children(), self.view.restrict_to_type())
+        amount = maya_.apply_attr(name, value, self.model.node_type, type_,
+                                  self.view.affect_children(), self.view.restrict_to_type())
         self.view.set_status_text("Setted {0} to {1} on {2} objects".format(name, value, amount), 2000)
 
     @QtCore.Slot()
@@ -171,13 +171,13 @@ class Editor(QtCore.QObject):
 
 def main():
     app = None
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         app = QtWidgets.QApplication([])
 
     attr_editor = Editor()
     attr_editor.view.show()
 
-    if general_utils.in_maya_standalone():
+    if general.in_maya_standalone():
         sys.exit(app.exec_())
 
     return attr_editor

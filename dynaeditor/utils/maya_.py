@@ -1,3 +1,7 @@
+"""
+Note: module is called maya_ and not maya since otherwise it will
+overshadow the Autodesk Maya module
+"""
 import logging
 from maya import cmds
 

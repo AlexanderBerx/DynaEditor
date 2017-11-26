@@ -1,7 +1,7 @@
 from PySide2 import QtCore, QtWidgets, QtGui
-from dynaeditor.widgets.editor_view import EditorView
-from dynaeditor.utils import general_utils
-from dynaeditor.prefs_manager import PrefsManager
+from dynaeditor.widgets.editorview import EditorView
+from dynaeditor.utils import general
+from dynaeditor.prefsmanager import PrefsManager
 
 
 class EditorWindow(QtWidgets.QWidget):
@@ -19,7 +19,7 @@ class EditorWindow(QtWidgets.QWidget):
 
     def __init__(self, parent=None):
         if not parent:
-            parent = general_utils.get_maya_main_window()
+            parent = general.get_maya_main_window()
 
         super(EditorWindow, self).__init__(parent=parent)
         self.setWindowTitle(self.TITLE)

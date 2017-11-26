@@ -1,9 +1,10 @@
+"""
+note module is called bool_ and not bool due to that it would otherwise
+overshadow python's bool class
+"""
 import sys
-try:
-    from PySide2 import QtWidgets
-except ImportError:
-    from Qt import QtWidgets
-from dynaeditor.attribute_widgets.base_widget import BaseWidget
+from PySide2 import QtWidgets
+from dynaeditor.attribute_widgets.base import BaseWidget
 
 
 class BoolWidget(BaseWidget):

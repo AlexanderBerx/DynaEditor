@@ -1,7 +1,11 @@
+"""
+note module is called float_ and not float due to that it would otherwise
+overshadow python's float class
+"""
 import sys
 from PySide2 import QtWidgets
-from dynaeditor.widgets.float_slider_widget import FloatSliderWidget
-from dynaeditor.attribute_widgets.base_widget import BaseWidget
+from dynaeditor.widgets.floatslider import FloatSliderWidget
+from dynaeditor.attribute_widgets.base import BaseWidget
 
 
 class FloatWidget(BaseWidget):

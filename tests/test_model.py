@@ -1,7 +1,7 @@
 from PySide2 import QtCore
-from dynaeditor.utils import general_utils
+from dynaeditor.utils import general
 from dynaeditor.model import EditorModel, EditorProxyModel
-from dynaeditor.attribute_widgets.base_widget import BaseWidget
+from dynaeditor.attribute_widgets.base import BaseWidget
 
 
 def get_model():
@@ -14,7 +14,7 @@ def get_model():
 
     mapped_test_data = []
     for item in test_data:
-        mapped_test_data.append(general_utils.key_map_config(item))
+        mapped_test_data.append(general.key_map_config(item))
 
     model = EditorModel()
     model._add_from_mappings(mapped_test_data)

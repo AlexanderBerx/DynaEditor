@@ -1,6 +1,6 @@
 import os
 import json
-from dynaeditor.utils import general_utils
+from dynaeditor.utils import general
 from dynaeditor.controller import Editor
 
 
@@ -15,5 +15,5 @@ def test_app():
     test_data = os.path.abspath(test_data)
     with open(test_data, 'r') as file_in:
         data = json.load(file_in)
-    mapped_data = [general_utils.key_map_config(item) for item in data]
+    mapped_data = [general.key_map_config(item) for item in data]
     editor.model._add_from_mappings(mapped_data)
