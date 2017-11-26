@@ -11,7 +11,7 @@ def test_app():
     """
     editor = Editor()
     test_data = os.path.split(__file__)[0]
-    test_data = os.path.join(test_data, "../rsc/test_data.json")
+    test_data = os.path.join(test_data, "../resources/test_data.json")
     test_data = os.path.abspath(test_data)
     with open(test_data, 'r') as file_in:
         data = json.load(file_in)

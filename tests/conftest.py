@@ -7,10 +7,7 @@ except ImportError:
 try:
     from PySide2 import QtWidgets
 except ImportError:
-    try:
-        from Qt import QtWidgets
-    except ImportError:
-        raise ImportError("Can't run tests due to no PySide2 present in current environment")
+    raise ImportError("Can't run tests due to no PySide2 present in current environment")
 
 
 def pytest_sessionstart(session):
